@@ -162,6 +162,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\Recipes.cshtml" />
+    <Content Include="Views\Home\Ingredients.cshtml" />
+    <Content Include="Views\Home\Health.cshtml" />
+    <Content Include="Views\Home\Favorites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,16 +13,41 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
-		public ActionResult About()
+        public ActionResult Recipes()
+        {
+            return View();
+        }
+
+        public ActionResult Ingredients()
+        {
+            return View();
+        }
+
+        public ActionResult Health()
+        {
+            return View();
+        }
+
+        public ActionResult Favorites()
+        {
+            return View();
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+        public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
+			//ViewBag.Message = "Your application description page.";
 
 			return View();
 		}
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
+			//ViewBag.Message = "Your contact page.";
 
 			return View();
 		}
