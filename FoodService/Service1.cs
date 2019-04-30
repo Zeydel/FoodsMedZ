@@ -10,23 +10,55 @@ namespace FoodService
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
 	public class UserService : IUserService
 	{
-		public string GetUser(int value)
+		public users GetUser(int value)
 		{
 			masterEntities m = new masterEntities();
-			var user = from k in m.users where k.id == value select k;
+			var userlst = from k in m.users where k.User_id == value select k;
+			var user = new users();
+			foreach(var usr in userlst)
+			{
+				user = usr;
+			}
 			return user;
 		}
 
-		public void AddUser(String first_name, String last_name, String username, String password, double weight, double height, byte vegetarian, byte vegan, byte dairyfree, byte glutenfree)
+		public int verifyUser(string userName, string password)
 		{
-			user newUser = new user();
+			masterEntities m = new masterEntities();
+			var userlst = from k in m.users where k.userName.Equals(userName) select k;
+			foreach (var usr in userlst)
+			{
+				if (usr.password.Equals(password))
+				{
+					return usr.User_id;
+				}
+			}
+			return -1;
+		}
+
+		public void AddUser(string first_name, string last_name, string username, string password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree)
+		{
+			masterEntities m = new masterEntities();
+			users newUser = new users();
 			newUser.First_name = first_name;
 			newUser.Last_name = last_name;
 			newUser.userName = username;
 			newUser.password = password;
 			newUser.weight = weight;
 			newUser.height = height;
-			newUser.
+			newUser.vegetarian = vegetarian;
+			newUser.vegan = vegan;
+			newUser.dairyfree = dairyfree;
+			newUser.glutenfree = glutenfree;
+			m.users.Add(newUser);
+			m.SaveChanges();
+		}
+
+		public void updateUser(users user)
+		{
+			masterEntities m = new masterEntities();
+			m.Entry(user).State = System.Data.Entity.EntityState.Modified;
+			m.SaveChanges();
 		}
 
 		public CompositeType GetDataUsingDataContract(CompositeType composite)

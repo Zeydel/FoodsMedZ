@@ -12,7 +12,13 @@ namespace FoodService
 	public interface IUserService
 	{
 		[OperationContract]
-		string GetUser(int value);
+		users GetUser(int value);
+
+		[OperationContract]
+		int verifyUser(string userName, string password);
+
+		[OperationContract]
+		void AddUser(String first_name, String last_name, String username, String password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree);
 
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);

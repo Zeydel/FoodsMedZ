@@ -20,7 +20,6 @@ namespace FoodService
         public Nullable<double> Amount { get; set; }
         public Nullable<int> Unit { get; set; }
         public string image { get; set; }
-    
         public virtual Food Food { get; set; }
         public virtual Recipe Recipe { get; set; }
     }
