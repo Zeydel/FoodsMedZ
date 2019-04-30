@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientSide.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,9 @@ namespace ClientSide.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
+
+		public ActionResult Index()
         {
             return View();
         }
@@ -45,12 +48,25 @@ namespace ClientSide.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+		[HttpPost]
+		public ActionResult Login(LoginModel model)
+		{
+			userServiceClient.verifyUser(model.Username, model.Password);
+
+			return View("Index", model);
+		}
+
+		public ActionResult Contact()
         {
             //ViewBag.Message = "Your contact page.";
 
             return View();
         }
+
+		public ActionResult Login()
+		{
+			return View();
+		}
     }
 }
 

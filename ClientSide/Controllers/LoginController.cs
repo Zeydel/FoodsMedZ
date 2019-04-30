@@ -1,8 +1,11 @@
-﻿using System;
+﻿using ClientSide.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace ClientSide.Controllers
 {
@@ -15,10 +18,8 @@ namespace ClientSide.Controllers
             return View ();
         }
 
-        public int VerifyUser(string username, string password )
-        {
-            return userServiceClient.verifyUser(username, password);
-        }
+
+
 
 
     }
