@@ -7,67 +7,55 @@ using System.Web.Mvc;
 
 namespace ClientSide.Controllers
 {
-    public class HomeController : Controller
-    {
+	public class HomeController : Controller
+	{
 		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
 
 		public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Recipes()
-        {
-            return View();
-        }
-
-        public ActionResult Ingredients()
-        {
-            return View();
-        }
-
-        public ActionResult Health()
-        {
-            return View();
-        }
-
-        public ActionResult Favorites()
-        {
-            return View();
-        }
-
-        public ActionResult Profile()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            //ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-		[HttpPost]
-		public ActionResult Login(LoginModel model)
-		{
-			userServiceClient.verifyUser(model.Username, model.Password);
-
-			return View("Index", model);
-		}
-
-		public ActionResult Contact()
-        {
-            //ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-		public ActionResult Login()
 		{
 			return View();
 		}
-    }
-}
 
+		public ActionResult Recipes()
+		{
+			return View();
+		}
+
+		public ActionResult Ingredients()
+		{
+			return View();
+		}
+
+		public ActionResult Health()
+		{
+			return View();
+		}
+
+		public ActionResult Favorites()
+		{
+			return View();
+		}
+
+		public ActionResult Profile()
+		{
+			return View();
+		}
+
+		public ActionResult About()
+		{
+			//ViewBag.Message = "Your application description page.";
+
+			return View();
+		}
+
+		public ActionResult Contact()
+		{
+			//ViewBag.Message = "Your contact page.";
+
+			return View();
+		}
+
+	}
+
+}
 
