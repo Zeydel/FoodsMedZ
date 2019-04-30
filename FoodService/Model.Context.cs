@@ -13,10 +13,10 @@ namespace FoodService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class modelEntities : DbContext
+    public partial class masterEntities : DbContext
     {
-        public modelEntities()
-            : base("name=modelEntities")
+        public masterEntities()
+            : base("name=masterEntities")
         {
         }
     
@@ -25,10 +25,10 @@ namespace FoodService
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Food> Foods { get; set; }
-        public virtual DbSet<Ingredient> Ingredients { get; set; }
-        public virtual DbSet<Nutrition> Nutritions { get; set; }
-        public virtual DbSet<Recipe> Recipes { get; set; }
-        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<Food> Food { get; set; }
+        public virtual DbSet<Ingredients> Ingredients { get; set; }
+        public virtual DbSet<Nutrition> Nutrition { get; set; }
+        public virtual DbSet<Recipe> Recipe { get; set; }
+        public virtual DbSet<users> users { get; set; }
     }
 }

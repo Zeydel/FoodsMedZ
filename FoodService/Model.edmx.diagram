@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="554c3752dc1f4b809d0dbc1faaa0702a" Name="Diagram1">
+      <Diagram DiagramId="82019496162146d4adce4edc8fb89ef8" Name="Diagram1">
         <EntityTypeShape EntityType="masterModel.Food" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.Ingredient" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Ingredients" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="masterModel.Nutrition" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="masterModel.Recipe" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.user" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.users" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="masterModel.FK__Ingredien__Food___2F2FFC0C" ManuallyRouted="false" />
         <AssociationConnector Association="masterModel.FK__Nutrition__Ingre__3118447E" ManuallyRouted="false" />
         <AssociationConnector Association="masterModel.FK__Ingredien__Recip__30242045" ManuallyRouted="false" />

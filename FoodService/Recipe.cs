@@ -17,26 +17,26 @@ namespace FoodService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Recipe()
         {
-            this.Ingredients = new HashSet<Ingredient>();
-            this.users = new HashSet<user>();
+            this.Ingredients = new HashSet<Ingredients>();
+            this.users = new HashSet<users>();
         }
     
         public int Recipe_id { get; set; }
         public string Recipe_name { get; set; }
         public Nullable<int> Recipe_minutes { get; set; }
-        public Nullable<byte> Recipe_veg { get; set; }
-        public Nullable<byte> Recipe_vegan { get; set; }
-        public Nullable<byte> cheap { get; set; }
-        public Nullable<byte> sustainable { get; set; }
-        public Nullable<byte> glutenfree { get; set; }
-        public Nullable<byte> dairyfree { get; set; }
+        public Nullable<bool> Recipe_veg { get; set; }
+        public Nullable<bool> Recipe_vegan { get; set; }
+        public Nullable<bool> cheap { get; set; }
+        public Nullable<bool> sustainable { get; set; }
+        public Nullable<bool> glutenfree { get; set; }
+        public Nullable<bool> dairyfree { get; set; }
         public string image { get; set; }
         public string Instructions { get; set; }
         public string imageTyp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<Ingredients> Ingredients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<users> users { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace FoodService
     using System;
     using System.Collections.Generic;
     
-    public partial class Ingredient
+    public partial class Ingredients
     {
         public int Food_id { get; set; }
         public int Recipe_id { get; set; }
