@@ -67,7 +67,25 @@ namespace ClientSide.Controllers
 		{
 			return View();
 		}
-    }
+    
+		[HttpPost]
+		public ActionResult SignUp(SignUpModel model)
+		{ 
+
+		userServiceClient.AddUser(model.First_name, model.Last_name, model.userName, model.password, model.weight, model.height, model.vegetarian, model.vegan, model.dairyfree, model.glutenfree, model.gender);
+
+		return View("Index", model);
+
+		}
+
+		public ActionResult SignUp()
+		{
+			return View();
+		}
+
+
+}
+
 }
 
 

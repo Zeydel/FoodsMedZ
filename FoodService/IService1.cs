@@ -18,7 +18,7 @@ namespace FoodService
 		int verifyUser(string userName, string password);
 
 		[OperationContract]
-		void AddUser(String first_name, String last_name, String username, String password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree);
+		void AddUser(String first_name, String last_name, String username, String password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender);
 
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);

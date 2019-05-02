@@ -1004,10 +1004,10 @@ namespace ClientSide.UserServiceReference {
         System.Threading.Tasks.Task<int> verifyUserAsync(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        void AddUser(string first_name, string last_name, string username, string password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree);
+        void AddUser(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task AddUserAsync(string first_name, string last_name, string username, string password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree);
+        System.Threading.Tasks.Task AddUserAsync(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUserService/GetDataUsingDataContractResponse")]
         ClientSide.UserServiceReference.CompositeType GetDataUsingDataContract(ClientSide.UserServiceReference.CompositeType composite);
@@ -1059,12 +1059,12 @@ namespace ClientSide.UserServiceReference {
             return base.Channel.verifyUserAsync(userName, password);
         }
         
-        public void AddUser(string first_name, string last_name, string username, string password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree) {
-            base.Channel.AddUser(first_name, last_name, username, password, weight, height, vegetarian, vegan, dairyfree, glutenfree);
+        public void AddUser(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender) {
+            base.Channel.AddUser(first_name, last_name, username, password, weight, height, vegetarian, vegan, dairyfree, glutenfree, gender);
         }
         
-        public System.Threading.Tasks.Task AddUserAsync(string first_name, string last_name, string username, string password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree) {
-            return base.Channel.AddUserAsync(first_name, last_name, username, password, weight, height, vegetarian, vegan, dairyfree, glutenfree);
+        public System.Threading.Tasks.Task AddUserAsync(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender) {
+            return base.Channel.AddUserAsync(first_name, last_name, username, password, weight, height, vegetarian, vegan, dairyfree, glutenfree, gender);
         }
         
         public ClientSide.UserServiceReference.CompositeType GetDataUsingDataContract(ClientSide.UserServiceReference.CompositeType composite) {

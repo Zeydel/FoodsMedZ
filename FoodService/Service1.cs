@@ -36,7 +36,7 @@ namespace FoodService
 			return -1;
 		}
 
-		public void AddUser(string first_name, string last_name, string username, string password, double weight, double height, bool vegetarian, bool vegan, bool dairyfree, bool glutenfree)
+		public void AddUser(string first_name, string last_name, string username, string password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender)
 		{
 			masterEntities m = new masterEntities();
 			users newUser = new users();
@@ -73,5 +73,6 @@ namespace FoodService
 			}
 			return composite;
 		}
+
 	}
 }

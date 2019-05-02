@@ -37,12 +37,13 @@
         <xs:element minOccurs="0" name="last_name" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="weight" type="xs:double" />
-        <xs:element minOccurs="0" name="height" type="xs:double" />
-        <xs:element minOccurs="0" name="vegetarian" type="xs:boolean" />
-        <xs:element minOccurs="0" name="vegan" type="xs:boolean" />
-        <xs:element minOccurs="0" name="dairyfree" type="xs:boolean" />
-        <xs:element minOccurs="0" name="glutenfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="weight" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="height" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="vegetarian" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="vegan" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="dairyfree" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="glutenfree" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
