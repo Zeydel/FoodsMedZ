@@ -58,7 +58,8 @@
     <Compile Include="Ingredients.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IRecipeService.cs" />
+    <Compile Include="IUserService1.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,7 +82,8 @@
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Service1.cs" />
+    <Compile Include="RecipeService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
