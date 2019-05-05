@@ -66,4 +66,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="FindUserByUsername">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUserByUsernameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/FoodService" minOccurs="0" name="FindUserByUsernameResult" nillable="true" type="q4:users" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

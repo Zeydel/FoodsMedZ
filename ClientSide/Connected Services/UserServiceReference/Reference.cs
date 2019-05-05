@@ -1014,6 +1014,12 @@ namespace ClientSide.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUserService/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<ClientSide.UserServiceReference.CompositeType> GetDataUsingDataContractAsync(ClientSide.UserServiceReference.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/FindUserByUsername", ReplyAction="http://tempuri.org/IUserService/FindUserByUsernameResponse")]
+        ClientSide.UserServiceReference.users FindUserByUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/FindUserByUsername", ReplyAction="http://tempuri.org/IUserService/FindUserByUsernameResponse")]
+        System.Threading.Tasks.Task<ClientSide.UserServiceReference.users> FindUserByUsernameAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1073,6 +1079,14 @@ namespace ClientSide.UserServiceReference {
         
         public System.Threading.Tasks.Task<ClientSide.UserServiceReference.CompositeType> GetDataUsingDataContractAsync(ClientSide.UserServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public ClientSide.UserServiceReference.users FindUserByUsername(string username) {
+            return base.Channel.FindUserByUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<ClientSide.UserServiceReference.users> FindUserByUsernameAsync(string username) {
+            return base.Channel.FindUserByUsernameAsync(username);
         }
     }
 }
