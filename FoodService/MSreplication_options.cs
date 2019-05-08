@@ -12,16 +12,13 @@ namespace FoodService
     using System;
     using System.Collections.Generic;
     
-    public partial class Ingredients
+    public partial class MSreplication_options
     {
-        public int Food_id { get; set; }
-        public int Recipe_id { get; set; }
-        public string Ingredient_name { get; set; }
-        public Nullable<double> Amount { get; set; }
-        public Nullable<int> Unit { get; set; }
-        public string image { get; set; }
-    
-        public virtual Food Food { get; set; }
-        public virtual Recipe Recipe { get; set; }
+        public string optname { get; set; }
+        public bool value { get; set; }
+        public int major_version { get; set; }
+        public int minor_version { get; set; }
+        public int revision { get; set; }
+        public int install_failures { get; set; }
     }
 }

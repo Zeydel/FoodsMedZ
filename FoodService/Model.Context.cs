@@ -30,5 +30,10 @@ namespace FoodService
         public virtual DbSet<Nutrition> Nutrition { get; set; }
         public virtual DbSet<Recipe> Recipe { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<MSreplication_options> MSreplication_options { get; set; }
+        public virtual DbSet<spt_fallback_db> spt_fallback_db { get; set; }
+        public virtual DbSet<spt_fallback_dev> spt_fallback_dev { get; set; }
+        public virtual DbSet<spt_fallback_usg> spt_fallback_usg { get; set; }
+        public virtual DbSet<spt_monitor> spt_monitor { get; set; }
     }
 }
