@@ -13,7 +13,7 @@ namespace FoodService
 		public users GetUser(int value)
 		{
 			masterEntities m = new masterEntities();
-			var userlst = from k in m.users where k.User_id == value select k;
+			var userlst = from k in m.users where k.User_id == 1 select k;
 			var user = new users();
 			foreach(var usr in userlst)
 			{
@@ -21,7 +21,7 @@ namespace FoodService
 			}
 			return user;
 		}
-
+		
 		public int verifyUser(string userName, string password)
 		{
 			masterEntities m = new masterEntities();
