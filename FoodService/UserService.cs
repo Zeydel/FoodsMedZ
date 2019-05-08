@@ -4,24 +4,26 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace FoodService
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
 	public class UserService : IUserService
 	{
-		public users GetUser(int value)
+		public string GetUser(int value)
 		{
 			masterEntities m = new masterEntities();
 			var userlst = from k in m.users where k.User_id == value select k;
 			var user = new users();
+
 			foreach (var usr in userlst)
 			{
 				user = usr;
 			}
-			return user;
+			return new JavaScriptSerializer().Serialize(user);
 		}
-
+		
 		public int verifyUser(string userName, string password)
 		{
 			masterEntities m = new masterEntities();
