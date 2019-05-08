@@ -1,4 +1,5 @@
 ﻿using ClientSide.Models;
+using ClientSide.UserServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,27 +8,76 @@ using System.Web.Mvc;
 
 namespace ClientSide.Controllers
 {
-    public class LoginController : Controller
-    {
+	public class LoginController : Controller
+	{
 		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
 		// GET: Login
 		public ActionResult Login()
-        {
-            return View();
-        }
+		{
+			if (Request.Cookies["userid"] != null)
+			{
+				return View("Profile", GetUserByCookie());
+			}
+			return View();
+		}
+
+		public ActionResult Profile()
+		{
+			return View();
+		}
 
 		[HttpPost]
 		public ActionResult Login(LoginModel model)
 		{
-			if (userServiceClient.verifyUser(model.Username, model.Password) > 0)
+			int code = userServiceClient.verifyUser(model.Username, model.Password);
+			if (code > 0)
 			{
+				HttpCookie usercookie = new HttpCookie("userid");
+				usercookie.Value = code.ToString();
+				usercookie.Expires = DateTime.Now.AddDays(5);
+				Response.Cookies.Add(usercookie);
 				return RedirectToAction("Index", "Home");
 			}
-			else
+			else if (code == -1)
 			{
-				return View("Login");
+				ViewBag.ErrorMessage = "No user found";
+			}
+			else if(code == -2)
+			{
+				ViewBag.ErrorMessage = "Wrong password";
+			}
+			return View();
+		}
+
+		public ActionResult RecipeDetails()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Create(SignUpModel s)
+		{
+			userServiceClient.AddUser(s.First_name, s.Last_name, s.userName, s.password, s.weight, s.height, s.vegetarian, s.vegan, s.dairyfree, s.glutenfree, s.gender);
+			return RedirectToAction("Profile", "Home");
+		}
+
+
+		public ActionResult SignUp()
+		{
+			return View();
+		}
+
+		[HttpGet]
+		public users GetUserByCookie()
+		{
+			int value = -1;
+			if (Request.Cookies["userid"] != null)
+			{
+				value = int.Parse(Request.Cookies["userid"].Value);
 			}
 
+			return userServiceClient.GetUser(value);
 		}
 	}
 }
+		

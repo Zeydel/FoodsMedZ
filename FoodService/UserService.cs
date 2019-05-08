@@ -15,7 +15,7 @@ namespace FoodService
 			masterEntities m = new masterEntities();
 			var userlst = from k in m.users where k.User_id == 1 select k;
 			var user = new users();
-			foreach(var usr in userlst)
+			foreach (var usr in userlst)
 			{
 				user = usr;
 			}
@@ -31,6 +31,9 @@ namespace FoodService
 				if (usr.password.Equals(password))
 				{
 					return usr.User_id;
+				} else
+				{
+					return -2;
 				}
 			}
 			return -1;
@@ -74,5 +77,18 @@ namespace FoodService
 			return composite;
 		}
 
+		public users FindUserByUsername(string username)
+		{
+			masterEntities m = new masterEntities();
+			var userlst = from k in m.users where k.userName.Equals(username) select k;
+
+			foreach (var usr in userlst)
+			{
+				Console.WriteLine(usr.First_name);
+				return usr;
+
+			}
+			return null;
+		}
 	}
 }

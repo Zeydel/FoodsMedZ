@@ -23,6 +23,9 @@ namespace FoodService
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);
 
+		[OperationContract]
+		users FindUserByUsername(String username);
+
 		// TODO: Add your service operations here
 	}
 
@@ -47,5 +50,7 @@ namespace FoodService
 			get { return stringValue; }
 			set { stringValue = value; }
 		}
+
 	}
+
 }

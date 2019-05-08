@@ -13,6 +13,11 @@ namespace ClientSide.Controllers
 
 		public ActionResult Index()
 		{
+			if(Request.Cookies["userid"] == null)
+			{
+				return RedirectToAction("Login", "Login");
+			}
+
 			return View();
 		}
 
@@ -38,13 +43,13 @@ namespace ClientSide.Controllers
 
 		public ActionResult Profile()
 		{
+
 			return View();
 		}
 
 		public ActionResult About()
 		{
 			//ViewBag.Message = "Your application description page.";
-
 			return View();
 		}
 

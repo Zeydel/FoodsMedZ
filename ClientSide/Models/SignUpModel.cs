@@ -39,11 +39,11 @@ namespace ClientSide.Models
 		public Nullable<bool> vegan { get; set; }
 
 
-		[Required(ErrorMessage = "Let us know if you're diet is dairyfree")]
+		[Required(ErrorMessage = "Let us know if your diet is dairyfree")]
 		public Nullable<bool> dairyfree { get; set; }
 
 
-		[Required(ErrorMessage = "Let us know if you're diet is glutenfree")]
+		[Required(ErrorMessage = "Let us know if your diet is glutenfree")]
 		public Nullable<bool> glutenfree { get; set; }
 
 
