@@ -11,16 +11,20 @@ namespace FoodService
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class users
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+
+	public partial class users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public users()
         {
             this.Recipe = new HashSet<Recipe>();
         }
-    
-        public int User_id { get; set; }
+
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int User_id { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
         public string userName { get; set; }
