@@ -12,7 +12,7 @@ namespace FoodService
 	public interface IUserService
 	{
 		[OperationContract]
-		users GetUser(int value);
+		string GetUser(int value);
 
 		[OperationContract]
 		int verifyUser(string userName, string password);
