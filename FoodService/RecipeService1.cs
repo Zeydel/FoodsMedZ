@@ -22,8 +22,8 @@ namespace FoodService
             return recipe;
         }
 
-        public void addRecipe(int recipe_id, String recipe_name, int recipe_minutes, Boolean recipe_veg, 
-            Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree, 
+        public void addRecipe(int recipe_id, String recipe_name, int recipe_minutes, Boolean recipe_veg,
+            Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree,
             String image, String instruction, String imageTyp)
         {
             masterEntities m = new masterEntities();
