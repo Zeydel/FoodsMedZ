@@ -1,4 +1,5 @@
 ﻿using ClientSide.Models;
+using ClientSide.UserServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,13 @@ namespace ClientSide.Controllers
 		{
 			if (Request.Cookies["userid"] != null)
 			{
-				return RedirectToAction("Profile", "Home");
+				return View("Profile", GetUserByCookie());
 			}
+			return View();
+		}
+
+		public ActionResult Profile()
+		{
 			return View();
 		}
 
@@ -47,5 +53,31 @@ namespace ClientSide.Controllers
 		{
 			return View();
 		}
+
+		[HttpPost]
+		public ActionResult Create(SignUpModel s)
+		{
+			userServiceClient.AddUser(s.First_name, s.Last_name, s.userName, s.password, s.weight, s.height, s.vegetarian, s.vegan, s.dairyfree, s.glutenfree, s.gender);
+			return RedirectToAction("Profile", "Home");
+		}
+
+
+		public ActionResult SignUp()
+		{
+			return View();
+		}
+
+		[HttpGet]
+		public users GetUserByCookie()
+		{
+			int value = -1;
+			if (Request.Cookies["userid"] != null)
+			{
+				value = int.Parse(Request.Cookies["userid"].Value);
+			}
+
+			return userServiceClient.GetUser(value);
+		}
 	}
 }
+		

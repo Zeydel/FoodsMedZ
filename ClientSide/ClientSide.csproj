@@ -217,10 +217,11 @@
     <Content Include="Views\Home\Ingredients.cshtml" />
     <Content Include="Views\Home\Health.cshtml" />
     <Content Include="Views\Home\Favorites.cshtml" />
-    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\RecipeDetails.cshtml" />
+    <Content Include="Views\Login\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

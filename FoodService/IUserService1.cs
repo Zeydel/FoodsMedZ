@@ -50,5 +50,7 @@ namespace FoodService
 			get { return stringValue; }
 			set { stringValue = value; }
 		}
+
 	}
+
 }
