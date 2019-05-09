@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Web.UI;
-using API_Reciever.RecipeServiceReferenceAPI;
+using API_Reciever.ServiceReference1;
 
 namespace DBRecipeFetcher
 {
@@ -32,7 +32,7 @@ namespace DBRecipeFetcher
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 Recipe rcp = js.Deserialize<Recipe>(output);
 
-                System.Console.WriteLine(rcp.sourceName);
+                System.Console.WriteLine(rcp.title);
 
                 recipe = rcp;
                
@@ -40,7 +40,7 @@ namespace DBRecipeFetcher
             //System.Console.WriteLine(output);  
 
 
-            API_Reciever.RecipeServiceReferenceAPI.RecipeService1Client client = new API_Reciever.RecipeService1ReferenceAPI.RecipeServiceClient();
+            API_Reciever.ServiceReference1.RecipeService1Client client = new API_Reciever.ServiceReference1.RecipeService1Client();
 
             client.addRecipe(recipe.id, recipe.title, recipe.readyInMinutes, recipe.vegetarian, recipe.vegan, recipe.cheap,
                 recipe.sustainable, recipe.glutenFree, recipe.dairyFree, recipe.image, recipe.instructions, recipe.imageType);
