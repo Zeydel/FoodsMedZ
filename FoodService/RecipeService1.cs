@@ -40,7 +40,6 @@ namespace FoodService
             rcp.image = image;
             rcp.Instructions = instruction;
             rcp.imageTyp = imageTyp;
-
             m.Recipe.Add(rcp);
             m.SaveChanges();
         }

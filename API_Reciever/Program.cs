@@ -40,7 +40,7 @@ namespace DBRecipeFetcher
             //System.Console.WriteLine(output);  
 
 
-            API_Reciever.RecipeServiceReferenceAPI.RecipeService1Client client = new API_Reciever.RecipeServiceReferenceAPI.RecipeService1Client();
+            API_Reciever.RecipeServiceReferenceAPI.RecipeService1Client client = new API_Reciever.RecipeService1ReferenceAPI.RecipeServiceClient();
 
             client.addRecipe(recipe.id, recipe.title, recipe.readyInMinutes, recipe.vegetarian, recipe.vegan, recipe.cheap,
                 recipe.sustainable, recipe.glutenFree, recipe.dairyFree, recipe.image, recipe.instructions, recipe.imageType);
