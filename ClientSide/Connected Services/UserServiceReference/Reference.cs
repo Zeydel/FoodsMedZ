@@ -15,67 +15,6 @@ namespace ClientSide.UserServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/FoodService")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="users", Namespace="http://schemas.datacontract.org/2004/07/FoodService")]
     [System.SerializableAttribute()]
     public partial class users : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -987,6 +926,67 @@ namespace ClientSide.UserServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/FoodService")]
+    [System.SerializableAttribute()]
+    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool BoolValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StringValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool BoolValue {
+            get {
+                return this.BoolValueField;
+            }
+            set {
+                if ((this.BoolValueField.Equals(value) != true)) {
+                    this.BoolValueField = value;
+                    this.RaisePropertyChanged("BoolValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StringValue {
+            get {
+                return this.StringValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
+                    this.StringValueField = value;
+                    this.RaisePropertyChanged("StringValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserServiceReference.IUserService")]
     public interface IUserService {
@@ -1002,6 +1002,12 @@ namespace ClientSide.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/verifyUser", ReplyAction="http://tempuri.org/IUserService/verifyUserResponse")]
         System.Threading.Tasks.Task<int> verifyUserAsync(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
+        void updateUser(ClientSide.UserServiceReference.users user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
+        System.Threading.Tasks.Task updateUserAsync(ClientSide.UserServiceReference.users user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
         void AddUser(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender);
@@ -1063,6 +1069,14 @@ namespace ClientSide.UserServiceReference {
         
         public System.Threading.Tasks.Task<int> verifyUserAsync(string userName, string password) {
             return base.Channel.verifyUserAsync(userName, password);
+        }
+        
+        public void updateUser(ClientSide.UserServiceReference.users user) {
+            base.Channel.updateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task updateUserAsync(ClientSide.UserServiceReference.users user) {
+            return base.Channel.updateUserAsync(user);
         }
         
         public void AddUser(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender) {

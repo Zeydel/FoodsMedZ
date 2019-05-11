@@ -222,6 +222,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\RecipeDetails.cshtml" />
     <Content Include="Views\Login\Profile.cshtml" />
+    <Content Include="Views\Login\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,6 +27,12 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
+		public ActionResult UpdateProfile()
+		{
+			users user = GetUserByCookie();
+			return View("UpdateProfile", user);
+		}
+
 		[HttpPost]
 		public ActionResult Login(LoginModel model)
 		{
@@ -48,6 +54,13 @@ namespace ClientSide.Controllers
 				ViewBag.ErrorMessage = "Wrong password";
 			}
 			return View();
+		}
+
+		public ActionResult PushUpdate(users user)
+		{
+			userServiceClient.updateUser(user);
+			return View("Profile", user);
+
 		}
 
 		public ActionResult RecipeDetails()
