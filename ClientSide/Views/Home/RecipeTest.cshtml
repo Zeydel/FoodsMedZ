@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ClientSide.RecipeServiceReference.Recipe>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RecipeTest</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Instructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_minutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_veg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_vegan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cheap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dairyfree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.glutenfree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imageTyp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sustainable)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe_minutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe_veg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe_vegan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cheap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dairyfree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.glutenfree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imageTyp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sustainable)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

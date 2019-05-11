@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/FoodService" />
+  <xs:element name="getRecipes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRecipesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/FoodService" minOccurs="0" name="getRecipesResult" nillable="true" type="q1:Recipe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addRecipe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="recipe_id" type="xs:int" />
+        <xs:element minOccurs="0" name="recipe_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipe_minutes" type="xs:int" />
+        <xs:element minOccurs="0" name="recipe_veg" type="xs:boolean" />
+        <xs:element minOccurs="0" name="recipe_vegan" type="xs:boolean" />
+        <xs:element minOccurs="0" name="cheap" type="xs:boolean" />
+        <xs:element minOccurs="0" name="sustainable" type="xs:boolean" />
+        <xs:element minOccurs="0" name="glutenfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="dairyfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="instruction" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageTyp" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addRecipeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

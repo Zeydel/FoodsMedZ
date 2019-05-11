@@ -59,7 +59,7 @@
     <Compile Include="Ingredients.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="IRecipeService.cs" />
+    <Compile Include="IRecipeService1.cs" />
     <Compile Include="IUserService1.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -86,7 +86,7 @@
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="RecipeService.cs" />
+    <Compile Include="RecipeService1.cs" />
     <Compile Include="spt_fallback_db.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

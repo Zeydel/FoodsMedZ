@@ -10,8 +10,9 @@ namespace ClientSide.Controllers
 	public class HomeController : Controller
 	{
 		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
+        RecipeServiceReference.RecipeService1Client recipeServiceClient = new RecipeServiceReference.RecipeService1Client();
 
-		public ActionResult Index()
+        public ActionResult Index()
 		{
 			if(Request.Cookies["userid"] == null)
 			{
@@ -59,6 +60,11 @@ namespace ClientSide.Controllers
 
 			return View();
 		}
+
+        public ActionResult RecipeTest()
+        {
+            return View();
+        }
 
 	}
 
