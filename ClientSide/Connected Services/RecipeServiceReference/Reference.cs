@@ -935,6 +935,24 @@ namespace ClientSide.RecipeServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesResponse")]
         System.Threading.Tasks.Task<ClientSide.RecipeServiceReference.Recipe> getRecipesAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
+        void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
+        System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByNameResponse")]
+        string findRecipesByName(string recipe_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByNameResponse")]
+        System.Threading.Tasks.Task<string> findRecipesByNameAsync(string recipe_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
+        string getAllRecipes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
+        System.Threading.Tasks.Task<string> getAllRecipesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -970,6 +988,30 @@ namespace ClientSide.RecipeServiceReference {
         
         public System.Threading.Tasks.Task<ClientSide.RecipeServiceReference.Recipe> getRecipesAsync(int id) {
             return base.Channel.getRecipesAsync(id);
+        }
+        
+        public void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp) {
+            base.Channel.addRecipe(recipe_id, recipe_name, recipe_minutes, recipe_veg, recipe_vegan, cheap, sustainable, glutenfree, dairyfree, image, instruction, imageTyp);
+        }
+        
+        public System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp) {
+            return base.Channel.addRecipeAsync(recipe_id, recipe_name, recipe_minutes, recipe_veg, recipe_vegan, cheap, sustainable, glutenfree, dairyfree, image, instruction, imageTyp);
+        }
+        
+        public string findRecipesByName(string recipe_name) {
+            return base.Channel.findRecipesByName(recipe_name);
+        }
+        
+        public System.Threading.Tasks.Task<string> findRecipesByNameAsync(string recipe_name) {
+            return base.Channel.findRecipesByNameAsync(recipe_name);
+        }
+        
+        public string getAllRecipes() {
+            return base.Channel.getAllRecipes();
+        }
+        
+        public System.Threading.Tasks.Task<string> getAllRecipesAsync() {
+            return base.Channel.getAllRecipesAsync();
         }
     }
 }

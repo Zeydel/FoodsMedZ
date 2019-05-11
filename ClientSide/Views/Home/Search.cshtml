@@ -1,0 +1,66 @@
+﻿@model List<ClientSide.RecipeServiceReference.Recipe>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Instructions</p>
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipe_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipe_minutes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipe_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipe_veg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipe_vegan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cheap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dairyfree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.glutenfree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imageTyp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sustainable)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -15,4 +15,53 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="addRecipe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="recipe_id" type="xs:int" />
+        <xs:element minOccurs="0" name="recipe_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipe_minutes" type="xs:int" />
+        <xs:element minOccurs="0" name="recipe_veg" type="xs:boolean" />
+        <xs:element minOccurs="0" name="recipe_vegan" type="xs:boolean" />
+        <xs:element minOccurs="0" name="cheap" type="xs:boolean" />
+        <xs:element minOccurs="0" name="sustainable" type="xs:boolean" />
+        <xs:element minOccurs="0" name="glutenfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="dairyfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="instruction" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageTyp" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addRecipeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findRecipesByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="recipe_name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findRecipesByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="findRecipesByNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAllRecipes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAllRecipesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getAllRecipesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

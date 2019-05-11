@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace ClientSide.Controllers
 {
@@ -65,6 +66,22 @@ namespace ClientSide.Controllers
         {
             return View();
         }
+
+		public ActionResult Search()
+		{
+			string recipe_list = recipeServiceClient.getAllRecipes();
+			List<RecipeServiceReference.Recipe> recipes = new JavaScriptSerializer().Deserialize<List<RecipeServiceReference.Recipe>>(recipe_list);
+			IEnumerable<RecipeServiceReference.Recipe> recupeenum = recipes.AsEnumerable();
+			return View(recupeenum);
+		}
+
+		public ActionResult doSearch(string recipe_name)
+		{
+			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);
+			List<RecipeServiceReference.Recipe> recipes = new JavaScriptSerializer().Deserialize<List<RecipeServiceReference.Recipe>>(recipe_list);
+			IEnumerable<RecipeServiceReference.Recipe> recupeenum = recipes.AsEnumerable<RecipeServiceReference.Recipe>();
+			return View("Search", recupeenum);
+		}
 
 	}
 
