@@ -1,4 +1,5 @@
 ﻿using ClientSide.UserServiceReference;
+using FoodService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ClientSide.Controllers
         public ActionResult RecipeDetails(int id)
         {
             Recipe recipe = getRecipe(id);
-            return View();
+            return View("RecipeDetails", recipe);
         }
 
         [HttpGet]

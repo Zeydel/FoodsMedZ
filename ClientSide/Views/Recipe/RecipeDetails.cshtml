@@ -1,114 +1,88 @@
-﻿@model ClientSide.UserServiceReference.Recipe
+﻿@model FoodService.Recipe
 
 @{
-    ViewBag.Title = "RecipeDetails";
+    ViewBag.Title = "Recipe Details";
 }
 
-<h2>RecipeDetails</h2>
+<table class="table">
+    <tr>
+        <th>
+            <p>Instructions</p>
+        </th>
+        <th>
+            <p>ID</p>
+        </th>
+        <th>
+            <p>Minutes</p>
+        </th>
+        <th>
+            <p>Name</p>
+        </th>
+        <th>
+            <p>Vegetarian</p>
+        </th>
+        <th>
+            <p>Vegan</p>
+        </th>
+        <th>
+            <p>Cheap</p>
+        </th>
+        <th>
+            <p>Dairy Free</p>
+        </th>
+        <th>
+            <p>Gluten Free</p>
+        </th>
+        <th>
+            <p>Image</p>
+        </th>
+        <th>
+            <p>Image Type</p>
+        </th>
+        <th>
+            <p>Sustainable</p>
+        </th>
 
-<div>
-    <h4>Recipe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Instructions)
-        </dt>
+    </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Instructions)
-        </dd>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Instructions)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Recipe_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Recipe_minutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Recipe_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Recipe_veg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Recipe_vegan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.cheap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.dairyfree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.glutenfree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.imageTyp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.sustainable)
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Recipe_id)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Recipe_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Recipe_minutes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Recipe_minutes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Recipe_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Recipe_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Recipe_veg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Recipe_veg)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Recipe_vegan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Recipe_vegan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cheap)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cheap)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dairyfree)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dairyfree)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.glutenfree)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.glutenfree)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imageTyp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.imageTyp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sustainable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sustainable)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</table>

@@ -1,5 +1,6 @@
 ﻿using ClientSide.Models;
 using ClientSide.UserServiceReference;
+using FoodService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

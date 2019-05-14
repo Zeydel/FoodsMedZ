@@ -165,12 +165,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\UserServiceReference\ClientSide.UserServiceReference.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UserServiceReference\ClientSide.UserServiceReference.users.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\RecipeServiceReference\FoodService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -215,6 +209,8 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Properties\DataSources\FoodService.Recipe.datasource" />
+    <Content Include="Properties\DataSources\FoodService.CompositeType.datasource" />
+    <Content Include="Properties\DataSources\FoodService.users.datasource" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -250,11 +246,11 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Recipe\RecipeDetails.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Login\Profile.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\Login\UpdateProfile.cshtml" />
+    <Content Include="Views\Recipe\RecipeDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
