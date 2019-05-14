@@ -245,7 +245,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\Recipes.cshtml" />
-    <Content Include="Views\Home\Ingredients.cshtml" />
+    <Content Include="Views\Home\FoodJam.cshtml" />
     <Content Include="Views\Home\Health.cshtml" />
     <Content Include="Views\Home\Favorites.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
