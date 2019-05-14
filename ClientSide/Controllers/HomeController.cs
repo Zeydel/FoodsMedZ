@@ -1,6 +1,4 @@
 ﻿using ClientSide.Models;
-using ClientSide.UserServiceReference;
-using FoodService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +23,12 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
-		public ActionResult Ingredients()
+		public ActionResult Recipes()
+		{
+			return View();
+		}
+
+		public ActionResult FoodJam()
 		{
 			return View();
 		}
@@ -67,20 +70,16 @@ namespace ClientSide.Controllers
 		public ActionResult Search()
 		{
 			string recipe_list = recipeServiceClient.getAllRecipes();
-			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
-			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
+			List<RecipeServiceReference.Recipe> recipes = new JavaScriptSerializer().Deserialize<List<RecipeServiceReference.Recipe>>(recipe_list);
+			IEnumerable<RecipeServiceReference.Recipe> recupeenum = recipes.AsEnumerable();
 			return View(recupeenum);
 		}
-		/// <summary>
-		/// Performs a serch in the database
-		/// </summary>
-		/// <param name="recipe_name"></param>
-		/// <returns>Returns a list of all matching recipes</returns>
+
 		public ActionResult doSearch(string recipe_name)
 		{
 			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);
-			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
-			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable<Recipe>();
+			List<RecipeServiceReference.Recipe> recipes = new JavaScriptSerializer().Deserialize<List<RecipeServiceReference.Recipe>>(recipe_list);
+			IEnumerable<RecipeServiceReference.Recipe> recupeenum = recipes.AsEnumerable<RecipeServiceReference.Recipe>();
 			return View("Search", recupeenum);
 		}
 

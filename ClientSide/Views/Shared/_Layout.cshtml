@@ -16,16 +16,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("FoodsMedZ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Recipes", "Recipes", "Recipe")</li>
-                    <li>@Html.ActionLink("Ingredients", "Ingredients", "Home")</li>
+                    <li>@Html.ActionLink("Recipes", "Recipes", "Home")</li>
+                    <li>@Html.ActionLink("FoodJam", "FoodJam", "Home")</li>
                     <li>@Html.ActionLink("Health & Diet", "Health", "Home")</li>
                     <li>@Html.ActionLink("Favorites", "Favorites", "Home")</li>
-                    <li>@Html.ActionLink("Profile", "Profile", "Login")</li>
+                    <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Login", "Login", "Login")</li>
@@ -37,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - FoodsMedZ</p>
+            <p>&copy; @DateTime.Now.Year - Food Recipe App</p>
         </footer>
     </div>
 
