@@ -1,5 +1,4 @@
-﻿using ClientSide.RecipeServiceReference;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +15,8 @@ namespace DBRecipeFetcher
     {
         static void Main(string[] args)
         {
-            WebRequest request = WebRequest.Create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information");
+
+            WebRequest request = WebRequest.Create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479111/information");
             request.Method = "GET";
             request.Headers.Add("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
             request.Headers.Add("X-RapidAPI-Key", "ea8b3c331cmshe7e397ea99737e2p1a433ajsn83b9197c861f");

@@ -71,7 +71,11 @@ namespace ClientSide.Controllers
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
 			return View(recupeenum);
 		}
-
+		/// <summary>
+		/// Performs a serch in the database
+		/// </summary>
+		/// <param name="recipe_name"></param>
+		/// <returns>Returns a list of all matching recipes</returns>
 		public ActionResult doSearch(string recipe_name)
 		{
 			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);

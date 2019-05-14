@@ -11,7 +11,12 @@ namespace FoodService
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RecipeService1" in both code and config file together.
 	public class RecipeService1 : IRecipeService1
 	{
-		public Recipe getRecipes(int id)
+		/// <summary>
+		/// Fetches one recipe from database based on id.
+		/// </summary>
+		/// <param name="id">Id of the desired recipe</param>
+		/// <returns>One recipe object</returns>
+		public Recipe getRecipe(int id)
 		{
 			masterEntities m = new masterEntities();
 			var Recipelst = from k in m.Recipe where k.Recipe_id == id select k;
@@ -23,6 +28,21 @@ namespace FoodService
 			return recipe;
 		}
 
+		/// <summary>
+		/// Adds one recipe to database.
+		/// </summary>
+		/// <param name="recipe_id"></param>
+		/// <param name="recipe_name"></param>
+		/// <param name="recipe_minutes"></param>
+		/// <param name="recipe_veg"></param>
+		/// <param name="recipe_vegan"></param>
+		/// <param name="cheap"></param>
+		/// <param name="sustainable"></param>
+		/// <param name="glutenfree"></param>
+		/// <param name="dairyfree"></param>
+		/// <param name="image"></param>
+		/// <param name="instruction"></param>
+		/// <param name="imageTyp"></param>
 		public void addRecipe(int recipe_id, String recipe_name, int recipe_minutes, Boolean recipe_veg,
 			Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree,
 			String image, String instruction, String imageTyp)
@@ -45,6 +65,11 @@ namespace FoodService
 			m.SaveChanges();
 		}
 
+		/// <summary>
+		/// Get one recipe based on recipe name.
+		/// </summary>
+		/// <param name="recipe_name">Name of desired recipe</param>
+		/// <returns>JSON-string representing recipe</returns>
 		public String findRecipesByName(String recipe_name)
 		{
 			masterEntities m = new masterEntities();
@@ -57,20 +82,11 @@ namespace FoodService
 			return new JavaScriptSerializer().Serialize(recipes);
 		}
 
-        public String findRecipesById(int recipe_id)
-        {
-            masterEntities m = new masterEntities();
-            var RecipeDtb = from k in m.Recipe where k.Recipe_id == recipe_id select k;
-
-            foreach (Recipe rcp in RecipeDtb)
-            {
-                return new JavaScriptSerializer().Serialize(rcp);
-            }
-
-            return null;
-        }
-
-        public String getAllRecipes()
+		/// <summary>
+		/// Fetches all recipe from database
+		/// </summary>
+		/// <returns>JSON string representing a list of all recipes</returns>
+		public String getAllRecipes()
 		{
 			masterEntities m = new masterEntities();
 			List<Recipe> recipes = new List<Recipe>();

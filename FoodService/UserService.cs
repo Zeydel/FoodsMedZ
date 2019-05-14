@@ -8,9 +8,13 @@ using System.Web.Script.Serialization;
 
 namespace FoodService
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
 	public class UserService : IUserService
 	{
+		/// <summary>
+		/// Gets one user from backend
+		/// </summary>
+		/// <param name="value">Id of the desired </param>
+		/// <returns></returns>
 		public string GetUser(int value)
 		{
 			masterEntities m = new masterEntities();
@@ -23,7 +27,13 @@ namespace FoodService
 			}
 			return new JavaScriptSerializer().Serialize(user);
 		}
-		
+
+		/// <summary>
+		/// Checks a username a password againts the database
+		/// </summary>
+		/// <param name="userName"></param>
+		/// <param name="password"></param>
+		/// <returns>A status </returns>
 		public int verifyUser(string userName, string password)
 		{
 			masterEntities m = new masterEntities();
@@ -41,6 +51,20 @@ namespace FoodService
 			return -1;
 		}
 
+		/// <summary>
+		/// Adds a user to the database
+		/// </summary>
+		/// <param name="first_name"></param>
+		/// <param name="last_name"></param>
+		/// <param name="username"></param>
+		/// <param name="password"></param>
+		/// <param name="weight"></param>
+		/// <param name="height"></param>
+		/// <param name="vegetarian"></param>
+		/// <param name="vegan"></param>
+		/// <param name="dairyfree"></param>
+		/// <param name="glutenfree"></param>
+		/// <param name="gender"></param>
 		public void AddUser(string first_name, string last_name, string username, string password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender)
 		{
 			masterEntities m = new masterEntities();
@@ -59,6 +83,11 @@ namespace FoodService
 			m.SaveChanges();
 		}
 
+
+		/// <summary>
+		/// Updates a user in the database
+		/// </summary>
+		/// <param name="user"></param>
 		public void updateUser(users user)
 		{
 			masterEntities m = new masterEntities();
@@ -79,6 +108,11 @@ namespace FoodService
 			return composite;
 		}
 
+		/// <summary>
+		/// Finds a user in the databse by username
+		/// </summary>
+		/// <param name="username"></param>
+		/// <returns>Returns a user object</returns>
 		public users FindUserByUsername(string username)
 		{
 			masterEntities m = new masterEntities();
