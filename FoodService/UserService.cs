@@ -18,8 +18,8 @@ namespace FoodService
 		public string GetUser(int value)
 		{
 			masterEntities m = new masterEntities();
-			var userlst = from k in m.users where k.User_id == value select k;
-			var user = new users();
+			var userlst = from k in m.User where k.User_id == value select k;
+			var user = new User();
 
 			foreach (var usr in userlst)
 			{
@@ -37,7 +37,7 @@ namespace FoodService
 		public int verifyUser(string userName, string password)
 		{
 			masterEntities m = new masterEntities();
-			var userlst = from k in m.users where k.userName.Equals(userName) select k;
+			var userlst = from k in m.User where k.userName.Equals(userName) select k;
 			foreach (var usr in userlst)
 			{
 				if (usr.password.Equals(password))
@@ -69,7 +69,7 @@ namespace FoodService
 		public void AddUser(string first_name, string last_name, string username, string password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender)
 		{
 			masterEntities m = new masterEntities();
-			users newUser = new users();
+			User newUser = new User();
 			newUser.First_name = first_name;
 			newUser.Last_name = last_name;
 			newUser.userName = username;
@@ -80,7 +80,7 @@ namespace FoodService
 			newUser.vegan = vegan;
 			newUser.dairyfree = dairyfree;
 			newUser.glutenfree = glutenfree;
-			m.users.Add(newUser);
+			m.User.Add(newUser);
 			m.SaveChanges();
 		}
 
@@ -89,7 +89,7 @@ namespace FoodService
 		/// Updates a user in the database
 		/// </summary>
 		/// <param name="user"></param>
-		public void updateUser(users user)
+		public void updateUser(User user)
 		{
 			masterEntities m = new masterEntities();
 			m.Entry(user).State = System.Data.Entity.EntityState.Modified;
@@ -114,10 +114,10 @@ namespace FoodService
 		/// </summary>
 		/// <param name="username"></param>
 		/// <returns>Returns a user object</returns>
-		public users FindUserByUsername(string username)
+		public User FindUserByUsername(string username)
 		{
 			masterEntities m = new masterEntities();
-			var userlst = from k in m.users where k.userName.Equals(username) select k;
+			var userlst = from k in m.User where k.userName.Equals(username) select k;
 
 			foreach (var usr in userlst)
 			{

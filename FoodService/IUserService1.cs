@@ -29,7 +29,7 @@ namespace FoodService
 		/// </summary>
 		/// <param name="user"></param>
 		[OperationContract]
-		void updateUser(users user);
+		void updateUser(User user);
 
 		/// <summary>
 		/// Adds a user to the database
@@ -54,7 +54,7 @@ namespace FoodService
 		/// <param name="username"></param>
 		/// <returns>Returns a user object</returns>
 		[OperationContract]
-		users FindUserByUsername(String username);
+		User FindUserByUsername(String username);
 
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);

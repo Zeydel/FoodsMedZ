@@ -48,7 +48,7 @@ namespace ClientSide.Controllers
 		/// <returns></returns>
 		public ActionResult UpdateProfile()
 		{
-			users user = GetUserByCookie();
+			User user = GetUserByCookie();
 			return View("UpdateProfile", user);
 		}
 
@@ -87,7 +87,7 @@ namespace ClientSide.Controllers
 		/// </summary>
 		/// <param name="user"></param>
 		/// <returns></returns>
-		public ActionResult PushUpdate(users user)
+		public ActionResult PushUpdate(User user)
 		{
 			userServiceClient.updateUser(user);
 			return View("Profile", user);
@@ -129,14 +129,14 @@ namespace ClientSide.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
-		public users GetUserByCookie()
+		public User GetUserByCookie()
 		{
 			int value = -1;
 			if (Request.Cookies["userid"] != null)
 			{
 				value = int.Parse(Request.Cookies["userid"].Value);
 			}
-			return new JavaScriptSerializer().Deserialize<users>(userServiceClient.GetUser(value));
+			return new JavaScriptSerializer().Deserialize<User>(userServiceClient.GetUser(value));
 		}
 	}
 }
