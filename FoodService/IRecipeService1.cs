@@ -22,7 +22,10 @@ namespace FoodService
 		[OperationContract]
 		String findRecipesByName(String recipe_name);
 
-		[OperationContract]
+        [OperationContract]
+        String findRecipesById(int recipe_id);
+
+        [OperationContract]
 		String getAllRecipes();
 
 	}

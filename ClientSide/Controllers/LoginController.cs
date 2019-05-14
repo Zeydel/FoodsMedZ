@@ -63,11 +63,6 @@ namespace ClientSide.Controllers
 
 		}
 
-		public ActionResult RecipeDetails()
-		{
-			return View();
-		}
-
 		[HttpPost]
 		public ActionResult Create(SignUpModel s)
 		{

@@ -1,4 +1,5 @@
 ﻿using ClientSide.Models;
+using ClientSide.UserServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,6 @@ namespace ClientSide.Controllers
 				return RedirectToAction("Login", "Login");
 			}
 
-			return View();
-		}
-
-		public ActionResult Recipes()
-		{
 			return View();
 		}
 
@@ -70,16 +66,16 @@ namespace ClientSide.Controllers
 		public ActionResult Search()
 		{
 			string recipe_list = recipeServiceClient.getAllRecipes();
-			List<RecipeServiceReference.Recipe> recipes = new JavaScriptSerializer().Deserialize<List<RecipeServiceReference.Recipe>>(recipe_list);
-			IEnumerable<RecipeServiceReference.Recipe> recupeenum = recipes.AsEnumerable();
+			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
+			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
 			return View(recupeenum);
 		}
 
 		public ActionResult doSearch(string recipe_name)
 		{
 			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);
-			List<RecipeServiceReference.Recipe> recipes = new JavaScriptSerializer().Deserialize<List<RecipeServiceReference.Recipe>>(recipe_list);
-			IEnumerable<RecipeServiceReference.Recipe> recupeenum = recipes.AsEnumerable<RecipeServiceReference.Recipe>();
+			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
+			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable<Recipe>();
 			return View("Search", recupeenum);
 		}
 
