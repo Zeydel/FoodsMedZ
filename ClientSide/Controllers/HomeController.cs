@@ -1,4 +1,7 @@
-﻿using ClientSide.UserServiceReference;
+﻿using ClientSide.Models;
+using FoodService;
+using System;
+using ClientSide.UserServiceReference;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -21,7 +24,12 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
-		public ActionResult Ingredients()
+		public ActionResult Recipes()
+		{
+			return View();
+		}
+
+		public ActionResult FoodJam()
 		{
 			return View();
 		}
@@ -61,11 +69,7 @@ namespace ClientSide.Controllers
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
 			return View(recupeenum);
 		}
-		/// <summary>
-		/// Performs a serch in the database
-		/// </summary>
-		/// <param name="recipe_name"></param>
-		/// <returns>Returns a list of all matching recipes</returns>
+
 		public ActionResult doSearch(string recipe_name)
 		{
 			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);
