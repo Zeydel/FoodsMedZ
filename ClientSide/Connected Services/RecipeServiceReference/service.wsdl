@@ -37,6 +37,12 @@
   <wsdl:message name="IRecipeService1_getAllRecipes_OutputMessage">
     <wsdl:part name="parameters" element="tns:getAllRecipesResponse" />
   </wsdl:message>
+  <wsdl:message name="IRecipeService1_getRecipesAdvanced_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRecipesAdvanced" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeService1_getRecipesAdvanced_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRecipesAdvancedResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRecipeService1">
     <wsdl:operation name="getRecipe">
       <wsdl:input wsaw:Action="http://tempuri.org/IRecipeService1/getRecipe" message="tns:IRecipeService1_getRecipe_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="getAllRecipes">
       <wsdl:input wsaw:Action="http://tempuri.org/IRecipeService1/getAllRecipes" message="tns:IRecipeService1_getAllRecipes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRecipeService1/getAllRecipesResponse" message="tns:IRecipeService1_getAllRecipes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getRecipesAdvanced">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced" message="tns:IRecipeService1_getRecipesAdvanced_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse" message="tns:IRecipeService1_getRecipesAdvanced_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRecipeService1" type="tns:IRecipeService1">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAllRecipes">
       <soap:operation soapAction="http://tempuri.org/IRecipeService1/getAllRecipes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRecipesAdvanced">
+      <soap:operation soapAction="http://tempuri.org/IRecipeService1/getRecipesAdvanced" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

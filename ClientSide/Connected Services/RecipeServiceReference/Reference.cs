@@ -44,6 +44,12 @@ namespace ClientSide.RecipeServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
         System.Threading.Tasks.Task<string> getAllRecipesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse")]
+        string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse")]
+        System.Threading.Tasks.Task<string> getRecipesAdvancedAsync(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +117,14 @@ namespace ClientSide.RecipeServiceReference {
         
         public System.Threading.Tasks.Task<string> getAllRecipesAsync() {
             return base.Channel.getAllRecipesAsync();
+        }
+        
+        public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues) {
+            return base.Channel.getRecipesAdvanced(searchTerm, vegetarian, vegan, cheap, glutenfree, dairyfree, maxminues);
+        }
+        
+        public System.Threading.Tasks.Task<string> getRecipesAdvancedAsync(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues) {
+            return base.Channel.getRecipesAdvancedAsync(searchTerm, vegetarian, vegan, cheap, glutenfree, dairyfree, maxminues);
         }
     }
 }
