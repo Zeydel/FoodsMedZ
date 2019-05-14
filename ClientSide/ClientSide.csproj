@@ -148,6 +148,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,9 +159,6 @@
     <Compile Include="Models\LoginModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\RecipeServiceReference\ClientSide.RecipeServiceReference.Recipe.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\RecipeServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\RecipeServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\RecipeServiceReference\Reference.svcmap">
@@ -215,6 +214,7 @@
     <None Include="Connected Services\UserServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Properties\DataSources\FoodService.Recipe.datasource" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -243,15 +243,14 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
-    <Content Include="Views\Home\Recipes.cshtml" />
+    <Content Include="Views\Recipe\Recipes.cshtml" />
     <Content Include="Views\Home\Ingredients.cshtml" />
     <Content Include="Views\Home\Health.cshtml" />
     <Content Include="Views\Home\Favorites.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Login\RecipeDetails.cshtml" />
-    <Content Include="Views\Home\RecipeTest.cshtml" />
+    <Content Include="Views\Recipe\RecipeDetails.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Login\Profile.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
@@ -279,6 +278,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\RecipeServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\UserServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FoodService\FoodService.csproj">
+      <Project>{F9836AE0-8979-419B-BF49-4FA6D096D24E}</Project>
+      <Name>FoodService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

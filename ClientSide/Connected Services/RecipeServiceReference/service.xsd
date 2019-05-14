@@ -52,6 +52,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="findRecipesById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="recipe_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findRecipesByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="findRecipesByIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="getAllRecipes">
     <xs:complexType>
       <xs:sequence />
