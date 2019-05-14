@@ -18,7 +18,7 @@ namespace FoodService
         public Recipe()
         {
             this.Ingredients = new HashSet<Ingredients>();
-            this.users = new HashSet<users>();
+            this.User = new HashSet<User>();
         }
     
         public int Recipe_id { get; set; }
@@ -37,6 +37,6 @@ namespace FoodService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ingredients> Ingredients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<users> users { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

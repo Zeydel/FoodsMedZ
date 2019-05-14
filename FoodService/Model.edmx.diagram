@@ -4,20 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b203e4ce2b8c41b8935cdeff70a8143e" Name="Diagram1">
+      <Diagram DiagramId="a1d6eeb5cce7495f8e515353352768eb" Name="Diagram1">
         <EntityTypeShape EntityType="FoodService.Food" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.Ingredients" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.Nutrition" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodService.FoodJoke" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodService.FoodTrivia" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodService.Ingredients" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodService.Nutrition" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodService.Recipe" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.users" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.MSreplication_options" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.spt_fallback_db" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.spt_fallback_dev" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.spt_fallback_usg" Width="1.5" PointX="7.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodService.spt_monitor" Width="1.5" PointX="5.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodService.User" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="FoodService.FK__Ingredien__Food___3F6663D5" ManuallyRouted="false" />
         <AssociationConnector Association="FoodService.FK__Nutrition__Ingre__405A880E" ManuallyRouted="false" />
         <AssociationConnector Association="FoodService.FK__Ingredien__Recip__3B95D2F1" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodService.UserFoodJokes" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodService.UserFoodTrivia" ManuallyRouted="false" />
         <AssociationConnector Association="FoodService.userRecipes" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

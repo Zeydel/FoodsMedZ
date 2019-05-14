@@ -15,6 +15,20 @@
           <Property Name="amount" Type="int" />
           <Property Name="unit" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="FoodJoke">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food_joke" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FoodTrivia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food_trivia" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Ingredients">
           <Key>
             <PropertyRef Name="Food_id" />
@@ -26,24 +40,6 @@
           <Property Name="Amount" Type="float" />
           <Property Name="Unit" Type="int" />
           <Property Name="image" Type="nvarchar(max)" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="MSreplication_options">
-          <Key>
-            <PropertyRef Name="optname" />
-            <PropertyRef Name="value" />
-            <PropertyRef Name="major_version" />
-            <PropertyRef Name="minor_version" />
-            <PropertyRef Name="revision" />
-            <PropertyRef Name="install_failures" />
-          </Key>
-          <Property Name="optname" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="value" Type="bit" Nullable="false" />
-          <Property Name="major_version" Type="int" Nullable="false" />
-          <Property Name="minor_version" Type="int" Nullable="false" />
-          <Property Name="revision" Type="int" Nullable="false" />
-          <Property Name="install_failures" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Nutrition">
           <Key>
@@ -72,111 +68,7 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
           <Property Name="Instructions" Type="nvarchar(max)" />
           <Property Name="imageTyp" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_fallback_db">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="dbid" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="version" />
-          </Key>
-          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
-          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
-          <Property Name="xfallback_dbid" Type="smallint" />
-          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="dbid" Type="smallint" Nullable="false" />
-          <Property Name="status" Type="smallint" Nullable="false" />
-          <Property Name="version" Type="smallint" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_fallback_dev' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_fallback_dev">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="low" />
-            <PropertyRef Name="high" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="phyname" />
-          </Key>
-          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
-          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
-          <Property Name="xfallback_low" Type="int" />
-          <Property Name="xfallback_drive" Type="char" MaxLength="2" />
-          <Property Name="low" Type="int" Nullable="false" />
-          <Property Name="high" Type="int" Nullable="false" />
-          <Property Name="status" Type="smallint" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_fallback_usg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_fallback_usg">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="dbid" />
-            <PropertyRef Name="segmap" />
-            <PropertyRef Name="lstart" />
-            <PropertyRef Name="sizepg" />
-            <PropertyRef Name="vstart" />
-          </Key>
-          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
-          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
-          <Property Name="xfallback_vstart" Type="int" />
-          <Property Name="dbid" Type="smallint" Nullable="false" />
-          <Property Name="segmap" Type="int" Nullable="false" />
-          <Property Name="lstart" Type="int" Nullable="false" />
-          <Property Name="sizepg" Type="int" Nullable="false" />
-          <Property Name="vstart" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_monitor">
-          <Key>
-            <PropertyRef Name="lastrun" />
-            <PropertyRef Name="cpu_busy" />
-            <PropertyRef Name="io_busy" />
-            <PropertyRef Name="idle" />
-            <PropertyRef Name="pack_received" />
-            <PropertyRef Name="pack_sent" />
-            <PropertyRef Name="connections" />
-            <PropertyRef Name="pack_errors" />
-            <PropertyRef Name="total_read" />
-            <PropertyRef Name="total_write" />
-            <PropertyRef Name="total_errors" />
-          </Key>
-          <Property Name="lastrun" Type="datetime" Nullable="false" />
-          <Property Name="cpu_busy" Type="int" Nullable="false" />
-          <Property Name="io_busy" Type="int" Nullable="false" />
-          <Property Name="idle" Type="int" Nullable="false" />
-          <Property Name="pack_received" Type="int" Nullable="false" />
-          <Property Name="pack_sent" Type="int" Nullable="false" />
-          <Property Name="connections" Type="int" Nullable="false" />
-          <Property Name="pack_errors" Type="int" Nullable="false" />
-          <Property Name="total_read" Type="int" Nullable="false" />
-          <Property Name="total_write" Type="int" Nullable="false" />
-          <Property Name="total_errors" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="userRecipes">
-          <Key>
-            <PropertyRef Name="User_id" />
-            <PropertyRef Name="Recipe_id" />
-          </Key>
-          <Property Name="User_id" Type="int" Nullable="false" />
-          <Property Name="Recipe_id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="User_id" />
           </Key>
@@ -192,6 +84,30 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="vegan" Type="bit" />
           <Property Name="dairyfree" Type="bit" />
           <Property Name="glutenfree" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserFoodJokes">
+          <Key>
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="FoodJoke_id" />
+          </Key>
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="FoodJoke_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFoodTrivia">
+          <Key>
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="FoodTrivia_id" />
+          </Key>
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="FoodTrivia_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userRecipes">
+          <Key>
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="Recipe_id" />
+          </Key>
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Recipe_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Ingredien__Food___3F6663D5">
           <End Role="Food" Type="Self.Food" Multiplicity="1" />
@@ -229,6 +145,54 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserFoodJ__FoodJ__52793849">
+          <End Role="FoodJoke" Type="Self.FoodJoke" Multiplicity="1" />
+          <End Role="UserFoodJokes" Type="Self.UserFoodJokes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodJoke">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFoodJokes">
+              <PropertyRef Name="FoodJoke_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFoodJ__User___51851410">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserFoodJokes" Type="Self.UserFoodJokes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserFoodJokes">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFoodT__FoodT__5649C92D">
+          <End Role="FoodTrivia" Type="Self.FoodTrivia" Multiplicity="1" />
+          <End Role="UserFoodTrivia" Type="Self.UserFoodTrivia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodTrivia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFoodTrivia">
+              <PropertyRef Name="FoodTrivia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFoodT__User___5555A4F4">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserFoodTrivia" Type="Self.UserFoodTrivia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserFoodTrivia">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__userRecip__Recip__3C89F72A">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
           <End Role="userRecipes" Type="Self.userRecipes" Multiplicity="*" />
@@ -242,10 +206,10 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__userRecip__User___35DCF99B">
-          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="userRecipes" Type="Self.userRecipes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="users">
+            <Principal Role="User">
               <PropertyRef Name="User_id" />
             </Principal>
             <Dependent Role="userRecipes">
@@ -255,75 +219,15 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
         </Association>
         <EntityContainer Name="FoodServiceStoreContainer">
           <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodJoke" EntityType="Self.FoodJoke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodTrivia" EntityType="Self.FoodTrivia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nutrition" EntityType="Self.Nutrition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFoodJokes" EntityType="Self.UserFoodJokes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFoodTrivia" EntityType="Self.UserFoodTrivia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userRecipes" EntityType="Self.userRecipes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MSreplication_options].[optname] AS [optname], 
-    [MSreplication_options].[value] AS [value], 
-    [MSreplication_options].[major_version] AS [major_version], 
-    [MSreplication_options].[minor_version] AS [minor_version], 
-    [MSreplication_options].[revision] AS [revision], 
-    [MSreplication_options].[install_failures] AS [install_failures]
-    FROM [dbo].[MSreplication_options] AS [MSreplication_options]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_fallback_db].[xserver_name] AS [xserver_name], 
-    [spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
-    [spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
-    [spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
-    [spt_fallback_db].[name] AS [name], 
-    [spt_fallback_db].[dbid] AS [dbid], 
-    [spt_fallback_db].[status] AS [status], 
-    [spt_fallback_db].[version] AS [version]
-    FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_fallback_dev].[xserver_name] AS [xserver_name], 
-    [spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
-    [spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
-    [spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
-    [spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
-    [spt_fallback_dev].[low] AS [low], 
-    [spt_fallback_dev].[high] AS [high], 
-    [spt_fallback_dev].[status] AS [status], 
-    [spt_fallback_dev].[name] AS [name], 
-    [spt_fallback_dev].[phyname] AS [phyname]
-    FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_fallback_usg].[xserver_name] AS [xserver_name], 
-    [spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
-    [spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
-    [spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
-    [spt_fallback_usg].[dbid] AS [dbid], 
-    [spt_fallback_usg].[segmap] AS [segmap], 
-    [spt_fallback_usg].[lstart] AS [lstart], 
-    [spt_fallback_usg].[sizepg] AS [sizepg], 
-    [spt_fallback_usg].[vstart] AS [vstart]
-    FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_monitor].[lastrun] AS [lastrun], 
-    [spt_monitor].[cpu_busy] AS [cpu_busy], 
-    [spt_monitor].[io_busy] AS [io_busy], 
-    [spt_monitor].[idle] AS [idle], 
-    [spt_monitor].[pack_received] AS [pack_received], 
-    [spt_monitor].[pack_sent] AS [pack_sent], 
-    [spt_monitor].[connections] AS [connections], 
-    [spt_monitor].[pack_errors] AS [pack_errors], 
-    [spt_monitor].[total_read] AS [total_read], 
-    [spt_monitor].[total_write] AS [total_write], 
-    [spt_monitor].[total_errors] AS [total_errors]
-    FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Ingredien__Food___3F6663D5" Association="Self.FK__Ingredien__Food___3F6663D5">
             <End Role="Food" EntitySet="Food" />
             <End Role="Ingredients" EntitySet="Ingredients" />
@@ -336,12 +240,28 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             <End Role="Food" EntitySet="Food" />
             <End Role="Nutrition" EntitySet="Nutrition" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserFoodJ__FoodJ__52793849" Association="Self.FK__UserFoodJ__FoodJ__52793849">
+            <End Role="FoodJoke" EntitySet="FoodJoke" />
+            <End Role="UserFoodJokes" EntitySet="UserFoodJokes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFoodJ__User___51851410" Association="Self.FK__UserFoodJ__User___51851410">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFoodJokes" EntitySet="UserFoodJokes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFoodT__FoodT__5649C92D" Association="Self.FK__UserFoodT__FoodT__5649C92D">
+            <End Role="FoodTrivia" EntitySet="FoodTrivia" />
+            <End Role="UserFoodTrivia" EntitySet="UserFoodTrivia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFoodT__User___5555A4F4" Association="Self.FK__UserFoodT__User___5555A4F4">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFoodTrivia" EntitySet="UserFoodTrivia" />
+          </AssociationSet>
           <AssociationSet Name="FK__userRecip__Recip__3C89F72A" Association="Self.FK__userRecip__Recip__3C89F72A">
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="userRecipes" EntitySet="userRecipes" />
           </AssociationSet>
           <AssociationSet Name="FK__userRecip__User___35DCF99B" Association="Self.FK__userRecip__User___35DCF99B">
-            <End Role="users" EntitySet="users" />
+            <End Role="User" EntitySet="User" />
             <End Role="userRecipes" EntitySet="userRecipes" />
           </AssociationSet>
         </EntityContainer>
@@ -361,6 +281,22 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__Food___3F6663D5" FromRole="Food" ToRole="Ingredients" />
           <NavigationProperty Name="Nutrition" Relationship="Self.FK__Nutrition__Ingre__405A880E" FromRole="Food" ToRole="Nutrition" />
+        </EntityType>
+        <EntityType Name="FoodJoke">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food_joke" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.UserFoodJokes" FromRole="FoodJoke" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FoodTrivia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food_trivia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.UserFoodTrivia" FromRole="FoodTrivia" ToRole="User" />
         </EntityType>
         <EntityType Name="Ingredients">
           <Key>
@@ -404,9 +340,9 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="Instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="imageTyp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__Recip__3B95D2F1" FromRole="Recipe" ToRole="Ingredients" />
-          <NavigationProperty Name="users" Relationship="Self.userRecipes" FromRole="Recipe" ToRole="users" />
+          <NavigationProperty Name="User" Relationship="Self.userRecipes" FromRole="Recipe" ToRole="User" />
         </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="User_id" />
           </Key>
@@ -422,111 +358,9 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="vegan" Type="Boolean" />
           <Property Name="dairyfree" Type="Boolean" />
           <Property Name="glutenfree" Type="Boolean" />
-          <NavigationProperty Name="Recipe" Relationship="Self.userRecipes" FromRole="users" ToRole="Recipe" />
-        </EntityType>
-        <EntityType Name="MSreplication_options">
-          <Key>
-            <PropertyRef Name="optname" />
-            <PropertyRef Name="value" />
-            <PropertyRef Name="major_version" />
-            <PropertyRef Name="minor_version" />
-            <PropertyRef Name="revision" />
-            <PropertyRef Name="install_failures" />
-          </Key>
-          <Property Name="optname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="value" Type="Boolean" Nullable="false" />
-          <Property Name="major_version" Type="Int32" Nullable="false" />
-          <Property Name="minor_version" Type="Int32" Nullable="false" />
-          <Property Name="revision" Type="Int32" Nullable="false" />
-          <Property Name="install_failures" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="spt_fallback_db">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="dbid" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="version" />
-          </Key>
-          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="xfallback_dbid" Type="Int16" />
-          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dbid" Type="Int16" Nullable="false" />
-          <Property Name="status" Type="Int16" Nullable="false" />
-          <Property Name="version" Type="Int16" Nullable="false" />
-        </EntityType>
-        <EntityType Name="spt_fallback_dev">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="low" />
-            <PropertyRef Name="high" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="phyname" />
-          </Key>
-          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="xfallback_low" Type="Int32" />
-          <Property Name="xfallback_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="low" Type="Int32" Nullable="false" />
-          <Property Name="high" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="Int16" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phyname" Type="String" MaxLength="127" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="spt_fallback_usg">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="dbid" />
-            <PropertyRef Name="segmap" />
-            <PropertyRef Name="lstart" />
-            <PropertyRef Name="sizepg" />
-            <PropertyRef Name="vstart" />
-          </Key>
-          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="xfallback_vstart" Type="Int32" />
-          <Property Name="dbid" Type="Int16" Nullable="false" />
-          <Property Name="segmap" Type="Int32" Nullable="false" />
-          <Property Name="lstart" Type="Int32" Nullable="false" />
-          <Property Name="sizepg" Type="Int32" Nullable="false" />
-          <Property Name="vstart" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="spt_monitor">
-          <Key>
-            <PropertyRef Name="lastrun" />
-            <PropertyRef Name="cpu_busy" />
-            <PropertyRef Name="io_busy" />
-            <PropertyRef Name="idle" />
-            <PropertyRef Name="pack_received" />
-            <PropertyRef Name="pack_sent" />
-            <PropertyRef Name="connections" />
-            <PropertyRef Name="pack_errors" />
-            <PropertyRef Name="total_read" />
-            <PropertyRef Name="total_write" />
-            <PropertyRef Name="total_errors" />
-          </Key>
-          <Property Name="lastrun" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cpu_busy" Type="Int32" Nullable="false" />
-          <Property Name="io_busy" Type="Int32" Nullable="false" />
-          <Property Name="idle" Type="Int32" Nullable="false" />
-          <Property Name="pack_received" Type="Int32" Nullable="false" />
-          <Property Name="pack_sent" Type="Int32" Nullable="false" />
-          <Property Name="connections" Type="Int32" Nullable="false" />
-          <Property Name="pack_errors" Type="Int32" Nullable="false" />
-          <Property Name="total_read" Type="Int32" Nullable="false" />
-          <Property Name="total_write" Type="Int32" Nullable="false" />
-          <Property Name="total_errors" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FoodJoke" Relationship="Self.UserFoodJokes" FromRole="User" ToRole="FoodJoke" />
+          <NavigationProperty Name="FoodTrivia" Relationship="Self.UserFoodTrivia" FromRole="User" ToRole="FoodTrivia" />
+          <NavigationProperty Name="Recipe" Relationship="Self.userRecipes" FromRole="User" ToRole="Recipe" />
         </EntityType>
         <Association Name="FK__Ingredien__Food___3F6663D5">
           <End Role="Food" Type="Self.Food" Multiplicity="1" />
@@ -564,21 +398,26 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="UserFoodJokes">
+          <End Role="FoodJoke" Type="Self.FoodJoke" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserFoodTrivia">
+          <End Role="FoodTrivia" Type="Self.FoodTrivia" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
         <Association Name="userRecipes">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
-          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
         </Association>
         <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Food" EntityType="Self.Food" />
+          <EntitySet Name="FoodJoke" EntityType="Self.FoodJoke" />
+          <EntitySet Name="FoodTrivia" EntityType="Self.FoodTrivia" />
           <EntitySet Name="Ingredients" EntityType="Self.Ingredients" />
           <EntitySet Name="Nutrition" EntityType="Self.Nutrition" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" />
-          <EntitySet Name="users" EntityType="Self.users" />
-          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" />
-          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" />
-          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
-          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
-          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+          <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK__Ingredien__Food___3F6663D5" Association="Self.FK__Ingredien__Food___3F6663D5">
             <End Role="Food" EntitySet="Food" />
             <End Role="Ingredients" EntitySet="Ingredients" />
@@ -591,9 +430,17 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
+          <AssociationSet Name="UserFoodJokes" Association="Self.UserFoodJokes">
+            <End Role="FoodJoke" EntitySet="FoodJoke" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="UserFoodTrivia" Association="Self.UserFoodTrivia">
+            <End Role="FoodTrivia" EntitySet="FoodTrivia" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="userRecipes" Association="Self.userRecipes">
             <End Role="Recipe" EntitySet="Recipe" />
-            <End Role="users" EntitySet="users" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -610,6 +457,22 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodJoke">
+            <EntityTypeMapping TypeName="FoodService.FoodJoke">
+              <MappingFragment StoreEntitySet="FoodJoke">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Food_joke" ColumnName="Food_joke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodTrivia">
+            <EntityTypeMapping TypeName="FoodService.FoodTrivia">
+              <MappingFragment StoreEntitySet="FoodTrivia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Food_trivia" ColumnName="Food_trivia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -654,9 +517,9 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="FoodService.users">
-              <MappingFragment StoreEntitySet="users">
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="FoodService.User">
+              <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="First_name" ColumnName="First_name" />
                 <ScalarProperty Name="Last_name" ColumnName="Last_name" />
@@ -672,85 +535,27 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MSreplication_options">
-            <EntityTypeMapping TypeName="FoodService.MSreplication_options">
-              <MappingFragment StoreEntitySet="MSreplication_options">
-                <ScalarProperty Name="optname" ColumnName="optname" />
-                <ScalarProperty Name="value" ColumnName="value" />
-                <ScalarProperty Name="major_version" ColumnName="major_version" />
-                <ScalarProperty Name="minor_version" ColumnName="minor_version" />
-                <ScalarProperty Name="revision" ColumnName="revision" />
-                <ScalarProperty Name="install_failures" ColumnName="install_failures" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_fallback_db">
-            <EntityTypeMapping TypeName="FoodService.spt_fallback_db">
-              <MappingFragment StoreEntitySet="spt_fallback_db">
-                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
-                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
-                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
-                <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="dbid" ColumnName="dbid" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="version" ColumnName="version" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_fallback_dev">
-            <EntityTypeMapping TypeName="FoodService.spt_fallback_dev">
-              <MappingFragment StoreEntitySet="spt_fallback_dev">
-                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
-                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
-                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
-                <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
-                <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
-                <ScalarProperty Name="low" ColumnName="low" />
-                <ScalarProperty Name="high" ColumnName="high" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="phyname" ColumnName="phyname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_fallback_usg">
-            <EntityTypeMapping TypeName="FoodService.spt_fallback_usg">
-              <MappingFragment StoreEntitySet="spt_fallback_usg">
-                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
-                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
-                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
-                <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
-                <ScalarProperty Name="dbid" ColumnName="dbid" />
-                <ScalarProperty Name="segmap" ColumnName="segmap" />
-                <ScalarProperty Name="lstart" ColumnName="lstart" />
-                <ScalarProperty Name="sizepg" ColumnName="sizepg" />
-                <ScalarProperty Name="vstart" ColumnName="vstart" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_monitor">
-            <EntityTypeMapping TypeName="FoodService.spt_monitor">
-              <MappingFragment StoreEntitySet="spt_monitor">
-                <ScalarProperty Name="lastrun" ColumnName="lastrun" />
-                <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
-                <ScalarProperty Name="io_busy" ColumnName="io_busy" />
-                <ScalarProperty Name="idle" ColumnName="idle" />
-                <ScalarProperty Name="pack_received" ColumnName="pack_received" />
-                <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
-                <ScalarProperty Name="connections" ColumnName="connections" />
-                <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
-                <ScalarProperty Name="total_read" ColumnName="total_read" />
-                <ScalarProperty Name="total_write" ColumnName="total_write" />
-                <ScalarProperty Name="total_errors" ColumnName="total_errors" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="UserFoodJokes" TypeName="FoodService.UserFoodJokes" StoreEntitySet="UserFoodJokes">
+            <EndProperty Name="FoodJoke">
+              <ScalarProperty Name="Id" ColumnName="FoodJoke_id" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="User_id" ColumnName="User_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserFoodTrivia" TypeName="FoodService.UserFoodTrivia" StoreEntitySet="UserFoodTrivia">
+            <EndProperty Name="FoodTrivia">
+              <ScalarProperty Name="Id" ColumnName="FoodTrivia_id" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="User_id" ColumnName="User_id" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="userRecipes" TypeName="FoodService.userRecipes" StoreEntitySet="userRecipes">
             <EndProperty Name="Recipe">
               <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
             </EndProperty>
-            <EndProperty Name="users">
+            <EndProperty Name="User">
               <ScalarProperty Name="User_id" ColumnName="User_id" />
             </EndProperty>
           </AssociationSetMapping>

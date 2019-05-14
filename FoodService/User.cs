@@ -12,11 +12,13 @@ namespace FoodService
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public users()
+        public User()
         {
+            this.FoodJoke = new HashSet<FoodJoke>();
+            this.FoodTrivia = new HashSet<FoodTrivia>();
             this.Recipe = new HashSet<Recipe>();
         }
     
@@ -33,6 +35,10 @@ namespace FoodService
         public Nullable<bool> dairyfree { get; set; }
         public Nullable<bool> glutenfree { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FoodJoke> FoodJoke { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FoodTrivia> FoodTrivia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recipe> Recipe { get; set; }
     }

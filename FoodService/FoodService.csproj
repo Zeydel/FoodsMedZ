@@ -56,6 +56,12 @@
     <Compile Include="Food.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="FoodJoke.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodTrivia.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ingredients.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -76,9 +82,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MSreplication_options.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Nutrition.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -87,19 +90,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="RecipeService1.cs" />
-    <Compile Include="spt_fallback_db.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_fallback_dev.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_fallback_usg.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_monitor.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="users.cs">
+    <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="UserService.cs" />
