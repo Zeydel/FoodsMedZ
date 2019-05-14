@@ -15,11 +15,11 @@ namespace ClientSide.RecipeServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RecipeServiceReference.IRecipeService1")]
     public interface IRecipeService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesResponse")]
-        FoodService.Recipe getRecipes(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipe", ReplyAction="http://tempuri.org/IRecipeService1/getRecipeResponse")]
+        FoodService.Recipe getRecipe(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesResponse")]
-        System.Threading.Tasks.Task<FoodService.Recipe> getRecipesAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipe", ReplyAction="http://tempuri.org/IRecipeService1/getRecipeResponse")]
+        System.Threading.Tasks.Task<FoodService.Recipe> getRecipeAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
         void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp);
@@ -73,12 +73,12 @@ namespace ClientSide.RecipeServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public FoodService.Recipe getRecipes(int id) {
-            return base.Channel.getRecipes(id);
+        public FoodService.Recipe getRecipe(int id) {
+            return base.Channel.getRecipe(id);
         }
         
-        public System.Threading.Tasks.Task<FoodService.Recipe> getRecipesAsync(int id) {
-            return base.Channel.getRecipesAsync(id);
+        public System.Threading.Tasks.Task<FoodService.Recipe> getRecipeAsync(int id) {
+            return base.Channel.getRecipeAsync(id);
         }
         
         public void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp) {

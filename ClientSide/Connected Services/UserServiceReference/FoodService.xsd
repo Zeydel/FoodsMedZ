@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/FoodService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FoodService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="users">
+  <xs:complexType name="User">
     <xs:sequence>
       <xs:element minOccurs="0" name="First_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodJoke" nillable="true" type="tns:ArrayOfFoodJoke" />
+      <xs:element minOccurs="0" name="FoodTrivia" nillable="true" type="tns:ArrayOfFoodTrivia" />
       <xs:element minOccurs="0" name="Last_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Recipe" nillable="true" type="tns:ArrayOfRecipe" />
       <xs:element minOccurs="0" name="User_id" type="xs:int" />
@@ -17,7 +19,41 @@
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="users" nillable="true" type="tns:users" />
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfFoodJoke">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodJoke" nillable="true" type="tns:FoodJoke" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFoodJoke" nillable="true" type="tns:ArrayOfFoodJoke" />
+  <xs:complexType name="FoodJoke">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Food_joke" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FoodJoke" nillable="true" type="tns:FoodJoke" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="ArrayOfFoodTrivia">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodTrivia" nillable="true" type="tns:FoodTrivia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFoodTrivia" nillable="true" type="tns:ArrayOfFoodTrivia" />
+  <xs:complexType name="FoodTrivia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Food_trivia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FoodTrivia" nillable="true" type="tns:FoodTrivia" />
   <xs:complexType name="ArrayOfRecipe">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Recipe" nillable="true" type="tns:Recipe" />
@@ -33,13 +69,13 @@
       <xs:element minOccurs="0" name="Recipe_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Recipe_veg" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Recipe_vegan" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
       <xs:element minOccurs="0" name="cheap" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="dairyfree" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="glutenfree" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="imageTyp" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="sustainable" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="users" nillable="true" type="tns:ArrayOfusers" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Recipe" nillable="true" type="tns:Recipe" />
@@ -91,12 +127,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Nutrition" nillable="true" type="tns:Nutrition" />
-  <xs:complexType name="ArrayOfusers">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="users" nillable="true" type="tns:users" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfusers" nillable="true" type="tns:ArrayOfusers" />
   <xs:complexType name="CompositeType">
     <xs:sequence>
       <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />

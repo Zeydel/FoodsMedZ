@@ -47,6 +47,9 @@ namespace FoodService
 		[OperationContract]
 		String findRecipesByName(String recipe_name);
 
+		[OperationContract]
+		String findRecipesById(int recipe_id);
+
 		/// <summary>
 		/// Fetches all recipe from database
 		/// </summary>

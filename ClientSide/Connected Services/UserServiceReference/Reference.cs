@@ -28,10 +28,10 @@ namespace ClientSide.UserServiceReference {
         System.Threading.Tasks.Task<int> verifyUserAsync(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
-        void updateUser(FoodService.users user);
+        void updateUser(FoodService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
-        System.Threading.Tasks.Task updateUserAsync(FoodService.users user);
+        System.Threading.Tasks.Task updateUserAsync(FoodService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
         void AddUser(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender);
@@ -39,17 +39,17 @@ namespace ClientSide.UserServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
         System.Threading.Tasks.Task AddUserAsync(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/FindUserByUsername", ReplyAction="http://tempuri.org/IUserService/FindUserByUsernameResponse")]
+        FoodService.User FindUserByUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/FindUserByUsername", ReplyAction="http://tempuri.org/IUserService/FindUserByUsernameResponse")]
+        System.Threading.Tasks.Task<FoodService.User> FindUserByUsernameAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUserService/GetDataUsingDataContractResponse")]
         FoodService.CompositeType GetDataUsingDataContract(FoodService.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUserService/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<FoodService.CompositeType> GetDataUsingDataContractAsync(FoodService.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/FindUserByUsername", ReplyAction="http://tempuri.org/IUserService/FindUserByUsernameResponse")]
-        FoodService.users FindUserByUsername(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/FindUserByUsername", ReplyAction="http://tempuri.org/IUserService/FindUserByUsernameResponse")]
-        System.Threading.Tasks.Task<FoodService.users> FindUserByUsernameAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -95,11 +95,11 @@ namespace ClientSide.UserServiceReference {
             return base.Channel.verifyUserAsync(userName, password);
         }
         
-        public void updateUser(FoodService.users user) {
+        public void updateUser(FoodService.User user) {
             base.Channel.updateUser(user);
         }
         
-        public System.Threading.Tasks.Task updateUserAsync(FoodService.users user) {
+        public System.Threading.Tasks.Task updateUserAsync(FoodService.User user) {
             return base.Channel.updateUserAsync(user);
         }
         
@@ -111,20 +111,20 @@ namespace ClientSide.UserServiceReference {
             return base.Channel.AddUserAsync(first_name, last_name, username, password, weight, height, vegetarian, vegan, dairyfree, glutenfree, gender);
         }
         
+        public FoodService.User FindUserByUsername(string username) {
+            return base.Channel.FindUserByUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<FoodService.User> FindUserByUsernameAsync(string username) {
+            return base.Channel.FindUserByUsernameAsync(username);
+        }
+        
         public FoodService.CompositeType GetDataUsingDataContract(FoodService.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
         public System.Threading.Tasks.Task<FoodService.CompositeType> GetDataUsingDataContractAsync(FoodService.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
-        }
-        
-        public FoodService.users FindUserByUsername(string username) {
-            return base.Channel.FindUserByUsername(username);
-        }
-        
-        public System.Threading.Tasks.Task<FoodService.users> FindUserByUsernameAsync(string username) {
-            return base.Channel.FindUserByUsernameAsync(username);
         }
     }
 }

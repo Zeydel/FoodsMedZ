@@ -31,17 +31,17 @@
   <wsdl:message name="IUserService_AddUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserService_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
-  </wsdl:message>
-  <wsdl:message name="IUserService_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserService_FindUserByUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:FindUserByUsername" />
   </wsdl:message>
   <wsdl:message name="IUserService_FindUserByUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindUserByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUser">
@@ -60,13 +60,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/AddUser" message="tns:IUserService_AddUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/AddUserResponse" message="tns:IUserService_AddUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetDataUsingDataContract" message="tns:IUserService_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetDataUsingDataContractResponse" message="tns:IUserService_GetDataUsingDataContract_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="FindUserByUsername">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/FindUserByUsername" message="tns:IUserService_FindUserByUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/FindUserByUsernameResponse" message="tns:IUserService_FindUserByUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetDataUsingDataContract" message="tns:IUserService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetDataUsingDataContractResponse" message="tns:IUserService_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -107,8 +107,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IUserService/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="FindUserByUsername">
+      <soap:operation soapAction="http://tempuri.org/IUserService/FindUserByUsername" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -116,8 +116,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="FindUserByUsername">
-      <soap:operation soapAction="http://tempuri.org/IUserService/FindUserByUsername" style="document" />
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetDataUsingDataContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
