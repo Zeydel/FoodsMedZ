@@ -25,6 +25,12 @@
   <wsdl:message name="IRecipeService1_findRecipesByName_OutputMessage">
     <wsdl:part name="parameters" element="tns:findRecipesByNameResponse" />
   </wsdl:message>
+  <wsdl:message name="IRecipeService1_findRecipesById_InputMessage">
+    <wsdl:part name="parameters" element="tns:findRecipesById" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeService1_findRecipesById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findRecipesByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IRecipeService1_getAllRecipes_InputMessage">
     <wsdl:part name="parameters" element="tns:getAllRecipes" />
   </wsdl:message>
@@ -43,6 +49,10 @@
     <wsdl:operation name="findRecipesByName">
       <wsdl:input wsaw:Action="http://tempuri.org/IRecipeService1/findRecipesByName" message="tns:IRecipeService1_findRecipesByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRecipeService1/findRecipesByNameResponse" message="tns:IRecipeService1_findRecipesByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findRecipesById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeService1/findRecipesById" message="tns:IRecipeService1_findRecipesById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeService1/findRecipesByIdResponse" message="tns:IRecipeService1_findRecipesById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getAllRecipes">
       <wsdl:input wsaw:Action="http://tempuri.org/IRecipeService1/getAllRecipes" message="tns:IRecipeService1_getAllRecipes_InputMessage" />
@@ -71,6 +81,15 @@
     </wsdl:operation>
     <wsdl:operation name="findRecipesByName">
       <soap:operation soapAction="http://tempuri.org/IRecipeService1/findRecipesByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findRecipesById">
+      <soap:operation soapAction="http://tempuri.org/IRecipeService1/findRecipesById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

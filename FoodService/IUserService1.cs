@@ -11,23 +11,54 @@ namespace FoodService
 	[ServiceContract]
 	public interface IUserService
 	{
+		
 		[OperationContract]
 		string GetUser(int value);
 
+		/// <summary>
+		/// Checks a username a password againts the database
+		/// </summary>
+		/// <param name="userName"></param>
+		/// <param name="password"></param>
+		/// <returns>A status </returns>
 		[OperationContract]
 		int verifyUser(string userName, string password);
 
+		/// <summary>
+		/// Updates a user in the database
+		/// </summary>
+		/// <param name="user"></param>
 		[OperationContract]
 		void updateUser(users user);
 
+		/// <summary>
+		/// Adds a user to the database
+		/// </summary>
+		/// <param name="first_name"></param>
+		/// <param name="last_name"></param>
+		/// <param name="username"></param>
+		/// <param name="password"></param>
+		/// <param name="weight"></param>
+		/// <param name="height"></param>
+		/// <param name="vegetarian"></param>
+		/// <param name="vegan"></param>
+		/// <param name="dairyfree"></param>
+		/// <param name="glutenfree"></param>
+		/// <param name="gender"></param>
 		[OperationContract]
 		void AddUser(String first_name, String last_name, String username, String password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender);
+
+		/// <summary>
+		/// Finds a user in the databse by username
+		/// </summary>
+		/// <param name="username"></param>
+		/// <returns>Returns a user object</returns>
+		[OperationContract]
+		users FindUserByUsername(String username);
 
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);
 
-		[OperationContract]
-		users FindUserByUsername(String username);
 
 		// TODO: Add your service operations here
 	}
