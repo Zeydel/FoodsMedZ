@@ -78,4 +78,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getRecipesAdvanced">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchTerm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="vegetarian" type="xs:boolean" />
+        <xs:element minOccurs="0" name="vegan" type="xs:boolean" />
+        <xs:element minOccurs="0" name="cheap" type="xs:boolean" />
+        <xs:element minOccurs="0" name="glutenfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="dairyfree" type="xs:boolean" />
+        <xs:element minOccurs="0" name="maxminues" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRecipesAdvancedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getRecipesAdvancedResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
