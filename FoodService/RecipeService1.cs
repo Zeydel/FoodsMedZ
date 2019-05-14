@@ -82,11 +82,29 @@ namespace FoodService
 			return new JavaScriptSerializer().Serialize(recipes);
 		}
 
-		/// <summary>
-		/// Fetches all recipe from database
+        /// <summary>
+		/// Get one recipe based on recipe id.
 		/// </summary>
-		/// <returns>JSON string representing a list of all recipes</returns>
-		public String getAllRecipes()
+		/// <param name="recipe_id">Id of desired recipe</param>
+		/// <returns>JSON-string representing recipe</returns>
+        public String findRecipesById(int recipe_id)
+        {
+            masterEntities m = new masterEntities();
+            var RecipeDtb = from k in m.Recipe where k.Recipe_id == recipe_id select k;
+
+            foreach (Recipe rcp in RecipeDtb)
+            {
+                return new JavaScriptSerializer().Serialize(rcp);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Fetches all recipe from database
+        /// </summary>
+        /// <returns>JSON string representing a list of all recipes</returns>
+        public String getAllRecipes()
 		{
 			masterEntities m = new masterEntities();
 			List<Recipe> recipes = new List<Recipe>();
