@@ -12,13 +12,7 @@ namespace FoodService
 	public class UserService : IUserService
 	{
 
-		JsonSerializerSettings jsettings = new JsonSerializerSettings()
-		{
-			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented,
-			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
-		};
+		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		/// <summary>
 		/// Gets one user from backend
 		/// </summary>
@@ -26,7 +20,7 @@ namespace FoodService
 		/// <returns></returns>
 		public string GetUser(int value)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			var userlst = from k in m.User where k.User_id == value select k;
 			var user = new User();
 
@@ -46,7 +40,7 @@ namespace FoodService
 		/// <returns>A status </returns>
 		public int verifyUser(string userName, string password)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			var userlst = from k in m.User where k.userName.Equals(userName) select k;
 			foreach (var usr in userlst)
 			{
@@ -78,7 +72,7 @@ namespace FoodService
 		/// <param name="gender"></param>
 		public void AddUser(string first_name, string last_name, string username, string password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			User newUser = new User();
 			newUser.First_name = first_name;
 			newUser.Last_name = last_name;
@@ -101,7 +95,7 @@ namespace FoodService
 		/// <param name="user"></param>
 		public void updateUser(string str)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			RecipeService1 recipeclient = new RecipeService1();
 			
 			User user = JsonConvert.DeserializeObject<User>(str, jsettings);
@@ -131,7 +125,7 @@ namespace FoodService
 		/// <returns>Returns a user object</returns>
 		public User FindUserByUsername(string username)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			var userlst = from k in m.User where k.userName.Equals(username) select k;
 
 			foreach (var usr in userlst)

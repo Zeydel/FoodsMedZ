@@ -10,8 +10,8 @@ namespace ClientSide.Controllers
 {
 	public class FoodController : Controller
 	{
-		FoodJokeServiceReference.FoodJokeService1Client foodJokeServiceClient = new FoodJokeServiceReference.FoodJokeService1Client();
-		FoodTriviaServiceReference.FoodTriviaService1Client foodTriviaServiceClient = new FoodTriviaServiceReference.FoodTriviaService1Client();
+		FoodJokeServiceReference.FoodJokeService1Client foodJokeServiceClient = ServiceFactory.getFoodJokeServiceClient();
+		FoodTriviaServiceReference.FoodTriviaService1Client foodTriviaServiceClient = ServiceFactory.getFoodTriviaServiceClient();
 		List<FoodJoke> foodJokes = new List<FoodJoke>();
 
 

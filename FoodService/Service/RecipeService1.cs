@@ -12,14 +12,7 @@ namespace FoodService
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RecipeService1" in both code and config file together.
 	public class RecipeService1 : IRecipeService1
 	{
-		JsonSerializerSettings jsettings = new JsonSerializerSettings()
-		{
-			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented,
-			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-			
-
-		};
+		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		/// <summary>
 		/// Fetches one recipe from database based on id.
 		/// </summary>
@@ -27,7 +20,7 @@ namespace FoodService
 		/// <returns>One recipe object</returns>
 		public Recipe getRecipe(int id)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			var Recipelst = from k in m.Recipe where k.Recipe_id == id select k;
 			var recipe = new Recipe();
 			foreach (var rcp in Recipelst)
@@ -57,7 +50,7 @@ namespace FoodService
 			Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree,
 			String image, String instruction, String imageTyp)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			Recipe rcp = new Recipe();
 			rcp.Recipe_id = recipe_id;
 			rcp.Recipe_name = recipe_name;
@@ -82,7 +75,7 @@ namespace FoodService
 		/// <returns>JSON-string representing recipe</returns>
 		public String findRecipesByName(String recipe_name)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			List<Recipe> recipes = new List<Recipe>();
 			var Recipelst = from k in m.Recipe where k.Recipe_name == recipe_name select k;
 			foreach (Recipe recipe in Recipelst)
@@ -99,7 +92,7 @@ namespace FoodService
 		/// <returns>JSON-string representing recipe</returns>
 		public String findRecipesById(int recipe_id)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			var RecipeDtb = from k in m.Recipe where k.Recipe_id == recipe_id select k;
 
 			foreach (Recipe rcp in RecipeDtb)
@@ -116,7 +109,7 @@ namespace FoodService
 		/// <returns>JSON string representing a list of all recipes</returns>
 		public string getAllRecipes()
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			List<Recipe> recipes = new List<Recipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
@@ -140,7 +133,7 @@ namespace FoodService
 		/// <returns>Returns a list of all the recipes matching all the terms</returns>
 		public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues)
 		{
-			masterEntities m = ContextFactory.getContext();
+			masterEntities m = ContextSingleton.getContext();
 			List<Recipe> recipes = new List<Recipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)

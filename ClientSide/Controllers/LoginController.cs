@@ -16,16 +16,9 @@ namespace ClientSide.Controllers
 	/// </summary>
 	public class LoginController : Controller
 	{
-		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
+		UserServiceReference.UserServiceClient userServiceClient = ServiceFactory.getUserServiceClient();
 
-		JsonSerializerSettings jsettings = new JsonSerializerSettings()
-		{
-			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented,
-			ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-		
-
-		};
+		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		/// <summary>
 		/// Redirects the user to Profile page if they are currently login
 		/// </summary>
