@@ -98,6 +98,13 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="UserService.cs" />
+    <Compile Include="ViewModels\ViewUser.cs" />
+    <Compile Include="ViewModels\ViewFood.cs" />
+    <Compile Include="ViewModels\ViewFoodJoke.cs" />
+    <Compile Include="ViewModels\ViewFoodTrivia.cs" />
+    <Compile Include="ViewModels\ViewIngridient.cs" />
+    <Compile Include="ViewModels\ViewNutrition.cs" />
+    <Compile Include="ViewModels\ViewRecipe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

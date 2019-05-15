@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -17,7 +18,7 @@ namespace FoodService
 		/// <param name="id">Id of the desired recipe</param>
 		/// <returns>One recipe object</returns>
         [OperationContract]
-        Recipe getRecipe(int id);
+        ViewRecipe getRecipe(int id);
 
 		/// <summary>
 		/// Adds one recipe to database.
