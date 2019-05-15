@@ -117,6 +117,17 @@ namespace FoodService
 
 		}
 
+		/// <summary>
+		/// Uses a super complex alorithm to perform an advanced search Query in the remote databases
+		/// </summary>
+		/// <param name="searchTerm"></param>
+		/// <param name="vegetarian"></param>
+		/// <param name="vegan"></param>
+		/// <param name="cheap"></param>
+		/// <param name="glutenfree"></param>
+		/// <param name="dairyfree"></param>
+		/// <param name="maxminues"></param>
+		/// <returns>Returns a list of all the recipes matching all the terms</returns>
 		public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues)
 		{
 			masterEntities m = new masterEntities();
