@@ -34,10 +34,11 @@ namespace FoodService
 		/// <param name="image"></param>
 		/// <param name="instruction"></param>
 		/// <param name="imageTyp"></param>
+        /// <param name="ingredientList"></param>
         [OperationContract]
         void addRecipe(int recipe_id, String recipe_name, int recipe_minutes, Boolean recipe_veg, Boolean recipe_vegan,
             Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree, String image, String instruction,
-            String imageTyp);
+            String imageTyp, List<Ingredients> ingredientList);
 
 		/// <summary>
 		/// Get one recipe based on recipe name.

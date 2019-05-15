@@ -12,15 +12,9 @@ namespace ClientSide.Controllers
 {
 	public class HomeController : Controller
 	{
-		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
-        RecipeServiceReference.RecipeService1Client recipeServiceClient = new RecipeServiceReference.RecipeService1Client();
-		JsonSerializerSettings jsettings = new JsonSerializerSettings()
-		{
-			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented,
-			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
-		};
+		UserServiceReference.UserServiceClient userServiceClient = ServiceFactory.getUserServiceClient();
+		RecipeServiceReference.RecipeService1Client recipeServiceClient = ServiceFactory.getRecipeServiceClient();
+		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 
 		public ActionResult Index()
 		{
@@ -91,7 +85,7 @@ namespace ClientSide.Controllers
 		{
 			string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
 			List<FoodService.Recipe> recipelist = JsonConvert.DeserializeObject<List<Recipe>>(temp, jsettings);
-			return View("Search", recipelist);
+			return View(recipelist);
 		}
 
 	}

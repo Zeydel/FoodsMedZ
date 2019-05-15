@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using API_Reciever.ServiceReference1;
+using Newtonsoft.Json;
 
 namespace DBRecipeFetcher
 {
@@ -16,7 +17,7 @@ namespace DBRecipeFetcher
         static void Main(string[] args)
         {
 
-            WebRequest request = WebRequest.Create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479111/information");
+            WebRequest request = WebRequest.Create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479115/information");
             request.Method = "GET";
             request.Headers.Add("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
             request.Headers.Add("X-RapidAPI-Key", "ea8b3c331cmshe7e397ea99737e2p1a433ajsn83b9197c861f");
@@ -25,25 +26,54 @@ namespace DBRecipeFetcher
             WebResponse res = request.GetResponse();
             string output = null;
             Recipe recipe = new Recipe();
+            List<Ingredients> finalList = new List<Ingredients>();
             using (var reader = new StreamReader(res.GetResponseStream()))
             {
                 output = reader.ReadToEnd();
 
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                Recipe rcp = js.Deserialize<Recipe>(output);
+                //JavaScriptSerializer js = new JavaScriptSerializer();
+                //Recipe rcp = js.Deserialize<Recipe>(output);
+
+                Recipe rcp = JsonConvert.DeserializeObject<Recipe>(output);
 
                 System.Console.WriteLine(rcp.title);
+                System.Console.WriteLine(rcp.extendedIngredients[0].name);
 
                 recipe = rcp;
-               
+
+                List<Ingredients> ingrList = new List<Ingredients>();
+
+                foreach(Ingredient item in rcp.extendedIngredients)
+                {
+                    Ingredients current = new Ingredients();
+
+                    current.Ingredient_id = item.id;
+                    current.Recipe_id = rcp.id;
+                    current.Ingredient_name = item.name;
+                    current.Amount = item.amount;
+                    current.Unit = item.unit;
+
+                    ingrList.Add(current);
+                }
+                finalList = ingrList;
             }
             //System.Console.WriteLine(output);  
 
 
+            int size = finalList.Count();
+
+            Ingredients[] array = new Ingredients[size];
+
+            for(int i = 0; i < size; i++)
+            {
+                array[i] = finalList[i];
+            }
+            
+
             API_Reciever.ServiceReference1.RecipeService1Client client = new API_Reciever.ServiceReference1.RecipeService1Client();
 
             client.addRecipe(recipe.id, recipe.title, recipe.readyInMinutes, recipe.vegetarian, recipe.vegan, recipe.cheap,
-                recipe.sustainable, recipe.glutenFree, recipe.dairyFree, recipe.image, recipe.instructions, recipe.imageType);
+                recipe.sustainable, recipe.glutenFree, recipe.dairyFree, recipe.image, recipe.instructions, recipe.imageType, array);
 
 
             Console.ReadLine();
@@ -79,21 +109,20 @@ namespace DBRecipeFetcher
         public String image { get; set; }
         public String imageType { get; set; }
         public String instructions { get; set; }
-        //public List<Ingredient> extendedIngredients { get; set; }
+        public List<Ingredient> extendedIngredients { get; set; }
     }
 
     class Ingredient
     {
         public int id { get; set; }
-        public double amount { get; set; }
         public String aisle { get; set; }
         public String image { get; set; }
+        public String consistency { get; set; }
         public String name { get; set; }
-        public String unit { get; set; }
-        public String unitShort { get; set; }
-        public String unitLong { get; set; }
         public String originalString { get; set; }
-        public String metaInformation { get; set; }
+        public String originalName { get; set; }
+        public double amount { get; set; }
+        public String unit { get; set; }
     }
 
 }
