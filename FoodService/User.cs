@@ -26,8 +26,5 @@ namespace FoodService
         public Nullable<bool> vegan { get; set; }
         public Nullable<bool> dairyfree { get; set; }
         public Nullable<bool> glutenfree { get; set; }
-        public string favorites { get; set; }
-        public string favJokes { get; set; }
-        public string favTrivia { get; set; }
     }
 }

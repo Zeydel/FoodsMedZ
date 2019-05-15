@@ -25,11 +25,9 @@ namespace FoodService
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Food> Food { get; set; }
         public virtual DbSet<FoodJoke> FoodJoke { get; set; }
         public virtual DbSet<FoodTrivia> FoodTrivia { get; set; }
         public virtual DbSet<Ingredients> Ingredients { get; set; }
-        public virtual DbSet<Nutrition> Nutrition { get; set; }
         public virtual DbSet<Recipe> Recipe { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

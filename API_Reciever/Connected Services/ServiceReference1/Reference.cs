@@ -61,9 +61,6 @@ namespace API_Reciever.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> sustainableField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API_Reciever.ServiceReference1.users[] usersField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -243,19 +240,6 @@ namespace API_Reciever.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public API_Reciever.ServiceReference1.users[] users {
-            get {
-                return this.usersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.usersField, value) != true)) {
-                    this.usersField = value;
-                    this.RaisePropertyChanged("users");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -279,10 +263,7 @@ namespace API_Reciever.ServiceReference1 {
         private System.Nullable<double> AmountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API_Reciever.ServiceReference1.Food FoodField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Food_idField;
+        private int Ingredient_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Ingredient_nameField;
@@ -294,10 +275,7 @@ namespace API_Reciever.ServiceReference1 {
         private int Recipe_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> UnitField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string imageField;
+        private string UnitField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -323,27 +301,14 @@ namespace API_Reciever.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public API_Reciever.ServiceReference1.Food Food {
+        public int Ingredient_id {
             get {
-                return this.FoodField;
+                return this.Ingredient_idField;
             }
             set {
-                if ((object.ReferenceEquals(this.FoodField, value) != true)) {
-                    this.FoodField = value;
-                    this.RaisePropertyChanged("Food");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Food_id {
-            get {
-                return this.Food_idField;
-            }
-            set {
-                if ((this.Food_idField.Equals(value) != true)) {
-                    this.Food_idField = value;
-                    this.RaisePropertyChanged("Food_id");
+                if ((this.Ingredient_idField.Equals(value) != true)) {
+                    this.Ingredient_idField = value;
+                    this.RaisePropertyChanged("Ingredient_id");
                 }
             }
         }
@@ -388,530 +353,14 @@ namespace API_Reciever.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Unit {
+        public string Unit {
             get {
                 return this.UnitField;
             }
             set {
-                if ((this.UnitField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.UnitField, value) != true)) {
                     this.UnitField = value;
                     this.RaisePropertyChanged("Unit");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string image {
-            get {
-                return this.imageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.imageField, value) != true)) {
-                    this.imageField = value;
-                    this.RaisePropertyChanged("image");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="users", Namespace="http://schemas.datacontract.org/2004/07/FoodService")]
-    [System.SerializableAttribute()]
-    public partial class users : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string First_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Last_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API_Reciever.ServiceReference1.Recipe[] RecipeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int User_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> dairyfreeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> genderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> glutenfreeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> heightField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string userNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> veganField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> vegetarianField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string First_name {
-            get {
-                return this.First_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.First_nameField, value) != true)) {
-                    this.First_nameField = value;
-                    this.RaisePropertyChanged("First_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Last_name {
-            get {
-                return this.Last_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Last_nameField, value) != true)) {
-                    this.Last_nameField = value;
-                    this.RaisePropertyChanged("Last_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public API_Reciever.ServiceReference1.Recipe[] Recipe {
-            get {
-                return this.RecipeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RecipeField, value) != true)) {
-                    this.RecipeField = value;
-                    this.RaisePropertyChanged("Recipe");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int User_id {
-            get {
-                return this.User_idField;
-            }
-            set {
-                if ((this.User_idField.Equals(value) != true)) {
-                    this.User_idField = value;
-                    this.RaisePropertyChanged("User_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> dairyfree {
-            get {
-                return this.dairyfreeField;
-            }
-            set {
-                if ((this.dairyfreeField.Equals(value) != true)) {
-                    this.dairyfreeField = value;
-                    this.RaisePropertyChanged("dairyfree");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> gender {
-            get {
-                return this.genderField;
-            }
-            set {
-                if ((this.genderField.Equals(value) != true)) {
-                    this.genderField = value;
-                    this.RaisePropertyChanged("gender");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> glutenfree {
-            get {
-                return this.glutenfreeField;
-            }
-            set {
-                if ((this.glutenfreeField.Equals(value) != true)) {
-                    this.glutenfreeField = value;
-                    this.RaisePropertyChanged("glutenfree");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> height {
-            get {
-                return this.heightField;
-            }
-            set {
-                if ((this.heightField.Equals(value) != true)) {
-                    this.heightField = value;
-                    this.RaisePropertyChanged("height");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string userName {
-            get {
-                return this.userNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.userNameField, value) != true)) {
-                    this.userNameField = value;
-                    this.RaisePropertyChanged("userName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> vegan {
-            get {
-                return this.veganField;
-            }
-            set {
-                if ((this.veganField.Equals(value) != true)) {
-                    this.veganField = value;
-                    this.RaisePropertyChanged("vegan");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> vegetarian {
-            get {
-                return this.vegetarianField;
-            }
-            set {
-                if ((this.vegetarianField.Equals(value) != true)) {
-                    this.vegetarianField = value;
-                    this.RaisePropertyChanged("vegetarian");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Food", Namespace="http://schemas.datacontract.org/2004/07/FoodService")]
-    [System.SerializableAttribute()]
-    public partial class Food : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Food_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Food_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API_Reciever.ServiceReference1.Ingredients[] IngredientsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API_Reciever.ServiceReference1.Nutrition[] NutritionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> amountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string imageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string unitField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Food_id {
-            get {
-                return this.Food_idField;
-            }
-            set {
-                if ((this.Food_idField.Equals(value) != true)) {
-                    this.Food_idField = value;
-                    this.RaisePropertyChanged("Food_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Food_name {
-            get {
-                return this.Food_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Food_nameField, value) != true)) {
-                    this.Food_nameField = value;
-                    this.RaisePropertyChanged("Food_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public API_Reciever.ServiceReference1.Ingredients[] Ingredients {
-            get {
-                return this.IngredientsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
-                    this.IngredientsField = value;
-                    this.RaisePropertyChanged("Ingredients");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public API_Reciever.ServiceReference1.Nutrition[] Nutrition {
-            get {
-                return this.NutritionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NutritionField, value) != true)) {
-                    this.NutritionField = value;
-                    this.RaisePropertyChanged("Nutrition");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> amount {
-            get {
-                return this.amountField;
-            }
-            set {
-                if ((this.amountField.Equals(value) != true)) {
-                    this.amountField = value;
-                    this.RaisePropertyChanged("amount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string image {
-            get {
-                return this.imageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.imageField, value) != true)) {
-                    this.imageField = value;
-                    this.RaisePropertyChanged("image");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.unitField, value) != true)) {
-                    this.unitField = value;
-                    this.RaisePropertyChanged("unit");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Nutrition", Namespace="http://schemas.datacontract.org/2004/07/FoodService")]
-    [System.SerializableAttribute()]
-    public partial class Nutrition : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API_Reciever.ServiceReference1.Food FoodField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Ingredient_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Nutrition_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> amountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> unitField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public API_Reciever.ServiceReference1.Food Food {
-            get {
-                return this.FoodField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FoodField, value) != true)) {
-                    this.FoodField = value;
-                    this.RaisePropertyChanged("Food");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Ingredient_id {
-            get {
-                return this.Ingredient_idField;
-            }
-            set {
-                if ((this.Ingredient_idField.Equals(value) != true)) {
-                    this.Ingredient_idField = value;
-                    this.RaisePropertyChanged("Ingredient_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Nutrition_id {
-            get {
-                return this.Nutrition_idField;
-            }
-            set {
-                if ((this.Nutrition_idField.Equals(value) != true)) {
-                    this.Nutrition_idField = value;
-                    this.RaisePropertyChanged("Nutrition_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> amount {
-            get {
-                return this.amountField;
-            }
-            set {
-                if ((this.amountField.Equals(value) != true)) {
-                    this.amountField = value;
-                    this.RaisePropertyChanged("amount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                if ((this.unitField.Equals(value) != true)) {
-                    this.unitField = value;
-                    this.RaisePropertyChanged("unit");
                 }
             }
         }
@@ -930,17 +379,41 @@ namespace API_Reciever.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IRecipeService1")]
     public interface IRecipeService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesResponse")]
-        API_Reciever.ServiceReference1.Recipe getRecipes(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipe", ReplyAction="http://tempuri.org/IRecipeService1/getRecipeResponse")]
+        API_Reciever.ServiceReference1.Recipe getRecipe(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesResponse")]
-        System.Threading.Tasks.Task<API_Reciever.ServiceReference1.Recipe> getRecipesAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
-        void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipe", ReplyAction="http://tempuri.org/IRecipeService1/getRecipeResponse")]
+        System.Threading.Tasks.Task<API_Reciever.ServiceReference1.Recipe> getRecipeAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
-        System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp);
+        void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp, API_Reciever.ServiceReference1.Ingredients[] ingredientList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
+        System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp, API_Reciever.ServiceReference1.Ingredients[] ingredientList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByNameResponse")]
+        string findRecipesByName(string recipe_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByNameResponse")]
+        System.Threading.Tasks.Task<string> findRecipesByNameAsync(string recipe_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesById", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByIdResponse")]
+        string findRecipesById(int recipe_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesById", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByIdResponse")]
+        System.Threading.Tasks.Task<string> findRecipesByIdAsync(int recipe_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
+        string getAllRecipes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
+        System.Threading.Tasks.Task<string> getAllRecipesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse")]
+        string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse")]
+        System.Threading.Tasks.Task<string> getRecipesAdvancedAsync(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -970,20 +443,52 @@ namespace API_Reciever.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public API_Reciever.ServiceReference1.Recipe getRecipes(int id) {
-            return base.Channel.getRecipes(id);
+        public API_Reciever.ServiceReference1.Recipe getRecipe(int id) {
+            return base.Channel.getRecipe(id);
         }
         
-        public System.Threading.Tasks.Task<API_Reciever.ServiceReference1.Recipe> getRecipesAsync(int id) {
-            return base.Channel.getRecipesAsync(id);
+        public System.Threading.Tasks.Task<API_Reciever.ServiceReference1.Recipe> getRecipeAsync(int id) {
+            return base.Channel.getRecipeAsync(id);
         }
         
-        public void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp) {
-            base.Channel.addRecipe(recipe_id, recipe_name, recipe_minutes, recipe_veg, recipe_vegan, cheap, sustainable, glutenfree, dairyfree, image, instruction, imageTyp);
+        public void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp, API_Reciever.ServiceReference1.Ingredients[] ingredientList) {
+            base.Channel.addRecipe(recipe_id, recipe_name, recipe_minutes, recipe_veg, recipe_vegan, cheap, sustainable, glutenfree, dairyfree, image, instruction, imageTyp, ingredientList);
         }
         
-        public System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp) {
-            return base.Channel.addRecipeAsync(recipe_id, recipe_name, recipe_minutes, recipe_veg, recipe_vegan, cheap, sustainable, glutenfree, dairyfree, image, instruction, imageTyp);
+        public System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp, API_Reciever.ServiceReference1.Ingredients[] ingredientList) {
+            return base.Channel.addRecipeAsync(recipe_id, recipe_name, recipe_minutes, recipe_veg, recipe_vegan, cheap, sustainable, glutenfree, dairyfree, image, instruction, imageTyp, ingredientList);
+        }
+        
+        public string findRecipesByName(string recipe_name) {
+            return base.Channel.findRecipesByName(recipe_name);
+        }
+        
+        public System.Threading.Tasks.Task<string> findRecipesByNameAsync(string recipe_name) {
+            return base.Channel.findRecipesByNameAsync(recipe_name);
+        }
+        
+        public string findRecipesById(int recipe_id) {
+            return base.Channel.findRecipesById(recipe_id);
+        }
+        
+        public System.Threading.Tasks.Task<string> findRecipesByIdAsync(int recipe_id) {
+            return base.Channel.findRecipesByIdAsync(recipe_id);
+        }
+        
+        public string getAllRecipes() {
+            return base.Channel.getAllRecipes();
+        }
+        
+        public System.Threading.Tasks.Task<string> getAllRecipesAsync() {
+            return base.Channel.getAllRecipesAsync();
+        }
+        
+        public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues) {
+            return base.Channel.getRecipesAdvanced(searchTerm, vegetarian, vegan, cheap, glutenfree, dairyfree, maxminues);
+        }
+        
+        public System.Threading.Tasks.Task<string> getRecipesAdvancedAsync(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues) {
+            return base.Channel.getRecipesAdvancedAsync(searchTerm, vegetarian, vegan, cheap, glutenfree, dairyfree, maxminues);
         }
     }
 }
