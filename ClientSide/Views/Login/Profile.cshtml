@@ -4,115 +4,130 @@
     ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
+<html>
+<head>
+	<h2>@ViewBag.Title.</h2>
+	<link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+	<div class="backgroundimg">
+		
 
-<div>
-    <h4>users</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.First_name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.First_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Last_name)
-        </dt>
+			
+		<div class="framelogin">
+			<h4 class="text">User profile</h4>
+			<dl class="dl-horizontal">
+				<dt>
+					First name
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Last_name)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.First_name)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User_id)
-        </dt>
+				<dt>
+					Last name:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User_id)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.Last_name)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dairyfree)
-        </dt>
+				<dt>
+					User ID:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.dairyfree)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.User_id)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gender)
-        </dt>
+				<dt>
+					Password:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.gender)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.password)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.glutenfree)
-        </dt>
+				<dt>
+					Username:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.glutenfree)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.userName)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.height)
-        </dt>
+				<dt>
+					Dairyfree diet:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.height)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.dairyfree)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
+				<dt>
+					Gender:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.gender)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.userName)
-        </dt>
+				<dt>
+					Glutenfree diet:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.userName)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.glutenfree)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.vegan)
-        </dt>
+				<dt>
+					Heigh:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.vegan)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.height)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.vegetarian)
-        </dt>
+				<dt>
+					Weight:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.vegetarian)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.weight)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.weight)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.weight)
-        </dd>
+				<dt>
+					Vegan
+				</dt>
 
-    </dl>
-</div>
+				<dd>
+					@Html.DisplayFor(model => model.vegan)
+				</dd>
 
-<div>
-    @Html.ActionLink("Update Profile", "UpdateProfile")
-</div>
+				<dt>
+					Vegetarian:
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.vegetarian)
+				</dd>
+
+
+				<div>
+					@Html.ActionLink("Update Profile", "UpdateProfile")
+				</div>
+
+			</dl>
+		</div>
+	</div>
+
+
 <p>
     @Html.ActionLink("UpdateProfile", "Login", new { /**/ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+</head>
+</html>
