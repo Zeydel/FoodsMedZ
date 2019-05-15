@@ -1,4 +1,5 @@
-﻿using ClientSide.UserServiceReference;
+﻿using ClientSide.Models;
+using ClientSide.UserServiceReference;
 using FoodService;
 using Newtonsoft.Json;
 using System;
@@ -13,8 +14,10 @@ namespace ClientSide.Controllers
     public class RecipeController : Controller
     {
         RecipeServiceReference.RecipeService1Client recipeServiceClient = new RecipeServiceReference.RecipeService1Client();
+        UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
 
-		JsonSerializerSettings jsettings = new JsonSerializerSettings()
+
+        JsonSerializerSettings jsettings = new JsonSerializerSettings()
 		{
 			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
 			Formatting = Formatting.Indented,
@@ -40,6 +43,20 @@ namespace ClientSide.Controllers
 
         public ActionResult Favorites()
         {
+            if (Request.Cookies["userid"] != null)
+            {
+                //return View("Profile", GetUserByCookie());
+                User user = GetUserByCookie();
+                List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
+                List<Recipe> recipes = new List<Recipe>();
+                foreach (int recipeId in favorites)
+                {
+                    recipes.Add(getRecipe(recipeId));
+                }
+                IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
+                return View(recupeenum);
+
+            }
             return View();
         }
 
@@ -47,6 +64,21 @@ namespace ClientSide.Controllers
         public Recipe getRecipe(int id)
         {
 			return JsonConvert.DeserializeObject<Recipe>(recipeServiceClient.findRecipesById(id));
+        }
+
+        /// <summary>
+		/// Fetches a user object from service based on cookie in browser.
+		/// </summary>
+		/// <returns></returns>
+		[HttpGet]
+        public User GetUserByCookie()
+        {
+            int value = -1;
+            if (Request.Cookies["userid"] != null)
+            {
+                value = int.Parse(Request.Cookies["userid"].Value);
+            }
+            return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value), jsettings);
         }
     }
 }
