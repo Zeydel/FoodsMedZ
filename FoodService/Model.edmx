@@ -63,6 +63,9 @@
           <Property Name="vegan" Type="bit" />
           <Property Name="dairyfree" Type="bit" />
           <Property Name="glutenfree" Type="bit" />
+          <Property Name="favorites" Type="varchar(max)" />
+          <Property Name="favJokes" Type="varchar(max)" />
+          <Property Name="favTrivia" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK__Ingredien__Recip__63A3C44B">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
@@ -152,6 +155,9 @@
           <Property Name="vegan" Type="Boolean" />
           <Property Name="dairyfree" Type="Boolean" />
           <Property Name="glutenfree" Type="Boolean" />
+          <Property Name="favorites" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="favJokes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="favTrivia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Ingredien__Recip__63A3C44B">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
@@ -242,6 +248,9 @@
                 <ScalarProperty Name="vegan" ColumnName="vegan" />
                 <ScalarProperty Name="dairyfree" ColumnName="dairyfree" />
                 <ScalarProperty Name="glutenfree" ColumnName="glutenfree" />
+                <ScalarProperty Name="favorites" ColumnName="favorites" />
+                <ScalarProperty Name="favJokes" ColumnName="favJokes" />
+                <ScalarProperty Name="favTrivia" ColumnName="favTrivia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
