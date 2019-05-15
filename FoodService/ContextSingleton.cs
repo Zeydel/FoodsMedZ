@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FoodService
 {
-	public sealed class ContextFactory
+	public sealed class ContextSingleton
 	{
 		private static readonly masterEntities m = new masterEntities();
 		public static masterEntities getContext()

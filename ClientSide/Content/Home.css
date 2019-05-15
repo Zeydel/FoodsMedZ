@@ -14,9 +14,6 @@
 	line-height: 1.7;
 	color: #4d4d4d;
 	font-weight: 400;
-	font-size: 0.9rem;
-	font-family: "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 ::-moz-selection {
@@ -220,7 +217,7 @@ a {
 	}
 
 	.bg-image.fixed {
-		background-position: "fixed" !important;
+		background-position: fixed;
 	}
 
 	.bg-image.overlay, .bg-image.overlay-primary, .bg-image.overlay-info, .bg-image.overlay-success, .bg-image.overlay-warning {

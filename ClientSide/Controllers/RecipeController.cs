@@ -12,23 +12,18 @@ namespace ClientSide.Controllers
 {
     public class RecipeController : Controller
     {
-        RecipeServiceReference.RecipeService1Client recipeServiceClient = new RecipeServiceReference.RecipeService1Client();
+		RecipeServiceReference.RecipeService1Client recipeServiceClient = ServiceFactory.getRecipeServiceClient();
 
-		JsonSerializerSettings jsettings = new JsonSerializerSettings()
-		{
-			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented,
-			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 
-		};
-		// GET: Recipe
 		public ActionResult Recipes()
         {
-            string recipe_list = recipeServiceClient.getAllRecipes();
-			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list, jsettings);
-            IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
-            return View(recupeenum);
+				string recipe_list = recipeServiceClient.getAllRecipes();
+				List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list, jsettings);
+				IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
+				return View(recupeenum);
         }
+
 
         public ActionResult RecipeDetails(int id)
         {
