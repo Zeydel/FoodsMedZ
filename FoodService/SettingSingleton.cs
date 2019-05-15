@@ -20,7 +20,6 @@ namespace FoodService
 					PreserveReferencesHandling = PreserveReferencesHandling.Objects,
 					Formatting = Formatting.Indented,
 					ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
 				};
 			}
 			return jsettings;
