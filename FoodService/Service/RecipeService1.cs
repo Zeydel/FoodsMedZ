@@ -46,9 +46,10 @@ namespace FoodService
 		/// <param name="image"></param>
 		/// <param name="instruction"></param>
 		/// <param name="imageTyp"></param>
+        /// <param name="ingredientList"></param>
 		public void addRecipe(int recipe_id, String recipe_name, int recipe_minutes, Boolean recipe_veg,
 			Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree,
-			String image, String instruction, String imageTyp)
+			String image, String instruction, String imageTyp, List<Ingredients> ingredientList)
 		{
 			masterEntities m = ContextSingleton.getContext();
 			Recipe rcp = new Recipe();
@@ -64,6 +65,7 @@ namespace FoodService
 			rcp.image = image;
 			rcp.Instructions = instruction;
 			rcp.imageTyp = imageTyp;
+            rcp.Ingredients = ingredientList;
 			m.Recipe.Add(rcp);
 			m.SaveChanges();
 		}

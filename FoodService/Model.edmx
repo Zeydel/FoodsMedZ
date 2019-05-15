@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Food">
-          <Key>
-            <PropertyRef Name="Food_id" />
-          </Key>
-          <Property Name="Food_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Food_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="image" Type="nvarchar" MaxLength="50" />
-          <Property Name="amount" Type="int" />
-          <Property Name="unit" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="FoodJoke">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,25 +21,14 @@
         </EntityType>
         <EntityType Name="Ingredients">
           <Key>
-            <PropertyRef Name="Food_id" />
+            <PropertyRef Name="Ingredient_id" />
             <PropertyRef Name="Recipe_id" />
           </Key>
-          <Property Name="Food_id" Type="int" Nullable="false" />
+          <Property Name="Ingredient_id" Type="int" Nullable="false" />
           <Property Name="Recipe_id" Type="int" Nullable="false" />
           <Property Name="Ingredient_name" Type="nvarchar" MaxLength="50" />
           <Property Name="Amount" Type="float" />
-          <Property Name="Unit" Type="int" />
-          <Property Name="image" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Nutrition">
-          <Key>
-            <PropertyRef Name="Nutrition_id" />
-          </Key>
-          <Property Name="Nutrition_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="amount" Type="int" />
-          <Property Name="unit" Type="int" />
-          <Property Name="Ingredient_id" Type="int" />
+          <Property Name="Unit" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -88,19 +67,7 @@
           <Property Name="favJokes" Type="varchar(max)" />
           <Property Name="favTrivia" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK__Ingredien__Food___3F6663D5">
-          <End Role="Food" Type="Self.Food" Multiplicity="1" />
-          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Food">
-              <PropertyRef Name="Food_id" />
-            </Principal>
-            <Dependent Role="Ingredients">
-              <PropertyRef Name="Food_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ingredien__Recip__3B95D2F1">
+        <Association Name="FK__Ingredien__Recip__63A3C44B">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
           <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,37 +79,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nutrition__Ingre__405A880E">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Nutrition" Type="Self.Nutrition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Food">
-              <PropertyRef Name="Food_id" />
-            </Principal>
-            <Dependent Role="Nutrition">
-              <PropertyRef Name="Ingredient_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="masterModelStoreContainer">
-          <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodJoke" EntityType="Self.FoodJoke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodTrivia" EntityType="Self.FoodTrivia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Nutrition" EntityType="Self.Nutrition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Ingredien__Food___3F6663D5" Association="Self.FK__Ingredien__Food___3F6663D5">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Ingredients" EntitySet="Ingredients" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ingredien__Recip__3B95D2F1" Association="Self.FK__Ingredien__Recip__3B95D2F1">
+          <AssociationSet Name="FK__Ingredien__Recip__63A3C44B" Association="Self.FK__Ingredien__Recip__63A3C44B">
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="Ingredients" EntitySet="Ingredients" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Nutrition__Ingre__405A880E" Association="Self.FK__Nutrition__Ingre__405A880E">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Nutrition" EntitySet="Nutrition" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -150,18 +95,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Food">
-          <Key>
-            <PropertyRef Name="Food_id" />
-          </Key>
-          <Property Name="Food_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Food_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="amount" Type="Int32" />
-          <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__Food___3F6663D5" FromRole="Food" ToRole="Ingredients" />
-          <NavigationProperty Name="Nutrition" Relationship="Self.FK__Nutrition__Ingre__405A880E" FromRole="Food" ToRole="Nutrition" />
-        </EntityType>
         <EntityType Name="FoodJoke">
           <Key>
             <PropertyRef Name="Id" />
@@ -178,28 +111,15 @@
         </EntityType>
         <EntityType Name="Ingredients">
           <Key>
-            <PropertyRef Name="Food_id" />
+            <PropertyRef Name="Ingredient_id" />
             <PropertyRef Name="Recipe_id" />
           </Key>
-          <Property Name="Food_id" Type="Int32" Nullable="false" />
+          <Property Name="Ingredient_id" Type="Int32" Nullable="false" />
           <Property Name="Recipe_id" Type="Int32" Nullable="false" />
           <Property Name="Ingredient_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Double" />
-          <Property Name="Unit" Type="Int32" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Food" Relationship="Self.FK__Ingredien__Food___3F6663D5" FromRole="Ingredients" ToRole="Food" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK__Ingredien__Recip__3B95D2F1" FromRole="Ingredients" ToRole="Recipe" />
-        </EntityType>
-        <EntityType Name="Nutrition">
-          <Key>
-            <PropertyRef Name="Nutrition_id" />
-          </Key>
-          <Property Name="Nutrition_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="amount" Type="Int32" />
-          <Property Name="unit" Type="Int32" />
-          <Property Name="Ingredient_id" Type="Int32" />
-          <NavigationProperty Name="Food" Relationship="Self.FK__Nutrition__Ingre__405A880E" FromRole="Nutrition" ToRole="Food" />
+          <Property Name="Unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK__Ingredien__Recip__63A3C44B" FromRole="Ingredients" ToRole="Recipe" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -217,7 +137,7 @@
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="imageTyp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__Recip__3B95D2F1" FromRole="Recipe" ToRole="Ingredients" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__Recip__63A3C44B" FromRole="Recipe" ToRole="Ingredients" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -239,31 +159,7 @@
           <Property Name="favJokes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="favTrivia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK__Ingredien__Food___3F6663D5">
-          <End Role="Food" Type="Self.Food" Multiplicity="1" />
-          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Food">
-              <PropertyRef Name="Food_id" />
-            </Principal>
-            <Dependent Role="Ingredients">
-              <PropertyRef Name="Food_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Nutrition__Ingre__405A880E">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Nutrition" Type="Self.Nutrition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Food">
-              <PropertyRef Name="Food_id" />
-            </Principal>
-            <Dependent Role="Nutrition">
-              <PropertyRef Name="Ingredient_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ingredien__Recip__3B95D2F1">
+        <Association Name="FK__Ingredien__Recip__63A3C44B">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
           <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,22 +172,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Food" EntityType="Self.Food" />
           <EntitySet Name="FoodJoke" EntityType="Self.FoodJoke" />
           <EntitySet Name="FoodTrivia" EntityType="Self.FoodTrivia" />
           <EntitySet Name="Ingredients" EntityType="Self.Ingredients" />
-          <EntitySet Name="Nutrition" EntityType="Self.Nutrition" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK__Ingredien__Food___3F6663D5" Association="Self.FK__Ingredien__Food___3F6663D5">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Ingredients" EntitySet="Ingredients" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Nutrition__Ingre__405A880E" Association="Self.FK__Nutrition__Ingre__405A880E">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Nutrition" EntitySet="Nutrition" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ingredien__Recip__3B95D2F1" Association="Self.FK__Ingredien__Recip__3B95D2F1">
+          <AssociationSet Name="FK__Ingredien__Recip__63A3C44B" Association="Self.FK__Ingredien__Recip__63A3C44B">
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
@@ -302,17 +188,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
-          <EntitySetMapping Name="Food">
-            <EntityTypeMapping TypeName="masterModel.Food">
-              <MappingFragment StoreEntitySet="Food">
-                <ScalarProperty Name="Food_id" ColumnName="Food_id" />
-                <ScalarProperty Name="Food_name" ColumnName="Food_name" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="unit" ColumnName="unit" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FoodJoke">
             <EntityTypeMapping TypeName="masterModel.FoodJoke">
               <MappingFragment StoreEntitySet="FoodJoke">
@@ -332,23 +207,11 @@
           <EntitySetMapping Name="Ingredients">
             <EntityTypeMapping TypeName="masterModel.Ingredients">
               <MappingFragment StoreEntitySet="Ingredients">
-                <ScalarProperty Name="Food_id" ColumnName="Food_id" />
+                <ScalarProperty Name="Ingredient_id" ColumnName="Ingredient_id" />
                 <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
                 <ScalarProperty Name="Ingredient_name" ColumnName="Ingredient_name" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="image" ColumnName="image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Nutrition">
-            <EntityTypeMapping TypeName="masterModel.Nutrition">
-              <MappingFragment StoreEntitySet="Nutrition">
-                <ScalarProperty Name="Nutrition_id" ColumnName="Nutrition_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="unit" ColumnName="unit" />
-                <ScalarProperty Name="Ingredient_id" ColumnName="Ingredient_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

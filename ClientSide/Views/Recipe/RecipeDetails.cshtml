@@ -77,6 +77,20 @@
 
 </table>
 
-<b>Instructions:</b>
+<b>Ingredients:</b>
 
-@Html.DisplayFor(modelItem => modelItem.Instructions)
+@foreach (var item in Model.Ingredients)
+{
+<li>
+    @Html.DisplayFor(modelItem => item.Amount)
+    @Html.DisplayFor(modelItem => item.Unit)
+    @Html.DisplayFor(modelItem => item.Ingredient_name)
+</li>
+}
+
+
+<p>
+    <b>Instructions:</b>
+
+    @Html.DisplayFor(modelItem => modelItem.Instructions)
+</p>
