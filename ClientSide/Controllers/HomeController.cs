@@ -39,11 +39,6 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
-		public ActionResult Favorites()
-		{
-			return View();
-		}
-
 		public ActionResult About()
 		{
 			//ViewBag.Message = "Your application description page.";

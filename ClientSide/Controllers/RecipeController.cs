@@ -25,6 +25,13 @@ namespace ClientSide.Controllers
         {
             Recipe recipe = getRecipe(id);
             return View("RecipeDetails", recipe);
+            
+            
+        }
+
+        public ActionResult Favorites()
+        {
+            return View();
         }
 
         [HttpGet]
