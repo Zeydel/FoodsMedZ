@@ -9,7 +9,6 @@
       <xs:element minOccurs="0" name="Recipe_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Recipe_veg" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Recipe_vegan" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
       <xs:element minOccurs="0" name="cheap" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="dairyfree" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="glutenfree" nillable="true" type="xs:boolean" />
@@ -28,103 +27,12 @@
   <xs:complexType name="Ingredients">
     <xs:sequence>
       <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="Food" nillable="true" type="tns:Food" />
-      <xs:element minOccurs="0" name="Food_id" type="xs:int" />
+      <xs:element minOccurs="0" name="Ingredient_id" type="xs:int" />
       <xs:element minOccurs="0" name="Ingredient_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Recipe" nillable="true" type="tns:Recipe" />
       <xs:element minOccurs="0" name="Recipe_id" type="xs:int" />
-      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Ingredients" nillable="true" type="tns:Ingredients" />
-  <xs:complexType name="Food">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Food_id" type="xs:int" />
-      <xs:element minOccurs="0" name="Food_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Ingredients" nillable="true" type="tns:ArrayOfIngredients" />
-      <xs:element minOccurs="0" name="Nutrition" nillable="true" type="tns:ArrayOfNutrition" />
-      <xs:element minOccurs="0" name="amount" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="unit" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Food" nillable="true" type="tns:Food" />
-  <xs:complexType name="ArrayOfNutrition">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Nutrition" nillable="true" type="tns:Nutrition" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfNutrition" nillable="true" type="tns:ArrayOfNutrition" />
-  <xs:complexType name="Nutrition">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Food" nillable="true" type="tns:Food" />
-      <xs:element minOccurs="0" name="Ingredient_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Nutrition_id" type="xs:int" />
-      <xs:element minOccurs="0" name="amount" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="unit" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Nutrition" nillable="true" type="tns:Nutrition" />
-  <xs:complexType name="ArrayOfUser">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
-  <xs:complexType name="User">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="First_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodJoke" nillable="true" type="tns:ArrayOfFoodJoke" />
-      <xs:element minOccurs="0" name="FoodTrivia" nillable="true" type="tns:ArrayOfFoodTrivia" />
-      <xs:element minOccurs="0" name="Last_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Recipe" nillable="true" type="tns:ArrayOfRecipe" />
-      <xs:element minOccurs="0" name="User_id" type="xs:int" />
-      <xs:element minOccurs="0" name="dairyfree" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="gender" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="glutenfree" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="height" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="vegan" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="vegetarian" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:double" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:complexType name="ArrayOfFoodJoke">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodJoke" nillable="true" type="tns:FoodJoke" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFoodJoke" nillable="true" type="tns:ArrayOfFoodJoke" />
-  <xs:complexType name="FoodJoke">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Food_joke" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FoodJoke" nillable="true" type="tns:FoodJoke" />
-  <xs:complexType name="ArrayOfFoodTrivia">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodTrivia" nillable="true" type="tns:FoodTrivia" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFoodTrivia" nillable="true" type="tns:ArrayOfFoodTrivia" />
-  <xs:complexType name="FoodTrivia">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Food_trivia" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:ArrayOfUser" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FoodTrivia" nillable="true" type="tns:FoodTrivia" />
-  <xs:complexType name="ArrayOfRecipe">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Recipe" nillable="true" type="tns:Recipe" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRecipe" nillable="true" type="tns:ArrayOfRecipe" />
 </xs:schema>

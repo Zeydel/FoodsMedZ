@@ -30,6 +30,7 @@
         <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="instruction" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="imageTyp" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/FoodService" minOccurs="0" name="ingredientList" nillable="true" type="q2:ArrayOfIngredients" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
