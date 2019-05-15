@@ -1,14 +1,179 @@
 ﻿@{
     ViewBag.Title = "Health & Diet";
 }
-<h2>@ViewBag.Title.</h2>
 
-<p>On this page you will find various sources to articles about improving and maintaining your health and diet. <br />
-   Furthermore, we offer a various assortment of tools to help you on your jouney, such as a BMI calculator. </p>
+<style>
+    .card {
+        box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+        border-radius: 4px;
+        padding: 16px;
+    }
+
+    .card-header h3 {
+        margin-top: 0;
+        margin-bottom: 0.35em;
+    }
+
+    .card-content {
+    }
+
+    .mb-3, .my-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .input-group {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .input-group-text {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: .375rem .75rem;
+        margin-bottom: 0;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        min-width: 2.5em;
+    }
+
+    .input-group-prepend {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-right: -1px;
+    }
+
+    #bmi-result {
+        font-size: 4em;
+        font-weight: 700;
+    }
 
 
-<p>
+    .card ul li {
+        padding: .4em 0 .4em 0;
+        font-size: 2em;
+        list-style-type: none;
+        font-size: 1.2rem;
+        margin-bottom: .4rem;
+    }
 
-</p>
+        .card ul li:hover:before {
+            background-color: #ffb329;
+        }
+
+        .card ul li:before {
+            content: "\2713 ";
+            font-size: 1.5em;
+            margin-left: -40px;
+            margin-right: 10px;
+            padding: .2em .45em .2em .45em;
+            position: relative;
+            /*color: white;*/
+            background-color: #859a31;
+            border-radius: 50%;
+        }
+
+        .card ul li a {
+            /*color: #859a31;*/
+            text-decoration: none;
+            -moz-transition: all, 500ms;
+            -o-transition: all, 500ms;
+            -webkit-transition: all, 500ms;
+            transition: all, 500ms;
+        }
+
+            .card ul li a:hover {
+                border-bottom: .3rem solid;
+            }
+</style>
+
+<script>
+
+    function calculateBMI() {
+        var x = document.getElementById("weight").value;
+        var y = document.getElementById("height").value;
+        document.getElementById("bmi-result").innerHTML = Math.round((x / ((y / 100) * (y / 100))) * 100) / 100;
+    }
+
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@ViewBag.Title.</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>BMI Calculator</h3>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">cm</span>
+                                </div>
+                                <input id="height" onkeyup="calculateBMI()" type="number" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">kg</span>
+                                </div>
+                                <input id="weight" onkeyup="calculateBMI()" type="number" class="form-control" placeholder="Weight" aria-label="Weight" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div id="bmi-result">
+                            <p>100</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>The Eatwell Guide to a healthy, balanced diet</h3>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>eat at least 5 portions of a variety of fruit and vegetables every day 5 A Day</li>
+                        <li>base&nbsp;meals on higher fibre starchy foods like potatoes, bread, rice or pasta</li>
+                        <li>have some dairy or dairy alternatives (such as soya drinks)</li>
+                        <li>eat some beans, pulses, fish, eggs, meat and other protein</li>
+                        <li>choose unsaturated oils and spreads, and eat them in small amounts</li>
+                        <li>drink plenty of fluids (at least 6 to 8 glasses a day)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 

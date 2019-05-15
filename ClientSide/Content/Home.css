@@ -210,7 +210,7 @@ a {
 
 .bg-image {
 	background-size: cover;
-	background-repeat: no-rpeeat;
+	background-repeat: no-repeat;
 	overflow: hidden;
 	background-position: center center;
 }
@@ -220,7 +220,7 @@ a {
 	}
 
 	.bg-image.fixed {
-		background-position: fixed !important;
+		background-position: "fixed" !important;
 	}
 
 	.bg-image.overlay, .bg-image.overlay-primary, .bg-image.overlay-info, .bg-image.overlay-success, .bg-image.overlay-warning {
