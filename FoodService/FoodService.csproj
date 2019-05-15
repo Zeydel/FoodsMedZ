@@ -66,10 +66,10 @@
     <Compile Include="Ingredients.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="IService\IRecipeService1.cs" />
-    <Compile Include="IService\IFoodJokeService1.cs" />
-    <Compile Include="IService\IFoodTriviaService1.cs" />
-    <Compile Include="IService\IUserService1.cs" />
+    <Compile Include="IService\IRecipeService.cs" />
+    <Compile Include="IService\IFoodJokeService.cs" />
+    <Compile Include="IService\IFoodTriviaService.cs" />
+    <Compile Include="IService\IUserService.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,9 +89,9 @@
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Service\RecipeService1.cs" />
-    <Compile Include="Service\FoodJokeService1.cs" />
-    <Compile Include="Service\FoodTriviaService1.cs" />
+    <Compile Include="Service\RecipeService.cs" />
+    <Compile Include="Service\FoodJokeService.cs" />
+    <Compile Include="Service\FoodTriviaService.cs" />
     <Compile Include="SettingSingleton.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="User.cs">

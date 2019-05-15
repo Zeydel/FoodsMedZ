@@ -96,7 +96,7 @@ namespace FoodService
 		public void updateUser(string str)
 		{
 			masterEntities m = ContextSingleton.getContext();
-			RecipeService1 recipeclient = new RecipeService1();
+			RecipeService recipeclient = new RecipeService();
 			
 			User user = JsonConvert.DeserializeObject<User>(str, jsettings);
 

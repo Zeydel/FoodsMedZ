@@ -4,16 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using ClientSide.FoodJokeServiceReference;
+using ClientSide.FoodTriviaServiceReference;
 using FoodService;
 
 namespace ClientSide.Controllers
 {
 	public class FoodController : Controller
 	{
-		FoodJokeServiceReference.FoodJokeService1Client foodJokeServiceClient = ServiceFactory.getFoodJokeServiceClient();
-		FoodTriviaServiceReference.FoodTriviaService1Client foodTriviaServiceClient = ServiceFactory.getFoodTriviaServiceClient();
+		FoodJokeServiceClient foodJokeServiceClient = ServiceFactory.getFoodJokeServiceClient();
+		FoodTriviaServiceClient foodTriviaServiceClient = ServiceFactory.getFoodTriviaServiceClient();
 		List<FoodJoke> foodJokes = new List<FoodJoke>();
-
 
 		// GET: Food
 		[HttpGet]

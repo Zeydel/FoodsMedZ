@@ -12,40 +12,40 @@ namespace ClientSide.FoodJokeServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FoodJokeServiceReference.IFoodJokeService1")]
-    public interface IFoodJokeService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FoodJokeServiceReference.IFoodJokeService")]
+    public interface IFoodJokeService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodJokeService1/GetFoodJoke", ReplyAction="http://tempuri.org/IFoodJokeService1/GetFoodJokeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodJokeService/GetFoodJoke", ReplyAction="http://tempuri.org/IFoodJokeService/GetFoodJokeResponse")]
         string GetFoodJoke();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodJokeService1/GetFoodJoke", ReplyAction="http://tempuri.org/IFoodJokeService1/GetFoodJokeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodJokeService/GetFoodJoke", ReplyAction="http://tempuri.org/IFoodJokeService/GetFoodJokeResponse")]
         System.Threading.Tasks.Task<string> GetFoodJokeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IFoodJokeService1Channel : ClientSide.FoodJokeServiceReference.IFoodJokeService1, System.ServiceModel.IClientChannel {
+    public interface IFoodJokeServiceChannel : ClientSide.FoodJokeServiceReference.IFoodJokeService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class FoodJokeService1Client : System.ServiceModel.ClientBase<ClientSide.FoodJokeServiceReference.IFoodJokeService1>, ClientSide.FoodJokeServiceReference.IFoodJokeService1 {
+    public partial class FoodJokeServiceClient : System.ServiceModel.ClientBase<ClientSide.FoodJokeServiceReference.IFoodJokeService>, ClientSide.FoodJokeServiceReference.IFoodJokeService {
         
-        public FoodJokeService1Client() {
+        public FoodJokeServiceClient() {
         }
         
-        public FoodJokeService1Client(string endpointConfigurationName) : 
+        public FoodJokeServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public FoodJokeService1Client(string endpointConfigurationName, string remoteAddress) : 
+        public FoodJokeServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public FoodJokeService1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public FoodJokeServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public FoodJokeService1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public FoodJokeServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

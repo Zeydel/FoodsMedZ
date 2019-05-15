@@ -9,7 +9,7 @@ namespace FoodService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRecipeService1" in both code and config file together.
     [ServiceContract]
-    public interface IRecipeService1
+    public interface IRecipeService
     {
 		/// <summary>
 		/// Fetches one recipe from database based on id.

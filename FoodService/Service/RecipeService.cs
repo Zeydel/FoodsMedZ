@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 namespace FoodService
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RecipeService1" in both code and config file together.
-	public class RecipeService1 : IRecipeService1
+	public class RecipeService : IRecipeService
 	{
 		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		/// <summary>

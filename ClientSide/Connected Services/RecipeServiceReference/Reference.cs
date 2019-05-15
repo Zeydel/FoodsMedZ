@@ -12,70 +12,70 @@ namespace ClientSide.RecipeServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RecipeServiceReference.IRecipeService1")]
-    public interface IRecipeService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RecipeServiceReference.IRecipeService")]
+    public interface IRecipeService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipe", ReplyAction="http://tempuri.org/IRecipeService1/getRecipeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/getRecipe", ReplyAction="http://tempuri.org/IRecipeService/getRecipeResponse")]
         FoodService.Recipe getRecipe(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipe", ReplyAction="http://tempuri.org/IRecipeService1/getRecipeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/getRecipe", ReplyAction="http://tempuri.org/IRecipeService/getRecipeResponse")]
         System.Threading.Tasks.Task<FoodService.Recipe> getRecipeAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/addRecipe", ReplyAction="http://tempuri.org/IRecipeService/addRecipeResponse")]
         void addRecipe(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp, FoodService.Ingredients[] ingredientList);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/addRecipe", ReplyAction="http://tempuri.org/IRecipeService1/addRecipeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/addRecipe", ReplyAction="http://tempuri.org/IRecipeService/addRecipeResponse")]
         System.Threading.Tasks.Task addRecipeAsync(int recipe_id, string recipe_name, int recipe_minutes, bool recipe_veg, bool recipe_vegan, bool cheap, bool sustainable, bool glutenfree, bool dairyfree, string image, string instruction, string imageTyp, FoodService.Ingredients[] ingredientList);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByNameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService/findRecipesByNameResponse")]
         string findRecipesByName(string recipe_name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByNameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/findRecipesByName", ReplyAction="http://tempuri.org/IRecipeService/findRecipesByNameResponse")]
         System.Threading.Tasks.Task<string> findRecipesByNameAsync(string recipe_name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesById", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/findRecipesById", ReplyAction="http://tempuri.org/IRecipeService/findRecipesByIdResponse")]
         string findRecipesById(int recipe_id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/findRecipesById", ReplyAction="http://tempuri.org/IRecipeService1/findRecipesByIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/findRecipesById", ReplyAction="http://tempuri.org/IRecipeService/findRecipesByIdResponse")]
         System.Threading.Tasks.Task<string> findRecipesByIdAsync(int recipe_id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService/getAllRecipesResponse")]
         string getAllRecipes();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService1/getAllRecipesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/getAllRecipes", ReplyAction="http://tempuri.org/IRecipeService/getAllRecipesResponse")]
         System.Threading.Tasks.Task<string> getAllRecipesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService/getRecipesAdvancedResponse")]
         string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService1/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService1/getRecipesAdvancedResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeService/getRecipesAdvanced", ReplyAction="http://tempuri.org/IRecipeService/getRecipesAdvancedResponse")]
         System.Threading.Tasks.Task<string> getRecipesAdvancedAsync(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IRecipeService1Channel : ClientSide.RecipeServiceReference.IRecipeService1, System.ServiceModel.IClientChannel {
+    public interface IRecipeServiceChannel : ClientSide.RecipeServiceReference.IRecipeService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class RecipeService1Client : System.ServiceModel.ClientBase<ClientSide.RecipeServiceReference.IRecipeService1>, ClientSide.RecipeServiceReference.IRecipeService1 {
+    public partial class RecipeServiceClient : System.ServiceModel.ClientBase<ClientSide.RecipeServiceReference.IRecipeService>, ClientSide.RecipeServiceReference.IRecipeService {
         
-        public RecipeService1Client() {
+        public RecipeServiceClient() {
         }
         
-        public RecipeService1Client(string endpointConfigurationName) : 
+        public RecipeServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public RecipeService1Client(string endpointConfigurationName, string remoteAddress) : 
+        public RecipeServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public RecipeService1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public RecipeServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public RecipeService1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public RecipeServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

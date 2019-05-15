@@ -7,32 +7,32 @@ namespace ClientSide
 {
 	public class ServiceFactory
 	{
-		private static FoodJokeServiceReference.FoodJokeService1Client f;
-		public static FoodJokeServiceReference.FoodJokeService1Client getFoodJokeServiceClient()
+		private static FoodJokeServiceReference.FoodJokeServiceClient f;
+		public static FoodJokeServiceReference.FoodJokeServiceClient getFoodJokeServiceClient()
 		{
 			if(f == null)
 			{
-				f = new FoodJokeServiceReference.FoodJokeService1Client();
+				f = new FoodJokeServiceReference.FoodJokeServiceClient();
 			}
 			return f;
 		}
 
-		private static FoodTriviaServiceReference.FoodTriviaService1Client t;
-		public static FoodTriviaServiceReference.FoodTriviaService1Client getFoodTriviaServiceClient()
+		private static FoodTriviaServiceReference.FoodTriviaServiceClient t;
+		public static FoodTriviaServiceReference.FoodTriviaServiceClient getFoodTriviaServiceClient()
 		{
 			if (t == null)
 			{
-				t = new FoodTriviaServiceReference.FoodTriviaService1Client();
+				t = new FoodTriviaServiceReference.FoodTriviaServiceClient();
 			}
 			return t;
 		}
 
-		private static RecipeServiceReference.RecipeService1Client r;
-		public static RecipeServiceReference.RecipeService1Client getRecipeServiceClient()
+		private static RecipeServiceReference.RecipeServiceClient r;
+		public static RecipeServiceReference.RecipeServiceClient getRecipeServiceClient()
 		{
 			if (r == null)
 			{
-				r = new RecipeServiceReference.RecipeService1Client();
+				r = new RecipeServiceReference.RecipeServiceClient();
 			}
 			return r;
 		}

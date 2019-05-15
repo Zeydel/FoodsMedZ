@@ -12,40 +12,40 @@ namespace ClientSide.FoodTriviaServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FoodTriviaServiceReference.IFoodTriviaService1")]
-    public interface IFoodTriviaService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FoodTriviaServiceReference.IFoodTriviaService")]
+    public interface IFoodTriviaService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodTriviaService1/GetFoodTrivia", ReplyAction="http://tempuri.org/IFoodTriviaService1/GetFoodTriviaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodTriviaService/GetFoodTrivia", ReplyAction="http://tempuri.org/IFoodTriviaService/GetFoodTriviaResponse")]
         string GetFoodTrivia();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodTriviaService1/GetFoodTrivia", ReplyAction="http://tempuri.org/IFoodTriviaService1/GetFoodTriviaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodTriviaService/GetFoodTrivia", ReplyAction="http://tempuri.org/IFoodTriviaService/GetFoodTriviaResponse")]
         System.Threading.Tasks.Task<string> GetFoodTriviaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IFoodTriviaService1Channel : ClientSide.FoodTriviaServiceReference.IFoodTriviaService1, System.ServiceModel.IClientChannel {
+    public interface IFoodTriviaServiceChannel : ClientSide.FoodTriviaServiceReference.IFoodTriviaService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class FoodTriviaService1Client : System.ServiceModel.ClientBase<ClientSide.FoodTriviaServiceReference.IFoodTriviaService1>, ClientSide.FoodTriviaServiceReference.IFoodTriviaService1 {
+    public partial class FoodTriviaServiceClient : System.ServiceModel.ClientBase<ClientSide.FoodTriviaServiceReference.IFoodTriviaService>, ClientSide.FoodTriviaServiceReference.IFoodTriviaService {
         
-        public FoodTriviaService1Client() {
+        public FoodTriviaServiceClient() {
         }
         
-        public FoodTriviaService1Client(string endpointConfigurationName) : 
+        public FoodTriviaServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public FoodTriviaService1Client(string endpointConfigurationName, string remoteAddress) : 
+        public FoodTriviaServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public FoodTriviaService1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public FoodTriviaServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public FoodTriviaService1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public FoodTriviaServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

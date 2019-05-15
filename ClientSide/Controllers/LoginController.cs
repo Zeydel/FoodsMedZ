@@ -16,7 +16,7 @@ namespace ClientSide.Controllers
 	/// </summary>
 	public class LoginController : Controller
 	{
-		UserServiceReference.UserServiceClient userServiceClient = ServiceFactory.getUserServiceClient();
+		UserServiceClient userServiceClient = ServiceFactory.getUserServiceClient();
 
 		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		/// <summary>
