@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,11 +15,11 @@ namespace FoodService
 		public String GetFoodJoke()
 		{
 			masterEntities m = new masterEntities();
-			List<FoodJoke> foodJokes = new List<FoodJoke>();
+			List<ViewFoodJoke> foodJokes = new List<ViewFoodJoke>();
 			var foodJokelst = from k in m.FoodJoke select k;
 			foreach (var fj in foodJokelst)
 			{
-				foodJokes.Add(fj);
+				foodJokes.Add(new ViewFoodJoke(fj));
 			}
 			return new JavaScriptSerializer().Serialize(foodJokes);
 		}

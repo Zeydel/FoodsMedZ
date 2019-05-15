@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace FoodService.ViewModels
 {
-	class ViewUser
+	public class ViewUser
 	{
+		public ViewUser()
+		{
+
+		}
 		public ViewUser(User user)
 		{
 			User_id = user.User_id;

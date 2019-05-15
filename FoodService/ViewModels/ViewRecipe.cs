@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace FoodService.ViewModels
 {
-	class ViewRecipe
+	public class ViewRecipe
 	{
+		public ViewRecipe()
+		{
+
+		}
 		public ViewRecipe(Recipe recipe)
 		{
 			Recipe_id = recipe.Recipe_id;

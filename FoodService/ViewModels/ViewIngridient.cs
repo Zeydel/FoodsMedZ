@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FoodService.ViewModels
 {
-	class ViewIngridient
+	public class ViewIngridient
 	{
 		public ViewIngridient(Ingredients ingredient)
 		{
