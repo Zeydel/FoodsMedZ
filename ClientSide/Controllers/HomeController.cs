@@ -62,6 +62,12 @@ namespace ClientSide.Controllers
             return View();
         }
 
+
+		public ActionResult SearchDetails()
+		{
+			return View();
+		}
+
 		public ActionResult Search()
 		{
 			string recipe_list = recipeServiceClient.getAllRecipes();
@@ -76,6 +82,13 @@ namespace ClientSide.Controllers
 			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable<Recipe>();
 			return View("Search", recupeenum);
+		}
+
+		public ActionResult advancedSearch(SearchModel search)
+		{
+			string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
+			List<FoodService.Recipe> recipelist = new JavaScriptSerializer().Deserialize<List<FoodService.Recipe>>(temp);
+			return View("Search", recipelist);
 		}
 
 	}

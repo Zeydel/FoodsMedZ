@@ -82,29 +82,29 @@ namespace FoodService
 			return new JavaScriptSerializer().Serialize(recipes);
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Get one recipe based on recipe id.
 		/// </summary>
 		/// <param name="recipe_id">Id of desired recipe</param>
 		/// <returns>JSON-string representing recipe</returns>
-        public String findRecipesById(int recipe_id)
-        {
-            masterEntities m = new masterEntities();
-            var RecipeDtb = from k in m.Recipe where k.Recipe_id == recipe_id select k;
+		public String findRecipesById(int recipe_id)
+		{
+			masterEntities m = new masterEntities();
+			var RecipeDtb = from k in m.Recipe where k.Recipe_id == recipe_id select k;
 
-            foreach (Recipe rcp in RecipeDtb)
-            {
-                return new JavaScriptSerializer().Serialize(rcp);
-            }
+			foreach (Recipe rcp in RecipeDtb)
+			{
+				return new JavaScriptSerializer().Serialize(rcp);
+			}
 
-            return null;
-        }
+			return null;
+		}
 
-        /// <summary>
-        /// Fetches all recipe from database
-        /// </summary>
-        /// <returns>JSON string representing a list of all recipes</returns>
-        public String getAllRecipes()
+		/// <summary>
+		/// Fetches all recipe from database
+		/// </summary>
+		/// <returns>JSON string representing a list of all recipes</returns>
+		public string getAllRecipes()
 		{
 			masterEntities m = new masterEntities();
 			List<Recipe> recipes = new List<Recipe>();
@@ -117,5 +117,57 @@ namespace FoodService
 
 		}
 
+		/// <summary>
+		/// Uses a super complex alorithm to perform an advanced search Query in the remote databases
+		/// </summary>
+		/// <param name="searchTerm"></param>
+		/// <param name="vegetarian"></param>
+		/// <param name="vegan"></param>
+		/// <param name="cheap"></param>
+		/// <param name="glutenfree"></param>
+		/// <param name="dairyfree"></param>
+		/// <param name="maxminues"></param>
+		/// <returns>Returns a list of all the recipes matching all the terms</returns>
+		public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues)
+		{
+			masterEntities m = new masterEntities();
+			List<Recipe> recipes = new List<Recipe>();
+			var recipelist = from k in m.Recipe select k;
+			foreach (Recipe recipe in recipelist)
+			{
+				if (!recipe.Recipe_name.ToLower().Contains(searchTerm.ToLower()))
+				{
+					continue;
+				}
+				if (vegetarian == true && recipe.Recipe_veg == false)
+				{
+					continue;
+				}
+				if (vegan == true && recipe.Recipe_vegan == false)
+				{
+					continue;
+				}
+				if (cheap == true && recipe.cheap == false)
+				{
+					continue;
+				}
+				if (glutenfree == true && recipe.glutenfree == false)
+				{
+					continue;
+				}
+				if (dairyfree == true && recipe.dairyfree == false)
+				{
+					continue;
+				}
+				if (maxminues < recipe.Recipe_minutes && maxminues != 0)
+				{
+					continue;
+				}
+				recipes.Add(recipe);
+			}
+			return new JavaScriptSerializer().Serialize(recipes);
+		}
+
 	}
+
 }
