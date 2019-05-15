@@ -29,7 +29,7 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
-		public ActionResult FoodJam()
+		public ActionResult Food()
 		{
 			return View();
 		}

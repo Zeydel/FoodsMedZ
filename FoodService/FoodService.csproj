@@ -66,6 +66,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="IRecipeService1.cs" />
+    <Compile Include="IFoodJokeService1.cs" />
+    <Compile Include="IFoodTriviaService1.cs" />
     <Compile Include="IUserService1.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +92,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="RecipeService1.cs" />
+    <Compile Include="FoodJokeService1.cs" />
+    <Compile Include="FoodTriviaService1.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
