@@ -2,71 +2,69 @@
     ViewBag.Title = "Health & Diet";
 }
 
+			<script>
 
-<script>
+				function calculateBMI() {
+					var x = document.getElementById("weight").value;
+					var y = document.getElementById("height").value;
+					document.getElementById("bmi-result").innerHTML = Math.round((x / ((y / 100) * (y / 100))) * 100) / 100;
+				}
 
-    function calculateBMI() {
-        var x = document.getElementById("weight").value;
-        var y = document.getElementById("height").value;
-        document.getElementById("bmi-result").innerHTML = Math.round((x / ((y / 100) * (y / 100))) * 100) / 100;
-    }
+			</script>
 
-</script>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>@ViewBag.Title.</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3>BMI Calculator</h3>
-                </div>
-                <div class="card-content">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">cm</span>
-                                </div>
-                                <input id="height" onkeyup="calculateBMI()" type="number" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">kg</span>
-                                </div>
-                                <input id="weight" onkeyup="calculateBMI()" type="number" class="form-control" placeholder="Weight" aria-label="Weight" aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                        <div id="bmi-result">
-                            <p>100</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3>The Eatwell Guide to a healthy, balanced diet</h3>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li>eat at least 5 portions of a variety of fruit and vegetables every day 5 A Day</li>
-                        <li>base&nbsp;meals on higher fibre starchy foods like potatoes, bread, rice or pasta</li>
-                        <li>have some dairy or dairy alternatives (such as soya drinks)</li>
-                        <li>eat some beans, pulses, fish, eggs, meat and other protein</li>
-                        <li>choose unsaturated oils and spreads, and eat them in small amounts</li>
-                        <li>drink plenty of fluids (at least 6 to 8 glasses a day)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+			<div class="container-fluid" style="background-color: white">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>@ViewBag.Title.</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<h3>BMI Calculator</h3>
+							</div>
+							<div class="card-content">
+								<div class="row">
+									<div class="col-md-8">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">cm</span>
+											</div>
+											<input id="height" onkeyup="calculateBMI()" type="number" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">kg</span>
+											</div>
+											<input id="weight" onkeyup="calculateBMI()" type="number" class="form-control" placeholder="Weight" aria-label="Weight" aria-describedby="basic-addon1">
+										</div>
+									</div>
+									<div id="bmi-result">
+										<p>100</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<h3>The Eatwell Guide to a healthy, balanced diet</h3>
+							</div>
+							<div class="card-content">
+								<ul>
+									<li>eat at least 5 portions of a variety of fruit and vegetables every day 5 A Day</li>
+									<li>base&nbsp;meals on higher fibre starchy foods like potatoes, bread, rice or pasta</li>
+									<li>have some dairy or dairy alternatives (such as soya drinks)</li>
+									<li>eat some beans, pulses, fish, eggs, meat and other protein</li>
+									<li>choose unsaturated oils and spreads, and eat them in small amounts</li>
+									<li>drink plenty of fluids (at least 6 to 8 glasses a day)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 

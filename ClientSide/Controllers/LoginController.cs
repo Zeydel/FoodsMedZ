@@ -32,6 +32,12 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
+		public ActionResult Logout()
+		{
+			Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
+			return RedirectToAction("Login");
+		}
+
 		/// <summary>
 		/// Redirects user to Profile page
 		/// </summary>
