@@ -137,6 +137,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\FoodJokeServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FoodTriviaServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\RecipeServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,6 +157,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -159,6 +170,20 @@
     <Compile Include="Models\LoginModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\FoodJokeServiceReference\service.wsdl" />
+    <None Include="Connected Services\FoodJokeServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FoodJokeServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FoodTriviaServiceReference\service.wsdl" />
+    <None Include="Connected Services\FoodTriviaServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FoodTriviaServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\RecipeServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\RecipeServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\RecipeServiceReference\Reference.svcmap">
@@ -178,6 +203,18 @@
     <None Include="Connected Services\UserServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\UserServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\UserServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\FoodJokeServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\FoodJokeServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\FoodJokeServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\FoodTriviaServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\FoodTriviaServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\FoodTriviaServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -212,6 +249,8 @@
     <Content Include="Properties\DataSources\FoodService.CompositeType.datasource" />
     <Content Include="Properties\DataSources\FoodService.users.datasource" />
     <Content Include="Properties\DataSources\FoodService.User.datasource" />
+    <Content Include="Properties\DataSources\FoodService.FoodJoke.datasource" />
+    <Content Include="Properties\DataSources\FoodService.FoodTrivia.datasource" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -241,9 +280,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Recipe\Recipes.cshtml" />
-    <Content Include="Views\Home\Ingredients.cshtml" />
     <Content Include="Views\Home\Health.cshtml" />
-    <Content Include="Views\Home\Favorites.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
@@ -253,6 +290,7 @@
     <Content Include="Views\Login\UpdateProfile.cshtml" />
     <Content Include="Views\Recipe\RecipeDetails.cshtml" />
     <Content Include="Views\Home\SearchDetails.cshtml" />
+    <Content Include="Views\Recipe\Favorites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +312,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\FoodJokeServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\FoodTriviaServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\RecipeServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\UserServiceReference\" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -19,11 +20,11 @@ namespace FoodService
 		{
 			masterEntities m = new masterEntities();
 			var userlst = from k in m.User where k.User_id == value select k;
-			var user = new User();
+			var user = new ViewUser();
 
 			foreach (var usr in userlst)
 			{
-				user = usr;
+				user = new ViewUser(usr);
 			}
 			return new JavaScriptSerializer().Serialize(user);
 		}
@@ -114,15 +115,14 @@ namespace FoodService
 		/// </summary>
 		/// <param name="username"></param>
 		/// <returns>Returns a user object</returns>
-		public User FindUserByUsername(string username)
+		public ViewUser FindUserByUsername(string username)
 		{
 			masterEntities m = new masterEntities();
 			var userlst = from k in m.User where k.userName.Equals(username) select k;
 
 			foreach (var usr in userlst)
 			{
-				Console.WriteLine(usr.First_name);
-				return usr;
+				return new ViewUser(usr);
 
 			}
 			return null;

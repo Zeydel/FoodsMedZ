@@ -1,0 +1,34 @@
+﻿@{
+	ViewBag.Title = "Food";
+}
+
+
+<head src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></head>
+<script>
+	function GetJoke() {
+		$.get('@Url.Action("getJoke","Food")', function (data) {
+			console.log(data)
+			document.getElementById("joketext").innerHTML = data;
+		});
+	}
+</script>
+
+<script>
+	function GetTrivia() {
+		$.get('@Url.Action("getTrivia","Food")', function (data) {
+			console.log(data)
+			document.getElementById("triviatext").innerHTML = data;
+		});
+	}
+</script>
+
+<h2>Fun with food!</h2>
+<div>
+<input type="button" onclick="GetJoke()" value="Get Random Joke" />
+<p id="joketext"></p>
+</div>
+
+<div>
+	<input type="button" onclick="GetTrivia()" value="Get Random Trivia" />
+	<p id="triviatext"></p>
+</div>

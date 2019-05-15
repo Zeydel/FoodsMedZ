@@ -15,13 +15,23 @@ namespace ClientSide.Controllers
         // GET: Recipe
         public ActionResult Recipes()
         {
-            return View();
+            string recipe_list = recipeServiceClient.getAllRecipes();
+            List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
+            IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
+            return View(recupeenum);
         }
 
         public ActionResult RecipeDetails(int id)
         {
             Recipe recipe = getRecipe(id);
             return View("RecipeDetails", recipe);
+            
+            
+        }
+
+        public ActionResult Favorites()
+        {
+            return View();
         }
 
         [HttpGet]

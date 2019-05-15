@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -54,7 +55,7 @@ namespace FoodService
 		/// <param name="username"></param>
 		/// <returns>Returns a user object</returns>
 		[OperationContract]
-		User FindUserByUsername(String username);
+		ViewUser FindUserByUsername(String username);
 
 		[OperationContract]
 		CompositeType GetDataUsingDataContract(CompositeType composite);

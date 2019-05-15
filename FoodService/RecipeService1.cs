@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -16,14 +17,14 @@ namespace FoodService
 		/// </summary>
 		/// <param name="id">Id of the desired recipe</param>
 		/// <returns>One recipe object</returns>
-		public Recipe getRecipe(int id)
+		public ViewRecipe getRecipe(int id)
 		{
 			masterEntities m = new masterEntities();
 			var Recipelst = from k in m.Recipe where k.Recipe_id == id select k;
-			var recipe = new Recipe();
+			var recipe = new ViewRecipe();
 			foreach (var rcp in Recipelst)
 			{
-				recipe = rcp;
+				recipe = new ViewRecipe(rcp);
 			}
 			return recipe;
 		}
@@ -73,11 +74,11 @@ namespace FoodService
 		public String findRecipesByName(String recipe_name)
 		{
 			masterEntities m = new masterEntities();
-			List<Recipe> recipes = new List<Recipe>();
+			List<ViewRecipe> recipes = new List<ViewRecipe>();
 			var Recipelst = from k in m.Recipe where k.Recipe_name == recipe_name select k;
 			foreach (Recipe recipe in Recipelst)
 			{
-				recipes.Add(recipe);
+				recipes.Add(new ViewRecipe(recipe));
 			}
 			return new JavaScriptSerializer().Serialize(recipes);
 		}
@@ -94,7 +95,7 @@ namespace FoodService
 
 			foreach (Recipe rcp in RecipeDtb)
 			{
-				return new JavaScriptSerializer().Serialize(rcp);
+				return new JavaScriptSerializer().Serialize(new ViewRecipe(rcp));
 			}
 
 			return null;
@@ -107,20 +108,31 @@ namespace FoodService
 		public string getAllRecipes()
 		{
 			masterEntities m = new masterEntities();
-			List<Recipe> recipes = new List<Recipe>();
+			List<ViewRecipe> recipes = new List<ViewRecipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
 			{
-				recipes.Add(recipe);
+				recipes.Add(new ViewRecipe(recipe));
 			}
 			return new JavaScriptSerializer().Serialize(recipes);
 
 		}
 
+		/// <summary>
+		/// Uses a super complex alorithm to perform an advanced search Query in the remote databases
+		/// </summary>
+		/// <param name="searchTerm"></param>
+		/// <param name="vegetarian"></param>
+		/// <param name="vegan"></param>
+		/// <param name="cheap"></param>
+		/// <param name="glutenfree"></param>
+		/// <param name="dairyfree"></param>
+		/// <param name="maxminues"></param>
+		/// <returns>Returns a list of all the recipes matching all the terms</returns>
 		public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues)
 		{
 			masterEntities m = new masterEntities();
-			List<Recipe> recipes = new List<Recipe>();
+			List<ViewRecipe> recipes = new List<ViewRecipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
 			{
@@ -152,7 +164,7 @@ namespace FoodService
 				{
 					continue;
 				}
-				recipes.Add(recipe);
+				recipes.Add(new ViewRecipe(recipe));
 			}
 			return new JavaScriptSerializer().Serialize(recipes);
 		}

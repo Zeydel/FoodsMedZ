@@ -29,17 +29,12 @@ namespace ClientSide.Controllers
 			return View();
 		}
 
-		public ActionResult FoodJam()
+		public ActionResult Food()
 		{
 			return View();
 		}
 
 		public ActionResult Health()
-		{
-			return View();
-		}
-
-		public ActionResult Favorites()
 		{
 			return View();
 		}
@@ -84,12 +79,12 @@ namespace ClientSide.Controllers
 			return View("Search", recupeenum);
 		}
 
-		public ActionResult advancedSearch(SearchModel search)
-		{
-			string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
-			List<FoodService.Recipe> recipelist = new JavaScriptSerializer().Deserialize<List<FoodService.Recipe>>(temp);
-			return View("Search", recipelist);
-		}
+		//public ActionResult advancedSearch(SearchModel search)
+		//{
+		//	string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
+		//	List<FoodService.Recipe> recipelist = new JavaScriptSerializer().Deserialize<List<FoodService.Recipe>>(temp);
+		//	return View("Search", recipelist);
+		//}
 
 	}
 
