@@ -15,7 +15,8 @@ namespace FoodService
 		JsonSerializerSettings jsettings = new JsonSerializerSettings()
 		{
 			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented
+			Formatting = Formatting.Indented,
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 
 		};
 		/// <summary>
@@ -25,7 +26,7 @@ namespace FoodService
 		/// <returns></returns>
 		public string GetUser(int value)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			var userlst = from k in m.User where k.User_id == value select k;
 			var user = new User();
 
@@ -33,6 +34,7 @@ namespace FoodService
 			{
 				user = usr;
 			}
+			m.Entry(user).State = System.Data.Entity.EntityState.Detached;
 			return JsonConvert.SerializeObject(user, jsettings);
 		}
 
@@ -44,7 +46,7 @@ namespace FoodService
 		/// <returns>A status </returns>
 		public int verifyUser(string userName, string password)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			var userlst = from k in m.User where k.userName.Equals(userName) select k;
 			foreach (var usr in userlst)
 			{
@@ -76,7 +78,7 @@ namespace FoodService
 		/// <param name="gender"></param>
 		public void AddUser(string first_name, string last_name, string username, string password, double? weight, double? height, bool? vegetarian, bool? vegan, bool? dairyfree, bool? glutenfree, bool? gender)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			User newUser = new User();
 			newUser.First_name = first_name;
 			newUser.Last_name = last_name;
@@ -97,13 +99,25 @@ namespace FoodService
 		/// Updates a user in the database
 		/// </summary>
 		/// <param name="user"></param>
-		public void updateUser(User user)
+		public void updateUser(string str)
 		{
-			masterEntities m = new masterEntities();
-			m.Entry(user).State = System.Data.Entity.EntityState.Added;
-			foreach(Recipe r in user.Recipe)
+			masterEntities m = ContextFactory.getContext();
+			RecipeService1 recipeclient = new RecipeService1();
+			
+			User user = JsonConvert.DeserializeObject<User>(str, jsettings);
+			User originalUser = JsonConvert.DeserializeObject<User>(GetUser(user.User_id));
+
+			originalUser.weight = user.weight;
+
+
+			m.Entry(originalUser).State = System.Data.Entity.EntityState.Modified;
+			
+			foreach (Recipe r in user.Recipe)
 			{
-				m.Entry(r).State = System.Data.Entity.EntityState.Added;
+				Recipe ogrec = recipeclient.getRecipe(r.Recipe_id);
+				ogrec.User.Add(originalUser);
+				originalUser.Recipe.Add(ogrec);
+				m.Entry(ogrec).State = System.Data.Entity.EntityState.Modified;
 			}
 			m.SaveChanges();
 		}
@@ -128,7 +142,7 @@ namespace FoodService
 		/// <returns>Returns a user object</returns>
 		public User FindUserByUsername(string username)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			var userlst = from k in m.User where k.userName.Equals(username) select k;
 
 			foreach (var usr in userlst)

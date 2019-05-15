@@ -14,16 +14,7 @@ namespace FoodService
     
     public partial class FoodJoke
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FoodJoke()
-        {
-            this.User = new List<User>();
-        }
-    
         public int Id { get; set; }
         public string Food_joke { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<User> User { get; set; }
     }
 }

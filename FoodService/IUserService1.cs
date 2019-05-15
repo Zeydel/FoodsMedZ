@@ -29,7 +29,7 @@ namespace FoodService
 		/// </summary>
 		/// <param name="user"></param>
 		[OperationContract]
-		void updateUser(User user);
+		void updateUser(string user);
 
 		/// <summary>
 		/// Adds a user to the database

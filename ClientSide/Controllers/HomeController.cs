@@ -14,8 +14,15 @@ namespace ClientSide.Controllers
 	{
 		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
         RecipeServiceReference.RecipeService1Client recipeServiceClient = new RecipeServiceReference.RecipeService1Client();
+		JsonSerializerSettings jsettings = new JsonSerializerSettings()
+		{
+			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+			Formatting = Formatting.Indented,
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 
-        public ActionResult Index()
+		};
+
+		public ActionResult Index()
 		{
 			if(Request.Cookies["userid"] == null)
 			{
@@ -67,7 +74,7 @@ namespace ClientSide.Controllers
 		public ActionResult Search()
 		{
 			string recipe_list = recipeServiceClient.getAllRecipes();
-			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list);
+			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list, jsettings);
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
 			return View(recupeenum);
 		}
@@ -75,7 +82,7 @@ namespace ClientSide.Controllers
 		public ActionResult doSearch(string recipe_name)
 		{
 			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);
-			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_name);
+			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_name, jsettings);
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable<Recipe>();
 			return View("Search", recupeenum);
 		}
@@ -83,7 +90,7 @@ namespace ClientSide.Controllers
 		public ActionResult advancedSearch(SearchModel search)
 		{
 			string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
-			List<FoodService.Recipe> recipelist = JsonConvert.DeserializeObject<List<Recipe>>(temp);
+			List<FoodService.Recipe> recipelist = JsonConvert.DeserializeObject<List<Recipe>>(temp, jsettings);
 			return View("Search", recipelist);
 		}
 

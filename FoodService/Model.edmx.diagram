@@ -4,20 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b90393770c1410dbfe2440a7c1f549d" Name="Diagram1">
-        <EntityTypeShape EntityType="masterModel.Food" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.FoodJoke" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.FoodTrivia" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.Ingredients" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.Nutrition" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.Recipe" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="masterModel.User" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="dfbcf073148e434f9e5acd5e79aea83b" Name="Diagram1">
+        <EntityTypeShape EntityType="masterModel.Food" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.FoodJoke" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.FoodTrivia" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Ingredients" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Nutrition" Width="1.5" PointX="3.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Recipe" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.User" Width="1.5" PointX="8.375" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="masterModel.FK__Ingredien__Food___3F6663D5" ManuallyRouted="false" />
         <AssociationConnector Association="masterModel.FK__Nutrition__Ingre__405A880E" ManuallyRouted="false" />
         <AssociationConnector Association="masterModel.FK__Ingredien__Recip__3B95D2F1" ManuallyRouted="false" />
-        <AssociationConnector Association="masterModel.UserFoodJokes" ManuallyRouted="false" />
-        <AssociationConnector Association="masterModel.UserFoodTrivia" ManuallyRouted="false" />
-        <AssociationConnector Association="masterModel.userRecipes" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

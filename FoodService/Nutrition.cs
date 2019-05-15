@@ -18,6 +18,7 @@ namespace FoodService
         public string name { get; set; }
         public Nullable<int> amount { get; set; }
         public Nullable<int> unit { get; set; }
+        public Nullable<int> Ingredient_id { get; set; }
     
         public virtual Food Food { get; set; }
     }

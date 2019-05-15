@@ -14,14 +14,6 @@ namespace FoodService
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.FoodJoke = new List<FoodJoke>();
-            this.FoodTrivia = new List<FoodTrivia>();
-            this.Recipe = new List<Recipe>();
-        }
-    
         public int User_id { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
@@ -34,12 +26,8 @@ namespace FoodService
         public Nullable<bool> vegan { get; set; }
         public Nullable<bool> dairyfree { get; set; }
         public Nullable<bool> glutenfree { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<FoodJoke> FoodJoke { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<FoodTrivia> FoodTrivia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<Recipe> Recipe { get; set; }
+        public string favorites { get; set; }
+        public string favJokes { get; set; }
+        public string favTrivia { get; set; }
     }
 }

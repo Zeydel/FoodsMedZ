@@ -28,10 +28,10 @@ namespace ClientSide.UserServiceReference {
         System.Threading.Tasks.Task<int> verifyUserAsync(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
-        void updateUser(FoodService.User user);
+        void updateUser(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
-        System.Threading.Tasks.Task updateUserAsync(FoodService.User user);
+        System.Threading.Tasks.Task updateUserAsync(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
         void AddUser(string first_name, string last_name, string username, string password, System.Nullable<double> weight, System.Nullable<double> height, System.Nullable<bool> vegetarian, System.Nullable<bool> vegan, System.Nullable<bool> dairyfree, System.Nullable<bool> glutenfree, System.Nullable<bool> gender);
@@ -95,11 +95,11 @@ namespace ClientSide.UserServiceReference {
             return base.Channel.verifyUserAsync(userName, password);
         }
         
-        public void updateUser(FoodService.User user) {
+        public void updateUser(string user) {
             base.Channel.updateUser(user);
         }
         
-        public System.Threading.Tasks.Task updateUserAsync(FoodService.User user) {
+        public System.Threading.Tasks.Task updateUserAsync(string user) {
             return base.Channel.updateUserAsync(user);
         }
         

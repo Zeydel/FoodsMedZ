@@ -84,30 +84,9 @@
           <Property Name="vegan" Type="bit" />
           <Property Name="dairyfree" Type="bit" />
           <Property Name="glutenfree" Type="bit" />
-        </EntityType>
-        <EntityType Name="UserFoodJokes">
-          <Key>
-            <PropertyRef Name="User_id" />
-            <PropertyRef Name="FoodJoke_id" />
-          </Key>
-          <Property Name="User_id" Type="int" Nullable="false" />
-          <Property Name="FoodJoke_id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserFoodTrivia">
-          <Key>
-            <PropertyRef Name="User_id" />
-            <PropertyRef Name="FoodTrivia_id" />
-          </Key>
-          <Property Name="User_id" Type="int" Nullable="false" />
-          <Property Name="FoodTrivia_id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="userRecipes">
-          <Key>
-            <PropertyRef Name="User_id" />
-            <PropertyRef Name="Recipe_id" />
-          </Key>
-          <Property Name="User_id" Type="int" Nullable="false" />
-          <Property Name="Recipe_id" Type="int" Nullable="false" />
+          <Property Name="favorites" Type="varchar(max)" />
+          <Property Name="favJokes" Type="varchar(max)" />
+          <Property Name="favTrivia" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK__Ingredien__Food___3F6663D5">
           <End Role="Food" Type="Self.Food" Multiplicity="1" />
@@ -145,78 +124,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserFoodJ__FoodJ__52793849">
-          <End Role="FoodJoke" Type="Self.FoodJoke" Multiplicity="1" />
-          <End Role="UserFoodJokes" Type="Self.UserFoodJokes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FoodJoke">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserFoodJokes">
-              <PropertyRef Name="FoodJoke_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserFoodJ__User___51851410">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserFoodJokes" Type="Self.UserFoodJokes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="UserFoodJokes">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserFoodT__FoodT__5649C92D">
-          <End Role="FoodTrivia" Type="Self.FoodTrivia" Multiplicity="1" />
-          <End Role="UserFoodTrivia" Type="Self.UserFoodTrivia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FoodTrivia">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserFoodTrivia">
-              <PropertyRef Name="FoodTrivia_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserFoodT__User___5555A4F4">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserFoodTrivia" Type="Self.UserFoodTrivia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="UserFoodTrivia">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__userRecip__Recip__3C89F72A">
-          <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
-          <End Role="userRecipes" Type="Self.userRecipes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recipe">
-              <PropertyRef Name="Recipe_id" />
-            </Principal>
-            <Dependent Role="userRecipes">
-              <PropertyRef Name="Recipe_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__userRecip__User___35DCF99B">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="userRecipes" Type="Self.userRecipes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="userRecipes">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="masterModelStoreContainer">
           <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodJoke" EntityType="Self.FoodJoke" Schema="dbo" store:Type="Tables" />
@@ -225,9 +132,6 @@
           <EntitySet Name="Nutrition" EntityType="Self.Nutrition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserFoodJokes" EntityType="Self.UserFoodJokes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserFoodTrivia" EntityType="Self.UserFoodTrivia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="userRecipes" EntityType="Self.userRecipes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Ingredien__Food___3F6663D5" Association="Self.FK__Ingredien__Food___3F6663D5">
             <End Role="Food" EntitySet="Food" />
             <End Role="Ingredients" EntitySet="Ingredients" />
@@ -239,30 +143,6 @@
           <AssociationSet Name="FK__Nutrition__Ingre__405A880E" Association="Self.FK__Nutrition__Ingre__405A880E">
             <End Role="Food" EntitySet="Food" />
             <End Role="Nutrition" EntitySet="Nutrition" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserFoodJ__FoodJ__52793849" Association="Self.FK__UserFoodJ__FoodJ__52793849">
-            <End Role="FoodJoke" EntitySet="FoodJoke" />
-            <End Role="UserFoodJokes" EntitySet="UserFoodJokes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserFoodJ__User___51851410" Association="Self.FK__UserFoodJ__User___51851410">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserFoodJokes" EntitySet="UserFoodJokes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserFoodT__FoodT__5649C92D" Association="Self.FK__UserFoodT__FoodT__5649C92D">
-            <End Role="FoodTrivia" EntitySet="FoodTrivia" />
-            <End Role="UserFoodTrivia" EntitySet="UserFoodTrivia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserFoodT__User___5555A4F4" Association="Self.FK__UserFoodT__User___5555A4F4">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserFoodTrivia" EntitySet="UserFoodTrivia" />
-          </AssociationSet>
-          <AssociationSet Name="FK__userRecip__Recip__3C89F72A" Association="Self.FK__userRecip__Recip__3C89F72A">
-            <End Role="Recipe" EntitySet="Recipe" />
-            <End Role="userRecipes" EntitySet="userRecipes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__userRecip__User___35DCF99B" Association="Self.FK__userRecip__User___35DCF99B">
-            <End Role="User" EntitySet="User" />
-            <End Role="userRecipes" EntitySet="userRecipes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -288,7 +168,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Food_joke" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.UserFoodJokes" FromRole="FoodJoke" ToRole="User" />
         </EntityType>
         <EntityType Name="FoodTrivia">
           <Key>
@@ -296,7 +175,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Food_trivia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.UserFoodTrivia" FromRole="FoodTrivia" ToRole="User" />
         </EntityType>
         <EntityType Name="Ingredients">
           <Key>
@@ -320,6 +198,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Int32" />
           <Property Name="unit" Type="Int32" />
+          <Property Name="Ingredient_id" Type="Int32" />
           <NavigationProperty Name="Food" Relationship="Self.FK__Nutrition__Ingre__405A880E" FromRole="Nutrition" ToRole="Food" />
         </EntityType>
         <EntityType Name="Recipe">
@@ -339,7 +218,6 @@
           <Property Name="Instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="imageTyp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__Recip__3B95D2F1" FromRole="Recipe" ToRole="Ingredients" />
-          <NavigationProperty Name="User" Relationship="Self.userRecipes" FromRole="Recipe" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -357,9 +235,9 @@
           <Property Name="vegan" Type="Boolean" />
           <Property Name="dairyfree" Type="Boolean" />
           <Property Name="glutenfree" Type="Boolean" />
-          <NavigationProperty Name="FoodJoke" Relationship="Self.UserFoodJokes" FromRole="User" ToRole="FoodJoke" />
-          <NavigationProperty Name="FoodTrivia" Relationship="Self.UserFoodTrivia" FromRole="User" ToRole="FoodTrivia" />
-          <NavigationProperty Name="Recipe" Relationship="Self.userRecipes" FromRole="User" ToRole="Recipe" />
+          <Property Name="favorites" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="favJokes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="favTrivia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Ingredien__Food___3F6663D5">
           <End Role="Food" Type="Self.Food" Multiplicity="1" />
@@ -376,6 +254,14 @@
         <Association Name="FK__Nutrition__Ingre__405A880E">
           <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
           <End Role="Nutrition" Type="Self.Nutrition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="Food_id" />
+            </Principal>
+            <Dependent Role="Nutrition">
+              <PropertyRef Name="Ingredient_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK__Ingredien__Recip__3B95D2F1">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
@@ -388,18 +274,6 @@
               <PropertyRef Name="Recipe_id" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="UserFoodJokes">
-          <End Role="FoodJoke" Type="Self.FoodJoke" Multiplicity="*" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-        </Association>
-        <Association Name="UserFoodTrivia">
-          <End Role="FoodTrivia" Type="Self.FoodTrivia" Multiplicity="*" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-        </Association>
-        <Association Name="userRecipes">
-          <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
         </Association>
         <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Food" EntityType="Self.Food" />
@@ -420,18 +294,6 @@
           <AssociationSet Name="FK__Ingredien__Recip__3B95D2F1" Association="Self.FK__Ingredien__Recip__3B95D2F1">
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="Ingredients" EntitySet="Ingredients" />
-          </AssociationSet>
-          <AssociationSet Name="UserFoodJokes" Association="Self.UserFoodJokes">
-            <End Role="FoodJoke" EntitySet="FoodJoke" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="UserFoodTrivia" Association="Self.UserFoodTrivia">
-            <End Role="FoodTrivia" EntitySet="FoodTrivia" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="userRecipes" Association="Self.userRecipes">
-            <End Role="Recipe" EntitySet="Recipe" />
-            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -486,6 +348,7 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="Ingredient_id" ColumnName="Ingredient_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -522,42 +385,12 @@
                 <ScalarProperty Name="vegan" ColumnName="vegan" />
                 <ScalarProperty Name="dairyfree" ColumnName="dairyfree" />
                 <ScalarProperty Name="glutenfree" ColumnName="glutenfree" />
+                <ScalarProperty Name="favorites" ColumnName="favorites" />
+                <ScalarProperty Name="favJokes" ColumnName="favJokes" />
+                <ScalarProperty Name="favTrivia" ColumnName="favTrivia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK__Nutrition__Ingre__405A880E" TypeName="masterModel.FK__Nutrition__Ingre__405A880E" StoreEntitySet="Nutrition">
-            <EndProperty Name="Food">
-              <ScalarProperty Name="Food_id" ColumnName="Ingredient_id" />
-            </EndProperty>
-            <EndProperty Name="Nutrition">
-              <ScalarProperty Name="Nutrition_id" ColumnName="Nutrition_id" />
-            </EndProperty>
-            <Condition IsNull="false" ColumnName="Ingredient_id" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="UserFoodJokes" TypeName="masterModel.UserFoodJokes" StoreEntitySet="UserFoodJokes">
-            <EndProperty Name="FoodJoke">
-              <ScalarProperty Name="Id" ColumnName="FoodJoke_id" />
-            </EndProperty>
-            <EndProperty Name="User">
-              <ScalarProperty Name="User_id" ColumnName="User_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="UserFoodTrivia" TypeName="masterModel.UserFoodTrivia" StoreEntitySet="UserFoodTrivia">
-            <EndProperty Name="FoodTrivia">
-              <ScalarProperty Name="Id" ColumnName="FoodTrivia_id" />
-            </EndProperty>
-            <EndProperty Name="User">
-              <ScalarProperty Name="User_id" ColumnName="User_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="userRecipes" TypeName="masterModel.userRecipes" StoreEntitySet="userRecipes">
-            <EndProperty Name="Recipe">
-              <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
-            </EndProperty>
-            <EndProperty Name="User">
-              <ScalarProperty Name="User_id" ColumnName="User_id" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -573,7 +406,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -15,7 +15,9 @@ namespace FoodService
 		JsonSerializerSettings jsettings = new JsonSerializerSettings()
 		{
 			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented
+			Formatting = Formatting.Indented,
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+			
 
 		};
 		/// <summary>
@@ -25,13 +27,14 @@ namespace FoodService
 		/// <returns>One recipe object</returns>
 		public Recipe getRecipe(int id)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			var Recipelst = from k in m.Recipe where k.Recipe_id == id select k;
 			var recipe = new Recipe();
 			foreach (var rcp in Recipelst)
 			{
 				recipe = rcp;
 			}
+			m.Entry(recipe).State = System.Data.Entity.EntityState.Detached;
 			return recipe;
 		}
 
@@ -54,7 +57,7 @@ namespace FoodService
 			Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree,
 			String image, String instruction, String imageTyp)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			Recipe rcp = new Recipe();
 			rcp.Recipe_id = recipe_id;
 			rcp.Recipe_name = recipe_name;
@@ -79,7 +82,7 @@ namespace FoodService
 		/// <returns>JSON-string representing recipe</returns>
 		public String findRecipesByName(String recipe_name)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			List<Recipe> recipes = new List<Recipe>();
 			var Recipelst = from k in m.Recipe where k.Recipe_name == recipe_name select k;
 			foreach (Recipe recipe in Recipelst)
@@ -96,7 +99,7 @@ namespace FoodService
 		/// <returns>JSON-string representing recipe</returns>
 		public String findRecipesById(int recipe_id)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			var RecipeDtb = from k in m.Recipe where k.Recipe_id == recipe_id select k;
 
 			foreach (Recipe rcp in RecipeDtb)
@@ -113,7 +116,7 @@ namespace FoodService
 		/// <returns>JSON string representing a list of all recipes</returns>
 		public string getAllRecipes()
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			List<Recipe> recipes = new List<Recipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
@@ -137,7 +140,7 @@ namespace FoodService
 		/// <returns>Returns a list of all the recipes matching all the terms</returns>
 		public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues)
 		{
-			masterEntities m = new masterEntities();
+			masterEntities m = ContextFactory.getContext();
 			List<Recipe> recipes = new List<Recipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)

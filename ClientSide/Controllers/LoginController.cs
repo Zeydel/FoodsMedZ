@@ -17,6 +17,15 @@ namespace ClientSide.Controllers
 	public class LoginController : Controller
 	{
 		UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
+
+		JsonSerializerSettings jsettings = new JsonSerializerSettings()
+		{
+			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+			Formatting = Formatting.Indented,
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+		
+
+		};
 		/// <summary>
 		/// Redirects the user to Profile page if they are currently login
 		/// </summary>
@@ -92,7 +101,8 @@ namespace ClientSide.Controllers
 		{
 			Recipe recipe = new RecipeController().getRecipe(1234);
 			user.Recipe.Add(recipe);
-			userServiceClient.updateUser(user);
+			String json = JsonConvert.SerializeObject(user, jsettings);
+			userServiceClient.updateUser(json);
 			
 			return View("Profile", user);
 
@@ -140,7 +150,7 @@ namespace ClientSide.Controllers
 			{
 				value = int.Parse(Request.Cookies["userid"].Value);
 			}
-			return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value));
+			return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value), jsettings);
 		}
 	}
 }

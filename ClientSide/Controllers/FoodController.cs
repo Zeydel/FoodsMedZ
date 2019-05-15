@@ -14,6 +14,7 @@ namespace ClientSide.Controllers
 		FoodTriviaServiceReference.FoodTriviaService1Client foodTriviaServiceClient = new FoodTriviaServiceReference.FoodTriviaService1Client();
 		List<FoodJoke> foodJokes = new List<FoodJoke>();
 
+
 		// GET: Food
 		[HttpGet]
 		public ActionResult getJoke()

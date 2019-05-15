@@ -119,7 +119,6 @@
   <xs:complexType name="Nutrition">
     <xs:sequence>
       <xs:element minOccurs="0" name="Food" nillable="true" type="tns:Food" />
-      <xs:element minOccurs="0" name="Ingredient_id" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Nutrition_id" type="xs:int" />
       <xs:element minOccurs="0" name="amount" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
