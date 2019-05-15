@@ -79,7 +79,7 @@ namespace DBRecipeFetcher
         public String image { get; set; }
         public String imageType { get; set; }
         public String instructions { get; set; }
-        //public Ingredient[] extendedIngredients { get; set; }
+        //public List<Ingredient> extendedIngredients { get; set; }
     }
 
     class Ingredient
