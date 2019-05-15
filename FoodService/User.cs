@@ -17,9 +17,9 @@ namespace FoodService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.FoodJoke = new HashSet<FoodJoke>();
-            this.FoodTrivia = new HashSet<FoodTrivia>();
-            this.Recipe = new HashSet<Recipe>();
+            this.FoodJoke = new List<FoodJoke>();
+            this.FoodTrivia = new List<FoodTrivia>();
+            this.Recipe = new List<Recipe>();
         }
     
         public int User_id { get; set; }
@@ -36,10 +36,10 @@ namespace FoodService
         public Nullable<bool> glutenfree { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FoodJoke> FoodJoke { get; set; }
+        public virtual List<FoodJoke> FoodJoke { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FoodTrivia> FoodTrivia { get; set; }
+        public virtual List<FoodTrivia> FoodTrivia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recipe> Recipe { get; set; }
+        public virtual List<Recipe> Recipe { get; set; }
     }
 }

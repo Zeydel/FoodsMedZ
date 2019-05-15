@@ -1,4 +1,4 @@
-﻿using FoodService.ViewModels;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +12,25 @@ namespace FoodService
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RecipeService1" in both code and config file together.
 	public class RecipeService1 : IRecipeService1
 	{
+		JsonSerializerSettings jsettings = new JsonSerializerSettings()
+		{
+			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+			Formatting = Formatting.Indented
+
+		};
 		/// <summary>
 		/// Fetches one recipe from database based on id.
 		/// </summary>
 		/// <param name="id">Id of the desired recipe</param>
 		/// <returns>One recipe object</returns>
-		public ViewRecipe getRecipe(int id)
+		public Recipe getRecipe(int id)
 		{
 			masterEntities m = new masterEntities();
 			var Recipelst = from k in m.Recipe where k.Recipe_id == id select k;
-			var recipe = new ViewRecipe();
+			var recipe = new Recipe();
 			foreach (var rcp in Recipelst)
 			{
-				recipe = new ViewRecipe(rcp);
+				recipe = rcp;
 			}
 			return recipe;
 		}
@@ -74,13 +80,13 @@ namespace FoodService
 		public String findRecipesByName(String recipe_name)
 		{
 			masterEntities m = new masterEntities();
-			List<ViewRecipe> recipes = new List<ViewRecipe>();
+			List<Recipe> recipes = new List<Recipe>();
 			var Recipelst = from k in m.Recipe where k.Recipe_name == recipe_name select k;
 			foreach (Recipe recipe in Recipelst)
 			{
-				recipes.Add(new ViewRecipe(recipe));
+				recipes.Add(recipe);
 			}
-			return new JavaScriptSerializer().Serialize(recipes);
+			return JsonConvert.SerializeObject(recipes, jsettings);
 		}
 
 		/// <summary>
@@ -95,7 +101,7 @@ namespace FoodService
 
 			foreach (Recipe rcp in RecipeDtb)
 			{
-				return new JavaScriptSerializer().Serialize(new ViewRecipe(rcp));
+				return JsonConvert.SerializeObject(rcp, jsettings);
 			}
 
 			return null;
@@ -108,13 +114,13 @@ namespace FoodService
 		public string getAllRecipes()
 		{
 			masterEntities m = new masterEntities();
-			List<ViewRecipe> recipes = new List<ViewRecipe>();
+			List<Recipe> recipes = new List<Recipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
 			{
-				recipes.Add(new ViewRecipe(recipe));
+				recipes.Add(recipe);
 			}
-			return new JavaScriptSerializer().Serialize(recipes);
+			return JsonConvert.SerializeObject(recipes, jsettings);
 
 		}
 
@@ -132,7 +138,7 @@ namespace FoodService
 		public string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues)
 		{
 			masterEntities m = new masterEntities();
-			List<ViewRecipe> recipes = new List<ViewRecipe>();
+			List<Recipe> recipes = new List<Recipe>();
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
 			{
@@ -164,9 +170,9 @@ namespace FoodService
 				{
 					continue;
 				}
-				recipes.Add(new ViewRecipe(recipe));
+				recipes.Add(recipe);
 			}
-			return new JavaScriptSerializer().Serialize(recipes);
+			return JsonConvert.SerializeObject(recipes, jsettings);
 		}
 
 	}

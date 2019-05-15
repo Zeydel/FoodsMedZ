@@ -1,4 +1,4 @@
-﻿using FoodService.ViewModels;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +15,13 @@ namespace FoodService
 		public String GetFoodJoke()
 		{
 			masterEntities m = new masterEntities();
-			List<ViewFoodJoke> foodJokes = new List<ViewFoodJoke>();
+			List<FoodJoke> foodJokes = new List<FoodJoke>();
 			var foodJokelst = from k in m.FoodJoke select k;
 			foreach (var fj in foodJokelst)
 			{
-				foodJokes.Add(new ViewFoodJoke(fj));
+				foodJokes.Add(fj);
 			}
-			return new JavaScriptSerializer().Serialize(foodJokes);
+			return JsonConvert.SerializeObject(foodJokes);
 		}
 	}
 }

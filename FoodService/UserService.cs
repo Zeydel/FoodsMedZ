@@ -1,4 +1,4 @@
-﻿using FoodService.ViewModels;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,13 @@ namespace FoodService
 {
 	public class UserService : IUserService
 	{
+
+		JsonSerializerSettings jsettings = new JsonSerializerSettings()
+		{
+			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+			Formatting = Formatting.Indented
+
+		};
 		/// <summary>
 		/// Gets one user from backend
 		/// </summary>
@@ -20,13 +27,13 @@ namespace FoodService
 		{
 			masterEntities m = new masterEntities();
 			var userlst = from k in m.User where k.User_id == value select k;
-			var user = new ViewUser();
+			var user = new User();
 
 			foreach (var usr in userlst)
 			{
-				user = new ViewUser(usr);
+				user = usr;
 			}
-			return new JavaScriptSerializer().Serialize(user);
+			return JsonConvert.SerializeObject(user, jsettings);
 		}
 
 		/// <summary>
@@ -93,7 +100,11 @@ namespace FoodService
 		public void updateUser(User user)
 		{
 			masterEntities m = new masterEntities();
-			m.Entry(user).State = System.Data.Entity.EntityState.Modified;
+			m.Entry(user).State = System.Data.Entity.EntityState.Added;
+			foreach(Recipe r in user.Recipe)
+			{
+				m.Entry(r).State = System.Data.Entity.EntityState.Added;
+			}
 			m.SaveChanges();
 		}
 
@@ -115,14 +126,15 @@ namespace FoodService
 		/// </summary>
 		/// <param name="username"></param>
 		/// <returns>Returns a user object</returns>
-		public ViewUser FindUserByUsername(string username)
+		public User FindUserByUsername(string username)
 		{
 			masterEntities m = new masterEntities();
 			var userlst = from k in m.User where k.userName.Equals(username) select k;
 
 			foreach (var usr in userlst)
 			{
-				return new ViewUser(usr);
+				Console.WriteLine(usr.First_name);
+				return usr;
 
 			}
 			return null;

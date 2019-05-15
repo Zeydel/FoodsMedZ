@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FoodService.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Food">
           <Key>
             <PropertyRef Name="Food_id" />
@@ -217,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FoodServiceStoreContainer">
+        <EntityContainer Name="masterModelStoreContainer">
           <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodJoke" EntityType="Self.FoodJoke" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodTrivia" EntityType="Self.FoodTrivia" Schema="dbo" store:Type="Tables" />
@@ -269,7 +269,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FoodService" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Food">
           <Key>
             <PropertyRef Name="Food_id" />
@@ -320,7 +320,6 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Int32" />
           <Property Name="unit" Type="Int32" />
-          <Property Name="Ingredient_id" Type="Int32" />
           <NavigationProperty Name="Food" Relationship="Self.FK__Nutrition__Ingre__405A880E" FromRole="Nutrition" ToRole="Food" />
         </EntityType>
         <EntityType Name="Recipe">
@@ -377,14 +376,6 @@
         <Association Name="FK__Nutrition__Ingre__405A880E">
           <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
           <End Role="Nutrition" Type="Self.Nutrition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Food">
-              <PropertyRef Name="Food_id" />
-            </Principal>
-            <Dependent Role="Nutrition">
-              <PropertyRef Name="Ingredient_id" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK__Ingredien__Recip__3B95D2F1">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
@@ -448,9 +439,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FoodServiceStoreContainer" CdmEntityContainer="masterEntities">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
           <EntitySetMapping Name="Food">
-            <EntityTypeMapping TypeName="FoodService.Food">
+            <EntityTypeMapping TypeName="masterModel.Food">
               <MappingFragment StoreEntitySet="Food">
                 <ScalarProperty Name="Food_id" ColumnName="Food_id" />
                 <ScalarProperty Name="Food_name" ColumnName="Food_name" />
@@ -461,7 +452,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FoodJoke">
-            <EntityTypeMapping TypeName="FoodService.FoodJoke">
+            <EntityTypeMapping TypeName="masterModel.FoodJoke">
               <MappingFragment StoreEntitySet="FoodJoke">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Food_joke" ColumnName="Food_joke" />
@@ -469,7 +460,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FoodTrivia">
-            <EntityTypeMapping TypeName="FoodService.FoodTrivia">
+            <EntityTypeMapping TypeName="masterModel.FoodTrivia">
               <MappingFragment StoreEntitySet="FoodTrivia">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Food_trivia" ColumnName="Food_trivia" />
@@ -477,7 +468,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ingredients">
-            <EntityTypeMapping TypeName="FoodService.Ingredients">
+            <EntityTypeMapping TypeName="masterModel.Ingredients">
               <MappingFragment StoreEntitySet="Ingredients">
                 <ScalarProperty Name="Food_id" ColumnName="Food_id" />
                 <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
@@ -489,18 +480,17 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nutrition">
-            <EntityTypeMapping TypeName="FoodService.Nutrition">
+            <EntityTypeMapping TypeName="masterModel.Nutrition">
               <MappingFragment StoreEntitySet="Nutrition">
                 <ScalarProperty Name="Nutrition_id" ColumnName="Nutrition_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
-                <ScalarProperty Name="Ingredient_id" ColumnName="Ingredient_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipe">
-            <EntityTypeMapping TypeName="FoodService.Recipe">
+            <EntityTypeMapping TypeName="masterModel.Recipe">
               <MappingFragment StoreEntitySet="Recipe">
                 <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
                 <ScalarProperty Name="Recipe_name" ColumnName="Recipe_name" />
@@ -518,7 +508,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="FoodService.User">
+            <EntityTypeMapping TypeName="masterModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="First_name" ColumnName="First_name" />
@@ -535,7 +525,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="UserFoodJokes" TypeName="FoodService.UserFoodJokes" StoreEntitySet="UserFoodJokes">
+          <AssociationSetMapping Name="FK__Nutrition__Ingre__405A880E" TypeName="masterModel.FK__Nutrition__Ingre__405A880E" StoreEntitySet="Nutrition">
+            <EndProperty Name="Food">
+              <ScalarProperty Name="Food_id" ColumnName="Ingredient_id" />
+            </EndProperty>
+            <EndProperty Name="Nutrition">
+              <ScalarProperty Name="Nutrition_id" ColumnName="Nutrition_id" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Ingredient_id" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserFoodJokes" TypeName="masterModel.UserFoodJokes" StoreEntitySet="UserFoodJokes">
             <EndProperty Name="FoodJoke">
               <ScalarProperty Name="Id" ColumnName="FoodJoke_id" />
             </EndProperty>
@@ -543,7 +542,7 @@
               <ScalarProperty Name="User_id" ColumnName="User_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="UserFoodTrivia" TypeName="FoodService.UserFoodTrivia" StoreEntitySet="UserFoodTrivia">
+          <AssociationSetMapping Name="UserFoodTrivia" TypeName="masterModel.UserFoodTrivia" StoreEntitySet="UserFoodTrivia">
             <EndProperty Name="FoodTrivia">
               <ScalarProperty Name="Id" ColumnName="FoodTrivia_id" />
             </EndProperty>
@@ -551,7 +550,7 @@
               <ScalarProperty Name="User_id" ColumnName="User_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="userRecipes" TypeName="FoodService.userRecipes" StoreEntitySet="userRecipes">
+          <AssociationSetMapping Name="userRecipes" TypeName="masterModel.userRecipes" StoreEntitySet="userRecipes">
             <EndProperty Name="Recipe">
               <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
             </EndProperty>
@@ -574,7 +573,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

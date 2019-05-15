@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using FoodService;
+using Newtonsoft.Json;
 
 namespace ClientSide.Controllers
 {
@@ -22,7 +23,7 @@ namespace ClientSide.Controllers
 		public String getRandomJoke()
 		{
 			var joke = "";
-			var foodJokes1 = new JavaScriptSerializer().Deserialize<List<FoodJoke>>(foodJokeServiceClient.GetFoodJoke());
+			var foodJokes1 = JsonConvert.DeserializeObject<List<FoodJoke>>(foodJokeServiceClient.GetFoodJoke());
 			var numberDistance = foodJokes.Count;
 			Random random = new Random();
 			int randomnum = random.Next(numberDistance + 1);

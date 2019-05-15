@@ -17,8 +17,8 @@ namespace FoodService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Recipe()
         {
-            this.Ingredients = new HashSet<Ingredients>();
-            this.User = new HashSet<User>();
+            this.Ingredients = new List<Ingredients>();
+            this.User = new List<User>();
         }
     
         public int Recipe_id { get; set; }
@@ -35,8 +35,8 @@ namespace FoodService
         public string imageTyp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingredients> Ingredients { get; set; }
+        public virtual List<Ingredients> Ingredients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual List<User> User { get; set; }
     }
 }

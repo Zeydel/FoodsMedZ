@@ -1,6 +1,7 @@
 ﻿using ClientSide.Models;
 using ClientSide.UserServiceReference;
 using FoodService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +90,10 @@ namespace ClientSide.Controllers
 		/// <returns></returns>
 		public ActionResult PushUpdate(User user)
 		{
+			Recipe recipe = new RecipeController().getRecipe(1234);
+			user.Recipe.Add(recipe);
 			userServiceClient.updateUser(user);
+			
 			return View("Profile", user);
 
 		}
@@ -136,7 +140,7 @@ namespace ClientSide.Controllers
 			{
 				value = int.Parse(Request.Cookies["userid"].Value);
 			}
-			return new JavaScriptSerializer().Deserialize<User>(userServiceClient.GetUser(value));
+			return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value));
 		}
 	}
 }

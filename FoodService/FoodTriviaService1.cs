@@ -1,4 +1,4 @@
-﻿using FoodService.ViewModels;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +16,13 @@ namespace FoodService
 		public String GetFoodTrivia()
 		{
 			masterEntities m = new masterEntities();
-			List<ViewFoodTrivia> foodTrivias= new List<ViewFoodTrivia>();
+			List<FoodTrivia> foodTrivias= new List<FoodTrivia>();
 			var foodTrivialst = from k in m.FoodTrivia select k;
 			foreach (FoodTrivia ft in foodTrivialst)
 			{
-				foodTrivias.Add(new ViewFoodTrivia(ft));
+				foodTrivias.Add(ft);
 			}
-			return new JavaScriptSerializer().Serialize(foodTrivias);
+			return JsonConvert.SerializeObject(foodTrivias);
 		}
 	}
 }

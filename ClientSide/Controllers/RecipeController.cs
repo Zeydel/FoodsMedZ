@@ -1,5 +1,6 @@
 ﻿using ClientSide.UserServiceReference;
 using FoodService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ClientSide.Controllers
         public ActionResult Recipes()
         {
             string recipe_list = recipeServiceClient.getAllRecipes();
-            List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
+			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list);
             IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
             return View(recupeenum);
         }
@@ -37,7 +38,7 @@ namespace ClientSide.Controllers
         [HttpGet]
         public Recipe getRecipe(int id)
         {
-            return new JavaScriptSerializer().Deserialize<Recipe>(recipeServiceClient.findRecipesById(id));
+			return JsonConvert.DeserializeObject<Recipe>(recipeServiceClient.findRecipesById(id));
         }
     }
 }

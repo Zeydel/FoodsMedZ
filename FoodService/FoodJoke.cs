@@ -17,13 +17,13 @@ namespace FoodService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FoodJoke()
         {
-            this.User = new HashSet<User>();
+            this.User = new List<User>();
         }
     
         public int Id { get; set; }
         public string Food_joke { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual List<User> User { get; set; }
     }
 }

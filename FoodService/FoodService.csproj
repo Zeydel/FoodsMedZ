@@ -41,6 +41,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -98,13 +101,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="UserService.cs" />
-    <Compile Include="ViewModels\ViewUser.cs" />
-    <Compile Include="ViewModels\ViewFood.cs" />
-    <Compile Include="ViewModels\ViewFoodJoke.cs" />
-    <Compile Include="ViewModels\ViewFoodTrivia.cs" />
-    <Compile Include="ViewModels\ViewIngridient.cs" />
-    <Compile Include="ViewModels\ViewNutrition.cs" />
-    <Compile Include="ViewModels\ViewRecipe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace ClientSide.Controllers
 {
@@ -66,7 +67,7 @@ namespace ClientSide.Controllers
 		public ActionResult Search()
 		{
 			string recipe_list = recipeServiceClient.getAllRecipes();
-			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
+			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list);
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
 			return View(recupeenum);
 		}
@@ -74,7 +75,7 @@ namespace ClientSide.Controllers
 		public ActionResult doSearch(string recipe_name)
 		{
 			string recipe_list = recipeServiceClient.findRecipesByName(recipe_name);
-			List<Recipe> recipes = new JavaScriptSerializer().Deserialize<List<Recipe>>(recipe_list);
+			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_name);
 			IEnumerable<Recipe> recupeenum = recipes.AsEnumerable<Recipe>();
 			return View("Search", recupeenum);
 		}
@@ -82,7 +83,7 @@ namespace ClientSide.Controllers
 		public ActionResult advancedSearch(SearchModel search)
 		{
 			string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
-			List<FoodService.Recipe> recipelist = new JavaScriptSerializer().Deserialize<List<FoodService.Recipe>>(temp);
+			List<FoodService.Recipe> recipelist = JsonConvert.DeserializeObject<List<Recipe>>(temp);
 			return View("Search", recipelist);
 		}
 
