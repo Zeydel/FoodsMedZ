@@ -19,7 +19,7 @@
                 @Html.ActionLink("FoodsMedZ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Recipes", "Recipes", "Recipe")</li>
                     <li>@Html.ActionLink("Food", "Food", "Home")</li>
@@ -29,7 +29,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Search", "Search", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Login")</li>
+
                 </ul>
             </div>
         </div>
@@ -47,3 +47,19 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+	$(document).ready(function () {
+		if (document.cookie) {
+			console.log('cookie')
+			$('#nav').append('<li>@Html.ActionLink("Logout","Logout","Login")</li>')
+		}
+		console.log('uden cookie')
+	})
+
+	$(document).ready(function () {
+		if (!document.cookie) {
+			$('#nav').append('<li>@Html.ActionLink("Login","Login","Login")</li>')
+		}
+	})
+</script>
