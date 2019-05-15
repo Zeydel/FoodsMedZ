@@ -36,7 +36,7 @@ namespace ClientSide.Controllers
 			var foodJokes1 = new JavaScriptSerializer().Deserialize<List<FoodJoke>>(foodJokeServiceClient.GetFoodJoke());
 			var numberDistance = foodJokes1.Count;
 			Random random = new Random();
-			int randomnum = random.Next(numberDistance + 1);
+			int randomnum = random.Next(numberDistance);
 			joke = foodJokes1.ElementAt(randomnum).Food_joke;
 			return joke;
 		}
@@ -47,7 +47,7 @@ namespace ClientSide.Controllers
 			var foodTrivias = new JavaScriptSerializer().Deserialize<List<FoodTrivia>>(foodTriviaServiceClient.GetFoodTrivia());
 			var numberDistance1 = foodTrivias.Count();
 			Random random = new Random();
-			int randomnum1 = random.Next(numberDistance1 + 1);
+			int randomnum1 = random.Next(numberDistance1);
 			trivia = foodTrivias.ElementAt(randomnum1).Food_trivia;
 			return trivia;
 		}
