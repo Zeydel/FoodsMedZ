@@ -99,8 +99,6 @@ namespace ClientSide.Controllers
 		/// <returns></returns>
 		public ActionResult PushUpdate(User user)
 		{
-			Recipe recipe = new RecipeController().getRecipe(1234);
-			user.Recipe.Add(recipe);
 			String json = JsonConvert.SerializeObject(user, jsettings);
 			userServiceClient.updateUser(json);
 			

@@ -105,20 +105,9 @@ namespace FoodService
 			RecipeService1 recipeclient = new RecipeService1();
 			
 			User user = JsonConvert.DeserializeObject<User>(str, jsettings);
-			User originalUser = JsonConvert.DeserializeObject<User>(GetUser(user.User_id));
 
-			originalUser.weight = user.weight;
-
-
-			m.Entry(originalUser).State = System.Data.Entity.EntityState.Modified;
+			m.Entry(user).State = System.Data.Entity.EntityState.Modified;
 			
-			foreach (Recipe r in user.Recipe)
-			{
-				Recipe ogrec = recipeclient.getRecipe(r.Recipe_id);
-				ogrec.User.Add(originalUser);
-				originalUser.Recipe.Add(ogrec);
-				m.Entry(ogrec).State = System.Data.Entity.EntityState.Modified;
-			}
 			m.SaveChanges();
 		}
 
