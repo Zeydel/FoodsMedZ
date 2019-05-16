@@ -31,8 +31,12 @@ namespace ClientSide.Controllers
             if (Request.Cookies["userid"] != null)
             {
                 User user = GetUserByCookie();
-                List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
-                test.favorites = favorites;
+                if (!String.IsNullOrEmpty(user.favorites))
+                {
+
+                    List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
+                    test.favorites = favorites;
+                }
             }
             return View(test);
         }
@@ -59,7 +63,9 @@ namespace ClientSide.Controllers
                         recipes.Add(getRecipe(recipeId));
                     }
                     IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
-                    return View(recupeenum);
+                    UserFavRecipes test = new UserFavRecipes();
+                    test.recipes = recipes;
+                    return View(test);
                 } 
             }
             return View();

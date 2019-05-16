@@ -1,4 +1,4 @@
-﻿@model List<FoodService.Recipe>
+﻿@model ClientSide.Models.UserFavRecipes
 
 @{
     ViewBag.Title = "Favorites";
@@ -9,34 +9,35 @@
 
 <div class="container-fluid">
     <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3">
-                <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
+        @if (Model.recipes != null && Model.recipes.Any()) { }
+            @foreach (var item in Model.recipes)
+            {
+                <div class="col-md-3">
+                    <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
 
-                    <div class="card">
-                        <div class="card-header">
-                            @if ((bool)item.Recipe_vegan)
-                            {
-                                <img src="~/Content/Pictures/vegan.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+                        <div class="card">
+                            <div class="card-header">
+                                @if ((bool)item.Recipe_vegan)
+                                {
+                                    <img src="~/Content/Pictures/vegan.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
 
-                            }
-                            else if ((bool)item.Recipe_veg)
-                            {
-                                <img src="~/Content/Pictures/leaf.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
-                            }
-                            <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                                }
+                                else if ((bool)item.Recipe_veg)
+                                {
+                                    <img src="~/Content/Pictures/leaf.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+                                }
+                                <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                            </div>
+                            <div class="card-content">
+                                <img src="@Url.Content(item.image)" style="max-width:100%; max-height:100%;">
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <img src="@Url.Content(item.image)" style="max-width:100%; max-height:100%;">
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-            </div>
+                </div>
 
 
-        }
+            }
     </div>
 
 </div>
