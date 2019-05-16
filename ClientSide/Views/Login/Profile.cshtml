@@ -110,6 +110,9 @@
 </div>
 
 <div>
+    @Html.ActionLink("Get recommended recipes", "RecommendedRecipes", "Recipe", new { vegetarian = Model.vegetarian, vegan = Model.vegan, glutenFree = Model.glutenfree, DairyFree = Model.dairyfree}, null )
+</div>
+<div>
     @Html.ActionLink("Update Profile", "UpdateProfile")
 </div>
 <p>

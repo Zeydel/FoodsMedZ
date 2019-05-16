@@ -75,5 +75,17 @@ namespace ClientSide.Controllers
             }
             return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value), jsettings);
         }
+
+		public ActionResult RecommendedRecipes(bool? vegetarian, bool? vegan, bool? glutenfree, bool? Dairyfree)
+		{
+			SearchModel searchModel = new SearchModel();
+			searchModel.SearchTerm = "";
+			searchModel.Vegetarian = vegetarian.GetValueOrDefault();
+			searchModel.Vegan = vegan.GetValueOrDefault();
+			searchModel.Glutenfree = glutenfree.GetValueOrDefault();
+			searchModel.Dairyfree = glutenfree.GetValueOrDefault();
+			return RedirectToAction("advancedSearch","Home", searchModel);
+
+		}
     }
 }

@@ -149,6 +149,7 @@ namespace ClientSide.Controllers
 			}
 			return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value), jsettings);
 		}
+
 	}
 }
 		

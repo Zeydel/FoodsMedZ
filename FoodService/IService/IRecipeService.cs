@@ -61,6 +61,9 @@ namespace FoodService
 		[OperationContract]
 		string getRecipesAdvanced(string searchTerm, bool vegetarian, bool vegan, bool cheap, bool glutenfree, bool dairyfree, int maxminues);
 
+		[OperationContract]
+		string getApiInformation();
+
 	}
 
 }
