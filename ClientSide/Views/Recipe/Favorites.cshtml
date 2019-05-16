@@ -6,6 +6,29 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                    </div>
+                    <div class="card-content">
+                        <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
+                            <img src="@Url.Content(item.image)" style="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+        </div>
+
+</div>
+
 <table class="table">
     <tr>
         <th>

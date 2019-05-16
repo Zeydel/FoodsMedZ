@@ -42,15 +42,16 @@ namespace ClientSide.Controllers
             {
                 //return View("Profile", GetUserByCookie());
                 User user = GetUserByCookie();
-                List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
-                List<Recipe> recipes = new List<Recipe>();
-                foreach (int recipeId in favorites)
-                {
-                    recipes.Add(getRecipe(recipeId));
-                }
-                IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
-                return View(recupeenum);
-
+                if (!String.IsNullOrEmpty(user.favorites)) {
+                    List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
+                    List<Recipe> recipes = new List<Recipe>();
+                    foreach (int recipeId in favorites)
+                    {
+                        recipes.Add(getRecipe(recipeId));
+                    }
+                    IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
+                    return View(recupeenum);
+                } 
             }
             return View();
         }

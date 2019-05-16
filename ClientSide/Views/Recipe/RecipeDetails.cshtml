@@ -1,96 +1,112 @@
 ﻿@model FoodService.Recipe
 
 @{
-    ViewBag.Title = "Recipe Details";
+	ViewBag.Title = "Recipe Details";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            <p>ID</p>
-        </th>
-        <th>
-            <p>Minutes</p>
-        </th>
-        <th>
-            <p>Name</p>
-        </th>
-        <th>
-            <p>Vegetarian</p>
-        </th>
-        <th>
-            <p>Vegan</p>
-        </th>
-        <th>
-            <p>Cheap</p>
-        </th>
-        <th>
-            <p>Dairy Free</p>
-        </th>
-        <th>
-            <p>Gluten Free</p>
-        </th>
-        <th>
-            <p>Sustainable</p>
-        </th>
-        <th>
-            <p>Image</p>
-        </th>
-
-    </tr>
-
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.Recipe_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.Recipe_minutes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.Recipe_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.Recipe_veg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.Recipe_vegan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.cheap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.dairyfree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.glutenfree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => modelItem.sustainable)
-        </td>
-        <td>
-            <a href="@Url.Action("RecipeDetails", "Recipe", new {id = Model.Recipe_id})" class="links">
-                <img src="@Url.Content(Model.image)" style="width: 150px; height: 150px;">
-            </a>
-        </td>
-    </tr>
+<html>
+<head>
+	<h2>@ViewBag.Title.</h2>
+	<link rel="stylesheet" type="text/css" href="~/Content/Recipe.css" />
+	<div class="backgroundimg">
+		<div class="framelogin">
 
 
-</table>
 
-<b>Ingredients:</b>
+			<table class="table">
+				<tr>
+					<th>
+						<p>ID</p>
+					</th>
+					<th>
+						<p>Minutes</p>
+					</th>
+					<th>
+						<p>Name</p>
+					</th>
+					<th>
+						<p>Vegetarian</p>
+					</th>
+					<th>
+						<p>Vegan</p>
+					</th>
+					<th>
+						<p>Cheap</p>
+					</th>
+					<th>
+						<p>Dairy Free</p>
+					</th>
+					<th>
+						<p>Gluten Free</p>
+					</th>
+					<th>
+						<p>Sustainable</p>
+					</th>
+					<th>
+						<p>Image</p>
+					</th>
 
-@foreach (var item in Model.Ingredients)
-{
-<li>
-    @Html.DisplayFor(modelItem => item.Amount)
-    @Html.DisplayFor(modelItem => item.Unit)
-    @Html.DisplayFor(modelItem => item.Ingredient_name)
-</li>
-}
+				</tr>
+
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Recipe_id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Recipe_minutes)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Recipe_name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Recipe_veg)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.Recipe_vegan)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.cheap)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.dairyfree)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.glutenfree)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => modelItem.sustainable)
+					</td>
+					<td>
+						<a href="@Url.Action("RecipeDetails", "Recipe", new {id = Model.Recipe_id})" class="links">
+							<img src="@Url.Content(Model.image)" style="width: 150px; height: 150px;">
+						</a>
+					</td>
+				</tr>
 
 
-<p>
-    <b>Instructions:</b>
+			</table>
 
-    @Html.DisplayFor(modelItem => modelItem.Instructions)
-</p>
+			<div class="card card-content">
+				<b>Ingredients:</b>
+
+				@foreach (var item in Model.Ingredients)
+				{
+					<li>
+						@Html.DisplayFor(modelItem => item.Amount)
+						@Html.DisplayFor(modelItem => item.Unit)
+						@Html.DisplayFor(modelItem => item.Ingredient_name)
+					</li>
+				}
+
+
+				<p>
+					<b>Instructions:</b>
+
+					@Html.DisplayFor(modelItem => modelItem.Instructions)
+				</p>
+			</div>
+		</div>
+
+</head>
+</html>
+

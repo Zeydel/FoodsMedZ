@@ -20,7 +20,7 @@ namespace FoodService
 		/// <returns></returns>
 		public string GetUser(int value)
 		{
-			masterEntities m = ContextSingleton.getContext();
+			masterEntities m = new masterEntities();
 			var userlst = from k in m.User where k.User_id == value select k;
 			var user = new User();
 
@@ -84,6 +84,7 @@ namespace FoodService
 			newUser.vegan = vegan;
 			newUser.dairyfree = dairyfree;
 			newUser.glutenfree = glutenfree;
+            newUser.gender = gender; 
 			m.User.Add(newUser);
 			m.SaveChanges();
 		}

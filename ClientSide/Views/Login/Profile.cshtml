@@ -1,113 +1,121 @@
 ﻿@model FoodService.User
 
 @{
-    ViewBag.Title = "Profile";
+	ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
+<html>
+<head>
+	<h2>@ViewBag.Title.</h2>
+	<link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+	<div class="backgroundimg">
+		<div class="framelogin">
 
-<div>
-    <h4>users</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.First_name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.First_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Last_name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Last_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User_id)
-        </dt>
+			<h4 class="text">User profile</h4>
+			<dl class="dl-horizontal">
+				<dt>
+					First name
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User_id)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.First_name)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dairyfree)
-        </dt>
+				<dt>
+					Last name:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.dairyfree)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.Last_name)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gender)
-        </dt>
+				<dt>
+					User ID:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.gender)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.User_id)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.glutenfree)
-        </dt>
+				<dt>
+					Password:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.glutenfree)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.password)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.height)
-        </dt>
+				<dt>
+					Username:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.height)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.userName)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
+				<dt>
+					Dairyfree diet:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.dairyfree)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.userName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.userName)
-        </dd>
+				<dt>
+					Glutenfree diet:
+				</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.vegan)
-        </dt>
+				<dd>
+					@Html.DisplayFor(model => model.glutenfree)
+				</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.vegan)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.vegetarian)
-        </dt>
+				<dt>
+					Gender:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.vegetarian)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.gender)
+				</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.weight)
-        </dt>
+				<dt>
+					Heigh:
+				</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.weight)
-        </dd>
+				<dd>
+					@Html.DisplayFor(model => model.height)
+				</dd>
 
-    </dl>
-</div>
+				<dt>
+					Weight:
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.weight)
+				</dd>
+
+
+				<dt>
+					Vegan
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.vegan)
+				</dd>
+
+				<dt>
+					Vegetarian:
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.vegetarian)
+				</dd>
+
 
 <div>
     @Html.ActionLink("Get recommended recipes", "RecommendedRecipes", "Recipe", new { vegetarian = Model.vegetarian, vegan = Model.vegan, glutenFree = Model.glutenfree, DairyFree = Model.dairyfree}, null )
