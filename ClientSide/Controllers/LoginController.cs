@@ -44,13 +44,18 @@ namespace ClientSide.Controllers
             {
                 User user = GetUserByCookie();
                 int id = Int32.Parse(Request.Form["id"]);
-                List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
-                if (favorites.Contains(id))
-                {
-                    favorites.Remove(id);
-                }
+				if (!String.IsNullOrEmpty(user.favorites))
+				{
+					List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
+					favorites.Add(id);
+					string joined = string.Join(",", favorites);
+					user.favorites = joined;
+				}
+				else {
+					user.favorites = Request.Form["id"];
+				}
 
-                string newUser = JsonConvert.SerializeObject(user, jsettings);
+				string newUser = JsonConvert.SerializeObject(user, jsettings);
                 userServiceClient.updateUser(newUser);
                 return true;
             }

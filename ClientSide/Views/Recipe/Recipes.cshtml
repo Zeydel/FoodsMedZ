@@ -48,6 +48,10 @@
                                 <button id="@item.Recipe_id" onclick="removeFavorite(@item.Recipe_id)" class="remove-button">Remove</button>
                             }
                         }
+                        else
+                        {
+                            <button id="@item.Recipe_id" onclick="markFavorite(@item.Recipe_id)" class="favorite-button">Favorite</button>
+                        }
                     </div>
                 </div>
 
@@ -77,11 +81,14 @@
 
     function removeFavorite(id) {
 
-        $.post('@Url.Action("removeFavorite","Login")', {id: id}, function () {
-			document.getElementById(id).classList.remove('remove-button');
-            document.getElementById(id).innerHTML = "Favorite"
-            document.getElementById(id).classList.add('favorite-button');
-        });
+        if (document.getElementById(id).innerHTML != "Favorite") {
+
+            $.post('@Url.Action("removeFavorite","Login")', { id: id }, function () {
+                document.getElementById(id).classList.remove('remove-button');
+                document.getElementById(id).innerHTML = "Favorite"
+                document.getElementById(id).classList.add('favorite-button');
+            });
+        }
 
 	}
 

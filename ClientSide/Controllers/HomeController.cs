@@ -86,8 +86,33 @@ namespace ClientSide.Controllers
 		{
 			string temp = recipeServiceClient.getRecipesAdvanced(search.SearchTerm, search.Vegetarian, search.Vegan, search.Cheap, search.Glutenfree, search.Dairyfree, search.maxMinutes.GetValueOrDefault());
 			List<FoodService.Recipe> recipelist = JsonConvert.DeserializeObject<List<Recipe>>(temp, jsettings);
-			return View("Search", recipelist);
+			//return View("Search", recipelist);
+
+			UserFavRecipes test = new UserFavRecipes();
+			test.recipes = recipelist;
+
+			if (Request.Cookies["userid"] != null)
+			{
+				User user = GetUserByCookie();
+				if (!String.IsNullOrEmpty(user.favorites))
+				{
+
+					List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
+					test.favorites = favorites;
+				}
+			}
+		return View("Search", test);
 		}
+
+		public User GetUserByCookie()
+        {
+            int value = -1;
+            if (Request.Cookies["userid"] != null)
+            {
+                value = int.Parse(Request.Cookies["userid"].Value);
+            }
+            return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value), jsettings);
+        }
 
 	}
 
