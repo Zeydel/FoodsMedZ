@@ -94,7 +94,7 @@ namespace ClientSide.Controllers
             {
                 return View("Profile", GetUserByCookie());
             }
-            return View("Login");
+            return RedirectToAction("Login", "Login");
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace ClientSide.Controllers
         public ActionResult Create(SignUpModel s)
         {
             userServiceClient.AddUser(s.First_name, s.Last_name, s.userName, s.password, s.weight, s.height, s.vegetarian, s.vegan, s.dairyfree, s.glutenfree, s.gender);
-            return RedirectToAction("Profile", "Home");
+            return RedirectToAction("Login", "Login");
         }
 
         /// <summary>

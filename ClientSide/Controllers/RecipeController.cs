@@ -68,7 +68,7 @@ namespace ClientSide.Controllers
                     return View(test);
                 } 
             }
-            return View();
+            return RedirectToAction("Login","Login");
         }
 
         [HttpGet]
