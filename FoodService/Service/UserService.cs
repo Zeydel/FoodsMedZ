@@ -84,6 +84,7 @@ namespace FoodService
 			newUser.vegan = vegan;
 			newUser.dairyfree = dairyfree;
 			newUser.glutenfree = glutenfree;
+            newUser.gender = gender; 
 			m.User.Add(newUser);
 			m.SaveChanges();
 		}
