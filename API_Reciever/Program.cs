@@ -17,10 +17,13 @@ namespace DBRecipeFetcher
         static void Main(string[] args)
         {
 
-            WebRequest request = WebRequest.Create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479115/information");
+			API_Reciever.ServiceReference1.RecipeServiceClient client = new API_Reciever.ServiceReference1.RecipeServiceClient();
+			WebRequest request = WebRequest.Create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479122/information");
             request.Method = "GET";
-            request.Headers.Add("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
-            request.Headers.Add("X-RapidAPI-Key", "ea8b3c331cmshe7e397ea99737e2p1a433ajsn83b9197c861f");
+			Tuple<string, string> apiinfo = JsonConvert.DeserializeObject<Tuple<string, string>>(client.getApiInformation());
+
+			request.Headers.Add("X-RapidAPI-Host", apiinfo.Item1);
+            request.Headers.Add("X-RapidAPI-Key", apiinfo.Item2);
 
 
             WebResponse res = request.GetResponse();
@@ -70,7 +73,7 @@ namespace DBRecipeFetcher
             }
             
 
-            API_Reciever.ServiceReference1.RecipeService1Client client = new API_Reciever.ServiceReference1.RecipeService1Client();
+           
 
             client.addRecipe(recipe.id, recipe.title, recipe.readyInMinutes, recipe.vegetarian, recipe.vegan, recipe.cheap,
                 recipe.sustainable, recipe.glutenFree, recipe.dairyFree, recipe.image, recipe.instructions, recipe.imageType, array);

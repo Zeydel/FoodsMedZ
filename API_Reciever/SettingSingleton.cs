@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodService
+namespace API_Reciever
 {
 	public sealed class SettingSingleton
 	{
@@ -20,6 +20,7 @@ namespace FoodService
 					PreserveReferencesHandling = PreserveReferencesHandling.Objects,
 					Formatting = Formatting.Indented,
 					ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+
 				};
 			}
 			return jsettings;

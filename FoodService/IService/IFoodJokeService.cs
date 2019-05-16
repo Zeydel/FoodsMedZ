@@ -9,9 +9,9 @@ namespace FoodService
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
 	[ServiceContract]
-	public interface IFoodTriviaService1
+	public interface IFoodJokeService
 	{
 		[OperationContract]
-		String GetFoodTrivia();
+		String GetFoodJoke();
 	}
 }

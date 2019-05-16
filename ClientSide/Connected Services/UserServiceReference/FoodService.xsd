@@ -6,6 +6,9 @@
       <xs:element minOccurs="0" name="Last_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="User_id" type="xs:int" />
       <xs:element minOccurs="0" name="dairyfree" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="favJokes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="favTrivia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="favorites" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="gender" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="glutenfree" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="height" nillable="true" type="xs:double" />

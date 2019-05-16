@@ -10,19 +10,18 @@ using System.Web.Script.Serialization;
 namespace FoodService
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-
-	public class FoodTriviaService1 : IFoodTriviaService1
+	public class FoodJokeService : IFoodJokeService
 	{
-		public String GetFoodTrivia()
+		public String GetFoodJoke()
 		{
 			masterEntities m = new masterEntities();
-			List<FoodTrivia> foodTrivias= new List<FoodTrivia>();
-			var foodTrivialst = from k in m.FoodTrivia select k;
-			foreach (FoodTrivia ft in foodTrivialst)
+			List<FoodJoke> foodJokes = new List<FoodJoke>();
+			var foodJokelst = from k in m.FoodJoke select k;
+			foreach (var fj in foodJokelst)
 			{
-				foodTrivias.Add(ft);
+				foodJokes.Add(fj);
 			}
-			return JsonConvert.SerializeObject(foodTrivias);
+			return JsonConvert.SerializeObject(foodJokes);
 		}
 	}
 }

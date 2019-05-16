@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 namespace FoodService
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RecipeService1" in both code and config file together.
-	public class RecipeService1 : IRecipeService1
+	public class RecipeService : IRecipeService
 	{
 		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		/// <summary>
@@ -46,7 +46,7 @@ namespace FoodService
 		/// <param name="image"></param>
 		/// <param name="instruction"></param>
 		/// <param name="imageTyp"></param>
-        /// <param name="ingredientList"></param>
+		/// <param name="ingredientList"></param>
 		public void addRecipe(int recipe_id, String recipe_name, int recipe_minutes, Boolean recipe_veg,
 			Boolean recipe_vegan, Boolean cheap, Boolean sustainable, Boolean glutenfree, Boolean dairyfree,
 			String image, String instruction, String imageTyp, List<Ingredients> ingredientList)
@@ -65,7 +65,7 @@ namespace FoodService
 			rcp.image = image;
 			rcp.Instructions = instruction;
 			rcp.imageTyp = imageTyp;
-            rcp.Ingredients = ingredientList;
+			rcp.Ingredients = ingredientList;
 			m.Recipe.Add(rcp);
 			m.SaveChanges();
 		}
@@ -140,9 +140,13 @@ namespace FoodService
 			var recipelist = from k in m.Recipe select k;
 			foreach (Recipe recipe in recipelist)
 			{
-				if (!recipe.Recipe_name.ToLower().Contains(searchTerm.ToLower()))
+				if (!String.IsNullOrEmpty(searchTerm))
 				{
-					continue;
+
+					if (!recipe.Recipe_name.ToLower().Contains(searchTerm.ToLower()))
+					{
+						continue;
+					}
 				}
 				if (vegetarian == true && recipe.Recipe_veg == false)
 				{
@@ -171,6 +175,14 @@ namespace FoodService
 				recipes.Add(recipe);
 			}
 			return JsonConvert.SerializeObject(recipes, jsettings);
+		}
+
+		public string getApiInformation()
+		{
+			string host = Configuration.GetAppSetting("X-RapidAPI-Host");
+			string key = Configuration.GetAppSetting("X-RapidAPI-Key");
+			Tuple<string, string> apiData = Tuple.Create(host, key);
+			return JsonConvert.SerializeObject(apiData, jsettings);
 		}
 
 	}

@@ -117,21 +117,13 @@
 				</dd>
 
 
-				<div>
-					@Html.ActionLink("Update Profile", "UpdateProfile")
-				</div>
-
-			</dl>
-		</div>
-
-
-
-		<p>
-			@Html.ActionLink("UpdateProfile", "Login", new { /**/ }) |
-			@Html.ActionLink("Back to List", "Index")
-		</p>
-		
-	</div>
-
-</head>
-</html>
+<div>
+    @Html.ActionLink("Get recommended recipes", "RecommendedRecipes", "Recipe", new { vegetarian = Model.vegetarian, vegan = Model.vegan, glutenFree = Model.glutenfree, DairyFree = Model.dairyfree}, null )
+</div>
+<div>
+    @Html.ActionLink("Update Profile", "UpdateProfile")
+</div>
+<p>
+    @Html.ActionLink("UpdateProfile", "Login", new { /**/ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

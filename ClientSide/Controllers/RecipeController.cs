@@ -1,4 +1,5 @@
 ﻿using ClientSide.Models;
+using ClientSide.RecipeServiceReference;
 using ClientSide.UserServiceReference;
 using FoodService;
 using Newtonsoft.Json;
@@ -13,17 +14,11 @@ namespace ClientSide.Controllers
 {
     public class RecipeController : Controller
     {
-        RecipeServiceReference.RecipeService1Client recipeServiceClient = new RecipeServiceReference.RecipeService1Client();
-        UserServiceReference.UserServiceClient userServiceClient = new UserServiceReference.UserServiceClient();
+		RecipeServiceClient recipeServiceClient = ServiceFactory.getRecipeServiceClient();
+		UserServiceClient userServiceClient = ServiceFactory.getUserServiceClient();
 
 
-        JsonSerializerSettings jsettings = new JsonSerializerSettings()
-		{
-			PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-			Formatting = Formatting.Indented,
-			ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
-		};
+		JsonSerializerSettings jsettings = SettingSingleton.GetJsonSerializerSettings();
 		// GET: Recipe
 		public ActionResult Recipes()
         {
@@ -90,5 +85,17 @@ namespace ClientSide.Controllers
             }
             return JsonConvert.DeserializeObject<User>(userServiceClient.GetUser(value), jsettings);
         }
+
+		public ActionResult RecommendedRecipes(bool? vegetarian, bool? vegan, bool? glutenfree, bool? Dairyfree)
+		{
+			SearchModel searchModel = new SearchModel();
+			searchModel.SearchTerm = "";
+			searchModel.Vegetarian = vegetarian.GetValueOrDefault();
+			searchModel.Vegan = vegan.GetValueOrDefault();
+			searchModel.Glutenfree = glutenfree.GetValueOrDefault();
+			searchModel.Dairyfree = glutenfree.GetValueOrDefault();
+			return RedirectToAction("advancedSearch","Home", searchModel);
+
+		}
     }
 }

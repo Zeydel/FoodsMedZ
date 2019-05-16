@@ -84,6 +84,7 @@ namespace FoodService
 			newUser.vegan = vegan;
 			newUser.dairyfree = dairyfree;
 			newUser.glutenfree = glutenfree;
+            newUser.gender = gender; 
 			m.User.Add(newUser);
 			m.SaveChanges();
 		}
@@ -96,10 +97,25 @@ namespace FoodService
 		public void updateUser(string str)
 		{
 			masterEntities m = ContextSingleton.getContext();
-			RecipeService1 recipeclient = new RecipeService1();
+			RecipeService recipeclient = new RecipeService();
 			
 			User user = JsonConvert.DeserializeObject<User>(str, jsettings);
-
+			User updateUser = JsonConvert.DeserializeObject<User>(GetUser(user.User_id), jsettings);
+			updateUser.dairyfree = user.dairyfree;
+			updateUser.favJokes = user.favJokes;
+			updateUser.favTrivia = user.favTrivia;
+			updateUser.favorites = user.favorites;
+			updateUser.First_name = user.First_name;
+			updateUser.gender = user.gender;
+			updateUser.glutenfree = user.glutenfree;
+			updateUser.height = user.height;
+			updateUser.Last_name = user.Last_name;
+			updateUser.password = user.password;
+			updateUser.userName = user.userName;
+			updateUser.User_id = user.User_id;
+			updateUser.vegan = user.vegan;
+			updateUser.vegetarian = user.vegetarian;
+			updateUser.weight = user.weight;
 			m.Entry(user).State = System.Data.Entity.EntityState.Modified;
 			
 			m.SaveChanges();
