@@ -12,99 +12,33 @@
         @foreach (var item in Model)
         {
             <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
+
+                    <div class="card">
+                        <div class="card-header">
+                            @if ((bool)item.Recipe_vegan)
+                            {
+                                <img src="~/Content/Pictures/vegan.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+
+                            }
+                            else if ((bool)item.Recipe_veg)
+                            {
+                                <img src="~/Content/Pictures/leaf.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+                            }
+                            <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                        </div>
+                        <div class="card-content">
+                            <img src="@Url.Content(item.image)" style="max-width:100%; max-height:100%;">
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
-                            <img src="@Url.Content(item.image)" style="">
-                        </a>
-                    </div>
-                </div>
+                </a>
+
             </div>
 
+
         }
-        </div>
+    </div>
 
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            <p>Name</p>
-        </th>
-        <th>
-            <p>Image</p>
-        </th>
-        <th>
-            <p>Time to make</p>
-        </th>
-        <th>
-            <p>Vegetarian</p>
-        </th>
-        <th>
-            <p>Vegan</p>
-        </th>
-        <th>
-            <p>Cheap</p>
-        </th>
-        <th>
-            <p>Dairy Free</p>
-        </th>
-        <th>
-            <p>Gluten Free</p>
-        </th>
-        <th>
-            <p>Sustainable</p>
-        </th>
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <!--
-            <td>
-                @Html.DisplayFor(modelItem => item.Recipe_id)
-            </td>
-            -->
-            <td>
-                @Html.DisplayFor(modelItem => item.Recipe_name)
-            </td>
-            <td>
-                <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
-                    <img src="@Url.Content(item.image)" style="width: 150px; height: 150px;">
-                </a>
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recipe_minutes) minutes
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recipe_veg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recipe_vegan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cheap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dairyfree)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.glutenfree)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sustainable)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "RecipeDetails", new { id = item.Recipe_id })
-            </td>
-        </tr>
-    }
-
-</table>
 

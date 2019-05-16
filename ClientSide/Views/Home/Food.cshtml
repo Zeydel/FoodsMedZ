@@ -4,14 +4,7 @@
 
 
 <head src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></head>
-<script>
-	function GetJoke() {
-		$.get('@Url.Action("getJoke","Food")', function (data) {
-			console.log(data)
-			document.getElementById("joketext").innerHTML = data;
-		});
-	}
-</script>
+
 
 <script>
 	function GetTrivia() {
@@ -32,3 +25,12 @@
 	<input type="button" onclick="GetTrivia()" value="Get Random Trivia" />
 	<p id="triviatext"></p>
 </div>
+
+<script>
+	function GetJoke() {
+		$.get('@Url.Action("getJoke","Food")', function (data) {
+			console.log(data)
+			document.getElementById("joketext").innerHTML = data;
+		});
+	}
+</script>

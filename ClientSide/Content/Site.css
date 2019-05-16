@@ -27,11 +27,17 @@ textarea {
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
     border-radius: 4px;
     padding: 16px;
+    margin-bottom: 2em;
 }
 
 .card-header h3 {
     margin-top: 0;
     margin-bottom: 0.35em;
+}
+
+.card-header {
+    min-height: 4em;
+    display: flex;
 }
 
 .card-content {
@@ -124,3 +130,37 @@ textarea {
         .card ul li a:hover {
             border-bottom: .3rem solid;
         }
+
+
+
+
+.favorite-button, .remove-button {
+    position: relative;
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+    border-width: 0;
+    outline: none;
+    outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #337ab7;
+    color: #ecf0f1;
+    transition: background-color .3s;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.remove-button {
+    background-color: brown;
+}
+
+    .favorite-button:hover,  .remove-button:hover {
+        background-color: ThreeDLightShadow;
+    }

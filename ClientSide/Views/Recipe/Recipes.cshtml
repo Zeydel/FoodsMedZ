@@ -1,4 +1,6 @@
-﻿@model List<FoodService.Recipe>
+﻿@model ClientSide.Models.UserFavRecipes
+
+
 
 @{
     ViewBag.Title = "Recipes";
@@ -6,81 +8,170 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<table class="table">
-    <tr>
-        <th>
-            <p>Name</p>
-        </th>
-        <th>
-            <p>Image</p>
-        </th>
-        <th>
-            <p>Time to make</p>
-        </th>
-        <th>
-            <p>Vegetarian</p>
-        </th>
-        <th>
-            <p>Vegan</p>
-        </th>
-        <th>
-            <p>Cheap</p>
-        </th>
-        <th>
-            <p>Dairy Free</p>
-        </th>
-        <th>
-            <p>Gluten Free</p>
-        </th>
-        <th>
-            <p>Sustainable</p>
-        </th>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.recipes)
+        {
 
-    </tr>
+            <div class="col-md-3">
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <!--
-    <td>
-        @Html.DisplayFor(modelItem => item.Recipe_id)
-    </td>
-    -->
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe_name)
-        </td>
-        <td>
-            <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
-                <img src="@Url.Content(item.image)" style="width: 150px; height: 150px;">
-            </a>
-           
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe_minutes) minutes
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe_veg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe_vegan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cheap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dairyfree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.glutenfree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sustainable)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "RecipeDetails", new {id=item.Recipe_id})
-        </td>
-    </tr>
-    }
+                <div class="card">
+                    <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
 
-</table>
+                        <div class="card-header">
+                            @if ((bool)item.Recipe_vegan)
+                            {
+                                <img src="~/Content/Pictures/vegan.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+
+                            }
+                            else if ((bool)item.Recipe_veg)
+                            {
+                                <img src="~/Content/Pictures/leaf.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+                            }
+                            <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                        </div>
+                        <div class="card-content">
+                            <img src="@Url.Content(item.image)" style="max-width:100%; max-height:100%;">
+                        </div>
+                    </a>
+
+                    <div class="card-action-area">
+                        @if (Model.favorites != null && Model.favorites.Any())
+                        {
+                            if (!Model.favorites.Contains(item.Recipe_id))
+                            {
+                                <button id="@item.Recipe_id" onclick="markFavorite(@item.Recipe_id)" class="favorite-button">Favorite</button>
+                            }
+                            else
+                            {
+                                <button id="@item.Recipe_id" onclick="removeFavorite(@item.Recipe_id)" class="remove-button">Remove</button>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+    </div>
+
+</div>
+
+
+<script>
+    function markFavorite(id) {
+
+        if (document.getElementById(id).innerHTML != "Remove") {
+             document.getElementById(id).classList.remove('favorite-button');
+        document.getElementById(id).innerHTML = "Remove"
+        document.getElementById(id).classList.add('remove-button');
+
+        $.post('@Url.Action("addFavorite","Login")', { id: id }, function () {
+            console.log(id)
+            document.getElementById(id).removeAttribute()
+		});
+        }
+
+
+        }
+
+    function removeFavorite(id) {
+
+        $.post('@Url.Action("removeFavorite","Login")', {id: id}, function () {
+			document.getElementById(id).classList.remove('remove-button');
+            document.getElementById(id).innerHTML = "Favorite"
+            document.getElementById(id).classList.add('favorite-button');
+        });
+
+	}
+</script>@model ClientSide.Models.UserFavRecipes
+
+
+
+@{
+    ViewBag.Title = "Recipes";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.recipes)
+        {
+
+            <div class="col-md-3">
+
+
+                <div class="card">
+                    <a href="@Url.Action("RecipeDetails", "Recipe", new {id = item.Recipe_id})" class="links">
+
+                        <div class="card-header">
+                            @if ((bool)item.Recipe_vegan)
+                            {
+                                <img src="~/Content/Pictures/vegan.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+
+                            }
+                            else if ((bool)item.Recipe_veg)
+                            {
+                                <img src="~/Content/Pictures/leaf.png" style="max-height: 1em; max-width: 1em; margin: 12px 4px 12px 0;" />
+                            }
+                            <h4>@Html.DisplayFor(modelItem => item.Recipe_name)</h4>
+                        </div>
+                        <div class="card-content">
+                            <img src="@Url.Content(item.image)" style="max-width:100%; max-height:100%;">
+                        </div>
+                    </a>
+
+                    <div class="card-action-area">
+                        @if (Model.favorites != null && Model.favorites.Any())
+                        {
+                            if (!Model.favorites.Contains(item.Recipe_id))
+                            {
+                                <button id="@item.Recipe_id" onclick="markFavorite(@item.Recipe_id)" class="favorite-button">Favorite</button>
+                            }
+                            else
+                            {
+                                <button id="@item.Recipe_id" onclick="removeFavorite(@item.Recipe_id)" class="remove-button">Remove</button>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+    </div>
+
+</div>
+
+
+<script>
+    function markFavorite(id) {
+
+        if (document.getElementById(id).innerHTML != "Remove") {
+             
+
+            $.post('@Url.Action("addFavorite","Login")', { id: id }, function () {
+                document.getElementById(id).classList.remove('favorite-button');
+                document.getElementById(id).innerHTML = "Remove"
+                document.getElementById(id).classList.add('remove-button');
+		    });
+        }
+
+
+        }
+
+    function removeFavorite(id) {
+        if (document.getElementById(id).innerHTML != "Favorite") {
+
+            $.post('@Url.Action("removeFavorite","Login")', { id: id }, function () {
+                document.getElementById(id).classList.remove('remove-button');
+                document.getElementById(id).innerHTML = "Favorite"
+                document.getElementById(id).classList.add('favorite-button');
+            });
+        }
+	}
+</script>

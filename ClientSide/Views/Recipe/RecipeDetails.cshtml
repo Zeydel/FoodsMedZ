@@ -16,9 +16,6 @@
 			<table class="table">
 				<tr>
 					<th>
-						<p>ID</p>
-					</th>
-					<th>
 						<p>Minutes</p>
 					</th>
 					<th>
@@ -49,37 +46,41 @@
 				</tr>
 
 				<tr>
+					
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.Recipe_id)
+						@*@Html.DisplayFor(modelItem => modelItem.Recipe_minutes)*@
+                        @Model.Recipe_minutes
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.Recipe_minutes)
+						@*@Html.DisplayFor(modelItem => modelItem.Recipe_name)*@
+                        @Model.Recipe_name
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.Recipe_name)
+						@*@Html.DisplayFor(modelItem => modelItem.Recipe_veg)*@
+                        @Model.Recipe_veg
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.Recipe_veg)
+						@*@Html.DisplayFor(modelItem => modelItem.Recipe_vegan)*@
+                        @Model.Recipe_vegan
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.Recipe_vegan)
+						@*@Html.DisplayFor(modelItem => modelItem.cheap)*@
+                        @Model.cheap
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.cheap)
+						@*@Html.DisplayFor(modelItem => modelItem.dairyfree)*@
+                        @Model.dairyfree
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.dairyfree)
+						@*@Html.DisplayFor(modelItem => modelItem.glutenfree)*@
+                        @Model.glutenfree
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.glutenfree)
+						@*@Html.DisplayFor(modelItem => modelItem.sustainable)*@
+                        @Model.sustainable
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.sustainable)
-					</td>
-					<td>
-						<a href="@Url.Action("RecipeDetails", "Recipe", new {id = Model.Recipe_id})" class="links">
-							<img src="@Url.Content(Model.image)" style="width: 150px; height: 150px;">
-						</a>
+							<img src="@Url.Content(Model.image)" style="width: 100%;">
 					</td>
 				</tr>
 
@@ -91,11 +92,14 @@
 
 				@foreach (var item in Model.Ingredients)
 				{
-					<li>
-						@Html.DisplayFor(modelItem => item.Amount)
-						@Html.DisplayFor(modelItem => item.Unit)
-						@Html.DisplayFor(modelItem => item.Ingredient_name)
-					</li>
+            <ol>
+                <li>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                    @Html.DisplayFor(modelItem => item.Unit)
+                    @Html.DisplayFor(modelItem => item.Ingredient_name)
+                </li>
+            </ol>
+					
 				}
 
 
@@ -106,6 +110,7 @@
 				</p>
 			</div>
 		</div>
+        </div>
 
 </head>
 </html>

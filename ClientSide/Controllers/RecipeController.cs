@@ -30,7 +30,16 @@ namespace ClientSide.Controllers
             string recipe_list = recipeServiceClient.getAllRecipes();
 			List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(recipe_list, jsettings);
             IEnumerable<Recipe> recupeenum = recipes.AsEnumerable();
-            return View(recupeenum);
+            UserFavRecipes test = new UserFavRecipes();
+            test.recipes = recipes;
+
+            if (Request.Cookies["userid"] != null)
+            {
+                User user = GetUserByCookie();
+                List<int> favorites = user.favorites.Split(',').Select(int.Parse).ToList();
+                test.favorites = favorites;
+            }
+            return View(test);
         }
 
         public ActionResult RecipeDetails(int id)

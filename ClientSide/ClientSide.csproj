@@ -164,6 +164,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserFavRecipesModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,8 +232,12 @@
     <Content Include="Content\Login.css" />
     <Content Include="Content\Pictures\avocado_toast.jpg" />
     <Content Include="Content\Pictures\char_beef.jpg" />
+    <Content Include="Content\Pictures\empty_star.png" />
     <Content Include="Content\Pictures\foodz1.jpg" />
     <Content Include="Content\Pictures\grpefruit23.jpg" />
+    <Content Include="Content\Pictures\leaf.png" />
+    <Content Include="Content\Pictures\star.png" />
+    <Content Include="Content\Pictures\vegan.png" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\Recipe.css" />
     <Content Include="Content\SignUp.css" />
@@ -298,6 +303,7 @@
     <Content Include="Views\Recipe\RecipeDetails.cshtml" />
     <Content Include="Views\Home\SearchDetails.cshtml" />
     <Content Include="Views\Recipe\Favorites.cshtml" />
+    <Content Include="Views\Home\Food.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
