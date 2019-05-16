@@ -234,6 +234,7 @@
     <Content Include="Content\Pictures\foodz1.jpg" />
     <Content Include="Content\Pictures\grpefruit23.jpg" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\Recipe.css" />
     <Content Include="Content\SignUp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
